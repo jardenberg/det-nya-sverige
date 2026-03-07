@@ -49,6 +49,35 @@ export default function ManifestoIntro() {
             </p>
           </div>
 
+          {/* Inspiration credit */}
+          <motion.div
+            className="mt-10 md:mt-14 p-6 md:p-8 rounded-sm"
+            style={{ backgroundColor: 'oklch(0.95 0.01 80 / 0.5)', borderLeft: '3px solid #9B6B1A' }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <p className="font-body text-base md:text-lg leading-relaxed" style={{ color: '#5a4a3a' }}>
+              {t("inspirationPrefix", lang)}
+              <a
+                href="https://www.facebook.com/troed.troedson/posts/pfbid02rAf7vzXf1r5DrntwkcJrNxb3U86ASnv2x9hKeqnP1f3gvXq6Lxb6YeRzn6qcgedBl"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-2 hover:no-underline transition-all"
+                style={{ color: '#9B6B1A' }}
+              >
+                {t("inspirationLinkText", lang)}
+              </a>
+              {t("inspirationBy", lang)}.
+            </p>
+            <p className="font-display text-base md:text-lg leading-relaxed italic mt-4" style={{ color: '#6b5a4a' }}>
+              {t("inspirationTroedQuote", lang)}
+            </p>
+            <p className="font-body text-base md:text-lg leading-relaxed mt-4" style={{ color: '#5a4a3a' }}>
+              {t("inspirationResponse", lang)}
+            </p>
+          </motion.div>
+
           {/* Core thesis & rule – the new intellectual framework */}
           <motion.div
             className="mt-12 md:mt-20 border-l-2 pl-6 md:pl-10 space-y-4"

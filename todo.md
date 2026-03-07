@@ -56,3 +56,8 @@
 - [x] Replace "FRAMÅT, TILLSAMMANS" image (svartvit folkmassan) with illustrated version
 - [x] Fix OG image injection — confirmed working in both dev and production builds (was stale deploy)
 - [x] Clean up sharing URLs: /punkt/N paths with server-side OG injection + client-side scroll
+
+## Inspiration Credit
+- [x] Add inspiration text to ManifestoIntro crediting Troed Troedson's Facebook post
+- [x] Include link to Troed's original post
+- [x] Add English translation of the inspiration text

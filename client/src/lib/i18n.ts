@@ -134,6 +134,27 @@ const strings = {
   commentDaysAgo: { sv: "dagar sedan", en: "days ago" },
   noComments: { sv: "Var först med att kommentera!", en: "Be the first to comment!" },
   feedbackSection: { sv: "Vad tycker du?", en: "What do you think?" },
+  // Inspiration credit
+  inspirationPrefix: {
+    sv: "Inspirationen till den här sajten kom från ",
+    en: "The inspiration for this site came from ",
+  },
+  inspirationLinkText: {
+    sv: "en post på Facebook",
+    en: "a Facebook post",
+  },
+  inspirationBy: {
+    sv: " av Troed Troedson",
+    en: " by Troed Troedson",
+  },
+  inspirationTroedQuote: {
+    sv: "\"Riksdagspartier! Håll varsin presskonferens med 15 punkter som underlättar människors resa i stället för det motsatta. Men håll en workshop först så det inte blir så där taffligt som det gärna blir annars.\"",
+    en: "\"Parliamentary parties! Hold a press conference each with 15 points that ease people's journey instead of the opposite. But hold a workshop first so it doesn't turn out as clumsy as it usually does.\"",
+  },
+  inspirationResponse: {
+    sv: "Sagt och gjort. Jag workshoppade med mitt team och kom fram till 15 punkter som är, så klart, väldigt mycket mina. Lutar mig tungt på internet, digitalisering generellt och AI i synnerhet. Och som lika självklart är work in progress. Better together, som vanligt.",
+    en: "Said and done. I workshopped with my team and came up with 15 points that are, of course, very much my own. Leaning heavily on the internet, digitalisation in general and AI in particular. And which are, equally obviously, a work in progress. Better together, as always.",
+  },
 } as const;
 
 export type StringKey = keyof typeof strings;
