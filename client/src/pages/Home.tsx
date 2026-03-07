@@ -56,14 +56,33 @@ export default function Home() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Keyboard navigation
+  // Keyboard navigation: J = up/back, L = down/forward (user preference)
+  // Also: ArrowUp = back, ArrowDown = forward
+  // Track whether user has entered the points section yet
+  const hasEnteredPoints = useRef(false);
+
+  useEffect(() => {
+    // Mark as entered once we scroll past the hero
+    if (showNav) hasEnteredPoints.current = true;
+  }, [showNav]);
+
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
-      if (e.key === "ArrowDown" || e.key === "j") {
+      // Don't hijack if user is typing in a textarea/input
+      const tag = (e.target as HTMLElement)?.tagName;
+      if (tag === "TEXTAREA" || tag === "INPUT") return;
+
+      if (e.key === "ArrowDown" || e.key === "l" || e.key === "L") {
         e.preventDefault();
-        const next = Math.min(activePoint + 1, points.length - 1);
-        sectionRefs.current[next]?.scrollIntoView({ behavior: "smooth" });
-      } else if (e.key === "ArrowUp" || e.key === "k") {
+        if (!hasEnteredPoints.current) {
+          // First time pressing down: go to point 1 (index 0)
+          sectionRefs.current[0]?.scrollIntoView({ behavior: "smooth" });
+          hasEnteredPoints.current = true;
+        } else {
+          const next = Math.min(activePoint + 1, points.length - 1);
+          sectionRefs.current[next]?.scrollIntoView({ behavior: "smooth" });
+        }
+      } else if (e.key === "ArrowUp" || e.key === "j" || e.key === "J") {
         e.preventDefault();
         const prev = Math.max(activePoint - 1, 0);
         sectionRefs.current[prev]?.scrollIntoView({ behavior: "smooth" });

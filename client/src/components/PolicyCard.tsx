@@ -1,18 +1,18 @@
 /**
  * PolicyCard – Each of the 15 points as a manifest chapter
  * Warm light theme with data metrics dashboard, share button, vote button, comment section, and language support
- * Alternating layouts for visual variety
+ * Body text always visible (no "read more" toggle)
+ * Action buttons aligned on a single row
  */
 
 import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { type PolicyPoint } from "@/lib/points";
 import { useLang } from "@/contexts/LanguageContext";
-import { t } from "@/lib/i18n";
 import ShareButton from "./ShareButton";
 import VoteButton from "./VoteButton";
 import CommentSection from "./CommentSection";
-import { ChevronDown, ChevronUp, Banknote, Users2, BarChart3 as BarIcon, Clock, Building, Globe } from "lucide-react";
+import { Banknote, Users2, BarChart3 as BarIcon, Clock, Building, Globe } from "lucide-react";
 import {
   BookOpen, Home, Briefcase, Rocket, GraduationCap,
   Heart, Building2, Stethoscope, Palette, Wifi,
@@ -48,7 +48,6 @@ const getLayoutStyle = (idx: number) => {
 export default function PolicyCard({ point, index, isActive }: PolicyCardProps) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-60px" });
-  const [expanded, setExpanded] = useState(false);
   const layout = getLayoutStyle(index);
   const { lang } = useLang();
 
@@ -171,46 +170,30 @@ export default function PolicyCard({ point, index, isActive }: PolicyCardProps) 
             )}
           </motion.blockquote>
 
-          {/* Expandable body text */}
-          <div className="relative">
-            <motion.div
-              initial={false}
-              animate={{ height: expanded ? "auto" : "0px" }}
-              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="overflow-hidden"
-            >
-              <p className="font-body text-sm md:text-base leading-relaxed font-light pb-4" style={{ color: '#5a4a3a' }}>
-                {point.body}
-              </p>
-            </motion.div>
+          {/* Body text – always visible */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ delay: 0.4, duration: 0.8 }}
+          >
+            <p className="font-body text-sm md:text-base leading-relaxed font-light mb-6" style={{ color: '#5a4a3a' }}>
+              {point.body}
+            </p>
+          </motion.div>
 
-            {/* Action row: Read more + Share + Vote */}
-            <div className={`flex flex-wrap items-center gap-3 mt-3 ${
+          {/* Action row: Share + Vote + Discussion – all on one line, comment panel expands below */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ delay: 0.5, duration: 0.6 }}
+            className={`flex flex-wrap items-center gap-3 ${
               layout === "right" ? "justify-end" : layout === "center" ? "justify-center" : ""
-            }`}>
-              <button
-                onClick={() => setExpanded(!expanded)}
-                className="group flex items-center gap-2 font-body text-xs transition-colors cursor-pointer"
-                style={{ color: '#9B6B1A' }}
-              >
-                <span className="tracking-[0.15em] uppercase">
-                  {expanded ? t("close", lang) : t("readMore", lang)}
-                </span>
-                {expanded ? (
-                  <ChevronUp className="w-3.5 h-3.5 group-hover:-translate-y-0.5 transition-transform" />
-                ) : (
-                  <ChevronDown className="w-3.5 h-3.5 group-hover:translate-y-0.5 transition-transform" />
-                )}
-              </button>
-
-              <ShareButton point={point} layout={layout} />
-
-              <VoteButton pointId={point.id} layout={layout} />
-            </div>
-          </div>
-
-          {/* Comment Section */}
-          <CommentSection pointId={point.id} layout={layout} />
+            }`}
+          >
+            <ShareButton point={point} layout={layout} />
+            <VoteButton pointId={point.id} layout={layout} />
+            <CommentSection pointId={point.id} layout={layout} inline />
+          </motion.div>
         </motion.div>
       </div>
     </div>

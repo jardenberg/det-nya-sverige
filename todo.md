@@ -34,3 +34,9 @@
 - [x] Update categories to match new structure
 - [x] Test and verify everything compiles and renders (15 tests passing, no TS errors)
 - [x] Save checkpoint
+
+## UX Fixes
+- [x] Expand body text by default (removed "Läs mer" toggle, text always visible)
+- [x] Align action buttons (Dela, Stöd, Diskussion) on one row with flex-wrap for comment panel
+- [x] Fix keyboard nav: J = up/back, L = down/forward
+- [x] Fix first arrow-down: goes to point 1 when entering points section for the first time
