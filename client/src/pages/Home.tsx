@@ -1,7 +1,7 @@
 /**
  * Det Nya Sverige – 15 Punkter
- * Design: Nordic Monumentalism
- * Dark background (#0A0A0A), white text, ochre (#D4A843) accent
+ * Design: Nordic Monumentalism (Warm Light)
+ * Warm cream background, dark text, ochre (#9B6B1A) accent
  * Playfair Display for headings, Source Sans 3 for body, Bebas Neue for numbers
  */
 

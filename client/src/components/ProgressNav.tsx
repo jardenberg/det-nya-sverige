@@ -1,6 +1,6 @@
 /**
  * ProgressNav – Fixed side navigation showing progress through the 15 points
- * Nordic Monumentalism: minimal, ochre dots, vertical line
+ * Warm light theme: ochre dots on warm background
  */
 
 import { motion } from "framer-motion";
@@ -22,7 +22,7 @@ export default function ProgressNav({ points, activePoint, onNavigate }: Progres
       className="fixed right-4 md:right-8 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col items-center gap-0"
     >
       {/* Vertical line behind dots */}
-      <div className="absolute top-0 bottom-0 w-[1px] bg-white/10" />
+      <div className="absolute top-0 bottom-0 w-[1px]" style={{ backgroundColor: 'oklch(0.18 0.02 50 / 0.1)' }} />
 
       {points.map((point, idx) => {
         const isActive = idx === activePoint;
@@ -39,20 +39,27 @@ export default function ProgressNav({ points, activePoint, onNavigate }: Progres
             <div
               className={`relative z-10 rounded-full transition-all duration-300 ${
                 isActive
-                  ? "w-3 h-3 bg-[#D4A843] shadow-[0_0_12px_rgba(212,168,67,0.4)]"
+                  ? "w-3 h-3 shadow-[0_0_12px_rgba(155,107,26,0.35)]"
                   : isPast
-                  ? "w-2 h-2 bg-[#D4A843]/40"
-                  : "w-2 h-2 bg-white/15 group-hover:bg-white/30"
+                  ? "w-2 h-2"
+                  : "w-2 h-2"
               }`}
+              style={{
+                backgroundColor: isActive
+                  ? '#9B6B1A'
+                  : isPast
+                  ? 'oklch(0.58 0.16 55 / 0.4)'
+                  : 'oklch(0.18 0.02 50 / 0.15)',
+              }}
             />
 
             {/* Tooltip on hover */}
             <div className="absolute right-full mr-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
-              <div className="bg-[#1a1a1a] border border-white/10 px-3 py-1.5 rounded">
-                <span className="font-mono-display text-[#D4A843] text-xs mr-2">
+              <div className="px-3 py-1.5 rounded-sm shadow-md" style={{ backgroundColor: '#faf6f0', border: '1px solid oklch(0.18 0.02 50 / 0.08)' }}>
+                <span className="font-mono-display text-xs mr-2" style={{ color: '#9B6B1A' }}>
                   {point.id.toString().padStart(2, "0")}
                 </span>
-                <span className="font-body text-white/70 text-xs">
+                <span className="font-body text-xs" style={{ color: '#5a4a3a' }}>
                   {point.title}
                 </span>
               </div>
@@ -62,7 +69,7 @@ export default function ProgressNav({ points, activePoint, onNavigate }: Progres
       })}
 
       {/* Current point number */}
-      <div className="mt-4 font-mono-display text-[#D4A843]/60 text-xs">
+      <div className="mt-4 font-mono-display text-xs" style={{ color: 'oklch(0.58 0.16 55 / 0.6)' }}>
         {(activePoint + 1).toString().padStart(2, "0")}/15
       </div>
     </motion.nav>

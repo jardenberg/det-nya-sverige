@@ -1,13 +1,13 @@
 /**
  * PolicyCard – Each of the 15 points as a manifest chapter
- * Nordic Monumentalism: massive background numbers, dramatic entrance, ochre accent
+ * Warm light theme with data metrics dashboard
  * Alternating layouts for visual variety
  */
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { type PolicyPoint } from "@/lib/points";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown, ChevronUp, Banknote, Users2, BarChart3 as BarIcon, Clock, Building, Globe } from "lucide-react";
 import {
   BookOpen, Home, Briefcase, Rocket, GraduationCap,
   Heart, Building2, Stethoscope, Palette, Wifi,
@@ -20,13 +20,21 @@ const ICONS = [
   Handshake, Users, Leaf, Megaphone, BarChart3
 ];
 
+const METRIC_ICONS = {
+  money: Banknote,
+  people: Users2,
+  chart: BarIcon,
+  clock: Clock,
+  building: Building,
+  globe: Globe,
+};
+
 interface PolicyCardProps {
   point: PolicyPoint;
   index: number;
   isActive: boolean;
 }
 
-// Alternate layout patterns for visual variety
 const getLayoutStyle = (idx: number) => {
   const patterns = ["left", "right", "center"] as const;
   return patterns[idx % 3];
@@ -44,19 +52,20 @@ export default function PolicyCard({ point, index, isActive }: PolicyCardProps) 
   return (
     <div
       ref={ref}
-      className="relative py-16 md:py-24 lg:py-32 overflow-hidden"
+      className="relative py-16 md:py-24 lg:py-28 overflow-hidden"
     >
       {/* Massive background number */}
       <div
-        className={`absolute font-mono-display text-[10rem] sm:text-[14rem] md:text-[22rem] lg:text-[30rem] leading-none select-none pointer-events-none text-white/[0.025] ${
+        className={`absolute font-mono-display text-[10rem] sm:text-[14rem] md:text-[22rem] lg:text-[30rem] leading-none select-none pointer-events-none ${
           layout === "right" ? "left-4 md:left-12" : "right-4 md:right-12"
         } top-1/2 -translate-y-1/2`}
+        style={{ color: 'oklch(0.18 0.02 50 / 0.04)' }}
       >
         {numberStr}
       </div>
 
       {/* Horizontal rule at top */}
-      <div className="absolute top-0 left-0 right-0 h-[1px] bg-white/[0.06]" />
+      <div className="absolute top-0 left-0 right-0 h-[1px]" style={{ backgroundColor: 'oklch(0.18 0.02 50 / 0.07)' }} />
 
       {/* Content */}
       <div className="relative z-10 w-full max-w-6xl mx-auto px-6 md:px-16">
@@ -79,26 +88,58 @@ export default function PolicyCard({ point, index, isActive }: PolicyCardProps) 
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ delay: 0.15, duration: 0.5 }}
             >
-              <Icon className="w-5 h-5 text-[#D4A843]/60" strokeWidth={1.5} />
+              <Icon className="w-5 h-5" style={{ color: '#9B6B1A' }} strokeWidth={1.5} />
             </motion.div>
-            <span className="font-mono-display text-[#D4A843] text-3xl md:text-4xl">
+            <span className="font-mono-display text-3xl md:text-4xl" style={{ color: '#9B6B1A' }}>
               {numberStr}
             </span>
-            <div className="w-6 h-[2px] bg-[#D4A843]/40" />
-            <span className="font-body text-white/35 text-[0.65rem] tracking-[0.2em] uppercase">
+            <div className="w-6 h-[2px]" style={{ backgroundColor: 'oklch(0.58 0.16 55 / 0.4)' }} />
+            <span className="font-body text-[0.65rem] tracking-[0.2em] uppercase" style={{ color: '#8a7a6a' }}>
               {point.category}
             </span>
           </div>
 
           {/* Title */}
-          <h2 className="font-display text-3xl md:text-5xl lg:text-[3.5rem] font-black leading-[1.05] text-white mb-3">
+          <h2 className="font-display text-3xl md:text-5xl lg:text-[3.5rem] font-black leading-[1.05] mb-3" style={{ color: '#2c1810' }}>
             {point.title}
           </h2>
 
           {/* Subtitle */}
-          <p className="font-body text-base md:text-lg text-[#D4A843]/90 font-light mb-6 leading-relaxed">
+          <p className="font-body text-base md:text-lg font-light mb-6 leading-relaxed" style={{ color: '#9B6B1A' }}>
             {point.subtitle}
           </p>
+
+          {/* Data Metrics Grid */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.2, duration: 0.7 }}
+            className={`grid grid-cols-2 md:grid-cols-3 gap-3 mb-8 ${layout === "center" ? "max-w-xl mx-auto" : ""}`}
+          >
+            {point.metrics.map((metric, i) => {
+              const MetricIcon = METRIC_ICONS[metric.icon];
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: 0.3 + i * 0.06, duration: 0.5 }}
+                  className="rounded-sm p-3 md:p-4 text-left"
+                  style={{ backgroundColor: 'oklch(0.95 0.02 75 / 0.6)', borderLeft: '2px solid oklch(0.68 0.14 65 / 0.3)' }}
+                >
+                  <div className="flex items-center gap-1.5 mb-1">
+                    <MetricIcon className="w-3 h-3" style={{ color: '#9B6B1A' }} strokeWidth={1.5} />
+                    <span className="font-body text-[0.6rem] md:text-[0.65rem] tracking-wider uppercase" style={{ color: '#8a7a6a' }}>
+                      {metric.label}
+                    </span>
+                  </div>
+                  <p className="font-display text-lg md:text-xl font-bold" style={{ color: '#2c1810' }}>
+                    {metric.value}
+                  </p>
+                </motion.div>
+              );
+            })}
+          </motion.div>
 
           {/* Quote */}
           <motion.blockquote
@@ -107,17 +148,18 @@ export default function PolicyCard({ point, index, isActive }: PolicyCardProps) 
             transition={{ delay: 0.3, duration: 0.8 }}
             className={`mb-6 ${
               layout === "right"
-                ? "border-r-2 border-[#D4A843]/25 pr-5"
+                ? "border-r-2 pr-5"
                 : layout === "center"
-                ? "border-t border-b border-[#D4A843]/15 py-4"
-                : "border-l-2 border-[#D4A843]/25 pl-5"
+                ? "border-t border-b py-4"
+                : "border-l-2 pl-5"
             }`}
+            style={{ borderColor: 'oklch(0.58 0.16 55 / 0.2)' }}
           >
-            <p className="font-display text-base md:text-lg italic text-white/45 leading-relaxed">
+            <p className="font-display text-base md:text-lg italic leading-relaxed" style={{ color: '#6a5a4a' }}>
               "{point.quote}"
             </p>
             {point.quoteAuthor && (
-              <cite className="font-body text-xs text-white/25 mt-2 block not-italic">
+              <cite className="font-body text-xs mt-2 block not-italic" style={{ color: '#9a8a7a' }}>
                 — {point.quoteAuthor}
               </cite>
             )}
@@ -131,16 +173,17 @@ export default function PolicyCard({ point, index, isActive }: PolicyCardProps) 
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               className="overflow-hidden"
             >
-              <p className="font-body text-sm md:text-base text-white/45 leading-relaxed font-light pb-4">
+              <p className="font-body text-sm md:text-base leading-relaxed font-light pb-4" style={{ color: '#5a4a3a' }}>
                 {point.body}
               </p>
             </motion.div>
 
             <button
               onClick={() => setExpanded(!expanded)}
-              className={`group flex items-center gap-2 mt-3 font-body text-xs text-[#D4A843]/60 hover:text-[#D4A843] transition-colors ${
+              className={`group flex items-center gap-2 mt-3 font-body text-xs transition-colors ${
                 layout === "right" ? "ml-auto" : layout === "center" ? "mx-auto" : ""
               }`}
+              style={{ color: '#9B6B1A' }}
             >
               <span className="tracking-[0.15em] uppercase">
                 {expanded ? "Stäng" : "Läs mer"}

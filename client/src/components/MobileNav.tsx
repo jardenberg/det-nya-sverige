@@ -1,6 +1,6 @@
 /**
  * MobileNav – Mobile-friendly navigation overlay for the 15 points
- * Nordic Monumentalism: dark overlay, ochre accents
+ * Warm light theme: warm overlay, ochre accents
  */
 
 import { motion, AnimatePresence } from "framer-motion";
@@ -39,24 +39,26 @@ export default function MobileNav({ activePoint, onNavigate, showNav }: MobileNa
         {/* Scroll to top */}
         <button
           onClick={scrollToTop}
-          className="w-11 h-11 rounded-full bg-[#1a1a1a]/90 border border-white/10 flex items-center justify-center backdrop-blur-sm"
+          className="w-11 h-11 rounded-full flex items-center justify-center backdrop-blur-sm shadow-md"
+          style={{ backgroundColor: 'oklch(0.99 0.005 80 / 0.9)', border: '1px solid oklch(0.18 0.02 50 / 0.1)' }}
           aria-label="Tillbaka till toppen"
         >
-          <ArrowUp className="w-4 h-4 text-white/50" />
+          <ArrowUp className="w-4 h-4" style={{ color: '#6a5a4a' }} />
         </button>
 
         {/* Menu toggle */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="w-11 h-11 rounded-full bg-[#D4A843]/90 flex items-center justify-center shadow-lg shadow-[#D4A843]/20"
+          className="w-11 h-11 rounded-full flex items-center justify-center shadow-lg"
+          style={{ backgroundColor: '#9B6B1A', boxShadow: '0 4px 15px oklch(0.58 0.16 55 / 0.3)' }}
           aria-label="Öppna innehållsförteckning"
         >
           {isOpen ? (
-            <X className="w-5 h-5 text-[#0a0a0a]" />
+            <X className="w-5 h-5 text-white" />
           ) : (
             <div className="flex flex-col items-center">
-              <Menu className="w-4 h-4 text-[#0a0a0a]" />
-              <span className="text-[8px] font-mono-display text-[#0a0a0a] leading-none mt-0.5">
+              <Menu className="w-4 h-4 text-white" />
+              <span className="text-[8px] font-mono-display text-white leading-none mt-0.5">
                 {(activePoint + 1).toString().padStart(2, "0")}
               </span>
             </div>
@@ -72,10 +74,11 @@ export default function MobileNav({ activePoint, onNavigate, showNav }: MobileNa
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-[#0a0a0a]/95 backdrop-blur-md md:hidden"
+            className="fixed inset-0 z-40 backdrop-blur-md md:hidden"
+            style={{ backgroundColor: 'oklch(0.97 0.01 80 / 0.97)' }}
           >
             <div className="h-full overflow-y-auto py-16 px-6">
-              <p className="font-mono-display text-[#D4A843] tracking-[0.3em] text-xs mb-8">
+              <p className="font-mono-display tracking-[0.3em] text-xs mb-8" style={{ color: '#8B6914' }}>
                 INNEHÅLL
               </p>
               <div className="space-y-1">
@@ -85,24 +88,23 @@ export default function MobileNav({ activePoint, onNavigate, showNav }: MobileNa
                     <button
                       key={point.id}
                       onClick={() => handleNavigate(idx)}
-                      className={`w-full text-left py-3 px-4 rounded transition-colors flex items-start gap-4 ${
-                        isActive
-                          ? "bg-[#D4A843]/10"
-                          : "hover:bg-white/5"
-                      }`}
+                      className="w-full text-left py-3 px-4 rounded-sm transition-colors flex items-start gap-4"
+                      style={{
+                        backgroundColor: isActive ? 'oklch(0.58 0.16 55 / 0.08)' : 'transparent',
+                      }}
                     >
-                      <span className={`font-mono-display text-lg shrink-0 ${
-                        isActive ? "text-[#D4A843]" : "text-white/25"
-                      }`}>
+                      <span className="font-mono-display text-lg shrink-0" style={{
+                        color: isActive ? '#9B6B1A' : '#b0a090'
+                      }}>
                         {point.id.toString().padStart(2, "0")}
                       </span>
                       <div>
-                        <p className={`font-display text-base leading-tight ${
-                          isActive ? "text-white" : "text-white/60"
-                        }`}>
+                        <p className="font-display text-base leading-tight" style={{
+                          color: isActive ? '#2c1810' : '#6a5a4a'
+                        }}>
                           {point.title}
                         </p>
-                        <p className="font-body text-xs text-white/25 mt-1">
+                        <p className="font-body text-xs mt-1" style={{ color: '#b0a090' }}>
                           {point.category}
                         </p>
                       </div>
