@@ -164,6 +164,10 @@ const strings = {
     sv: "Kontakt",
     en: "Contact",
   },
+  aboutLink: {
+    sv: "Läs mer om projektet",
+    en: "Read more about the project",
+  },
 } as const;
 
 export type StringKey = keyof typeof strings;

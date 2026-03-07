@@ -66,3 +66,9 @@
 - [x] Add CC0 license with note about keeping author in the loop
 - [x] Update version number to v093b
 - [x] Add contact email joakim@jardenberg.com
+
+## About Page (/om)
+- [x] Create /om page with license info, field report, and project context
+- [x] Register /om route in App.tsx (also /about for English)
+- [x] Add link to /om from ManifestoIntro section
+- [x] Add English translation support

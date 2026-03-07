@@ -8,6 +8,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { useLang } from "@/contexts/LanguageContext";
 import { t } from "@/lib/i18n";
+import { Link } from "wouter";
 
 const PEOPLE_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/framat-tillsammans-RCdD2wYiAGJo8XLMUNJfkt.webp";
 
@@ -76,6 +77,11 @@ export default function ManifestoIntro() {
             <p className="font-body text-base md:text-lg leading-relaxed mt-4" style={{ color: '#5a4a3a' }}>
               {t("inspirationResponse", lang)}
             </p>
+            <Link href="/om">
+              <span className="inline-block mt-4 font-body text-sm underline underline-offset-2 hover:no-underline transition-all cursor-pointer" style={{ color: '#9B6B1A' }}>
+                {t("aboutLink", lang)} →
+              </span>
+            </Link>
           </motion.div>
 
           {/* Core thesis & rule – the new intellectual framework */}
