@@ -114,6 +114,24 @@ export default function PolicyCard({ point, index, isActive }: PolicyCardProps) 
             {point.subtitle}
           </p>
 
+          {/* Illustrated image for the point */}
+          {point.ogImage && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ delay: 0.15, duration: 0.8 }}
+              className="mb-8 overflow-hidden rounded-sm"
+            >
+              <img
+                src={point.ogImage}
+                alt={point.title}
+                className="w-full h-auto"
+                style={{ filter: 'saturate(1.05)' }}
+                loading="lazy"
+              />
+            </motion.div>
+          )}
+
           {/* Data Metrics Grid */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}

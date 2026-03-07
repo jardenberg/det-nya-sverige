@@ -40,3 +40,14 @@
 - [x] Align action buttons (Dela, Stöd, Diskussion) on one row with flex-wrap for comment panel
 - [x] Fix keyboard nav: J = up/back, L = down/forward
 - [x] Fix first arrow-down: goes to point 1 when entering points section for the first time
+
+## Sharing Links & OG Images
+- [x] Fix hash navigation (#punkt-3) so it scrolls to correct point on page load
+- [x] Generate 15 retro-illustrated genre images (warm vintage style, NOT round)
+- [x] Upload images to CDN
+- [x] Integrate per-point OG images for social sharing
+- [x] Replace closing section images with illustrated style (city, together, future)
+- [x] Update meta tags for dynamic OG per point (server-side injection via ?punkt=N)
+- [x] Add illustrated images as visual elements in PolicyCard
+- [x] Test sharing links work correctly (23 tests passing)
+- [x] Fix ?punkt=N → #punkt-N client-side redirect for social sharing URLs

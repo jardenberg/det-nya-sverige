@@ -24,6 +24,40 @@ export default function Home() {
   const [showNav, setShowNav] = useState(false);
   const sectionRefs = useRef<(HTMLElement | null)[]>([]);
 
+  // Handle hash-based navigation on page load and hash change
+  // Also handles ?punkt=N query parameter from social sharing links
+  useEffect(() => {
+    const scrollToHash = () => {
+      let hash = window.location.hash;
+
+      // If no hash but ?punkt=N query param exists (from social sharing), derive hash
+      if (!hash || !hash.startsWith('#punkt-')) {
+        const params = new URLSearchParams(window.location.search);
+        const punktParam = params.get('punkt');
+        if (punktParam) {
+          hash = `#punkt-${punktParam}`;
+          // Clean URL: replace ?punkt=N with just the hash
+          window.history.replaceState(null, '', `/${hash}`);
+        }
+      }
+
+      if (hash && hash.startsWith('#punkt-')) {
+        // Small delay to ensure DOM is fully rendered
+        setTimeout(() => {
+          const el = document.querySelector(hash);
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth' });
+            hasEnteredPoints.current = true;
+          }
+        }, 300);
+      }
+    };
+
+    scrollToHash();
+    window.addEventListener('hashchange', scrollToHash);
+    return () => window.removeEventListener('hashchange', scrollToHash);
+  }, []);
+
   // Track scroll to determine active section
   useEffect(() => {
     const observer = new IntersectionObserver(

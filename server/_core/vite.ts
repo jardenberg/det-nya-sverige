@@ -6,6 +6,101 @@ import path from "path";
 import { createServer as createViteServer } from "vite";
 import viteConfig from "../../vite.config";
 
+// OG image URLs for each of the 15 policy points
+const OG_IMAGES: Record<number, string> = {
+  1: "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/og-point-1_4530788a.png",
+  2: "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/og-point-2_6871597a.png",
+  3: "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/og-point-3_4a486f4d.png",
+  4: "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/og-point-4_6eec1d5e.png",
+  5: "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/og-point-5_f959578e.png",
+  6: "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/og-point-6_96568d86.png",
+  7: "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/og-point-7_c53a25e2.png",
+  8: "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/og-point-8_ba9f2c48.png",
+  9: "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/og-point-9_e69d617f.png",
+  10: "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/og-point-10_b716d594.png",
+  11: "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/og-point-11_7ad1303e.png",
+  12: "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/og-point-12_96504b94.png",
+  13: "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/og-point-13_5b676d6f.png",
+  14: "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/og-point-14_76ff2624.png",
+  15: "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/og-point-15_b924cfee.png",
+};
+
+// Swedish titles for OG tags (server-side, no i18n context)
+const POINT_TITLES: Record<number, string> = {
+  1: "Ett Sverige in, inte femton k\u00f6er",
+  2: "100-dagarsgaranti f\u00f6r kompetens",
+  3: "Svenska genom arbete, inte f\u00f6re arbete",
+  4: "Nationell snabbfil till bristyrken",
+  5: "F\u00f6rsta riktiga jobbet inom 180 dagar",
+  6: "Bos\u00e4tt efter m\u00f6jlighet, inte efter passivitet",
+  7: "Barnen f\u00f6rst, alltid",
+  8: "H\u00e5rd mot exploatering, mjuk mot m\u00e4nniskor",
+  9: "Nolltolerans mot diskriminering",
+  10: "Digitalt medlemskap fr\u00e5n dag ett",
+  11: "Europas enklaste land att starta f\u00f6retag i",
+  12: "Student till byggare av Sverige",
+  13: "Cirkul\u00e4r r\u00f6rlighet som styrka",
+  14: "Snabb och f\u00f6ruts\u00e4gbar r\u00e4ttsstat",
+  15: "Integration som nationell elitgren",
+};
+
+/**
+ * Inject per-point OG meta tags when the URL contains ?punkt=N
+ * Social crawlers don't read hash fragments, so sharing uses query params.
+ * The client-side ShareButton generates URLs with ?punkt=N which the server
+ * intercepts to inject the correct OG image and title.
+ */
+function injectPointOgTags(html: string, url: string): string {
+  try {
+    const urlObj = new URL(url, "http://localhost");
+    const punktParam = urlObj.searchParams.get("punkt");
+    if (!punktParam) return html;
+
+    const pointId = parseInt(punktParam, 10);
+    if (isNaN(pointId) || pointId < 1 || pointId > 15) return html;
+
+    const ogImage = OG_IMAGES[pointId];
+    const title = POINT_TITLES[pointId];
+    if (!ogImage || !title) return html;
+
+    const ogTitle = `Punkt ${pointId}: ${title} \u2013 Det Nya Sverige`;
+    const ogDesc = `Punkt ${pointId} av 15 i Det Nya Sverige-manifestet. L\u00e4s mer om: ${title}`;
+
+    // Replace existing OG tags with point-specific ones
+    html = html.replace(
+      /<meta property="og:title" content="[^"]*" \/>/,
+      `<meta property="og:title" content="${ogTitle}" />`
+    );
+    html = html.replace(
+      /<meta property="og:description" content="[^"]*" \/>/,
+      `<meta property="og:description" content="${ogDesc}" />`
+    );
+    html = html.replace(
+      /<meta property="og:image" content="[^"]*" \/>/,
+      `<meta property="og:image" content="${ogImage}" />`
+    );
+    html = html.replace(
+      /<meta name="twitter:title" content="[^"]*" \/>/,
+      `<meta name="twitter:title" content="${ogTitle}" />`
+    );
+    html = html.replace(
+      /<meta name="twitter:description" content="[^"]*" \/>/,
+      `<meta name="twitter:description" content="${ogDesc}" />`
+    );
+    html = html.replace(
+      /<meta name="twitter:image" content="[^"]*" \/>/,
+      `<meta name="twitter:image" content="${ogImage}" />`
+    );
+    html = html.replace(
+      /<title>[^<]*<\/title>/,
+      `<title>${ogTitle}</title>`
+    );
+  } catch {
+    // If URL parsing fails, return original HTML
+  }
+  return html;
+}
+
 export async function setupVite(app: Express, server: Server) {
   const serverOptions = {
     middlewareMode: true,
@@ -38,6 +133,10 @@ export async function setupVite(app: Express, server: Server) {
         `src="/src/main.tsx"`,
         `src="/src/main.tsx?v=${nanoid()}"`
       );
+
+      // Dynamic OG tags for per-point sharing
+      template = injectPointOgTags(template, url);
+
       const page = await vite.transformIndexHtml(url, template);
       res.status(200).set({ "Content-Type": "text/html" }).end(page);
     } catch (e) {
@@ -61,7 +160,10 @@ export function serveStatic(app: Express) {
   app.use(express.static(distPath));
 
   // fall through to index.html if the file doesn't exist
-  app.use("*", (_req, res) => {
-    res.sendFile(path.resolve(distPath, "index.html"));
+  app.use("*", (req, res) => {
+    const indexPath = path.resolve(distPath, "index.html");
+    let html = fs.readFileSync(indexPath, "utf-8");
+    html = injectPointOgTags(html, req.originalUrl);
+    res.status(200).set({ "Content-Type": "text/html" }).end(html);
   });
 }

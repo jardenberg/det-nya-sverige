@@ -21,6 +21,7 @@ export interface PolicyPoint {
   quoteAuthor: string;
   category: string;
   metrics: DataMetric[];
+  ogImage: string;
 }
 
 export const policyPoints: PolicyPoint[] = [
@@ -32,6 +33,7 @@ export const policyPoints: PolicyPoint[] = [
     quote: "Det som i dag ser ut som ett integrationsproblem är ofta bara ett designproblem som staten ännu inte tagit på allvar.",
     quoteAuthor: "",
     category: "Plattform & Onboarding",
+    ogImage: "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/og-point-1_4530788a.png",
     metrics: [
       { label: "Årlig investering", value: "18 mdr kr", icon: "money" },
       { label: "Berörda per år", value: "200 000+", icon: "people" },
@@ -49,6 +51,7 @@ export const policyPoints: PolicyPoint[] = [
     quote: "Ett papper som inte passar i en svensk mapp ska inte få radera ett helt arbetsliv.",
     quoteAuthor: "",
     category: "Kompetens & Arbete",
+    ogImage: "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/og-point-2_6871597a.png",
     metrics: [
       { label: "Årlig investering", value: "15 mdr kr", icon: "money" },
       { label: "Valideringar per år", value: "90 000", icon: "people" },
@@ -66,6 +69,7 @@ export const policyPoints: PolicyPoint[] = [
     quote: "Språket lär man sig bäst när det används. Inte i ett klassrum man väntat ett år på att komma in i.",
     quoteAuthor: "",
     category: "Språk & Lärande",
+    ogImage: "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/og-point-3_4a486f4d.png",
     metrics: [
       { label: "Årlig investering", value: "22 mdr kr", icon: "money" },
       { label: "Berörda per år", value: "180 000", icon: "people" },
@@ -83,6 +87,7 @@ export const policyPoints: PolicyPoint[] = [
     quote: "Tekniken ska komprimera vägen till svensk licens, inte skapa fler väntrum.",
     quoteAuthor: "",
     category: "Kompetens & Arbete",
+    ogImage: "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/og-point-4_6eec1d5e.png",
     metrics: [
       { label: "Årlig investering", value: "12 mdr kr", icon: "money" },
       { label: "Snabbspår i bristyrken", value: "100+", icon: "building" },
@@ -100,6 +105,7 @@ export const policyPoints: PolicyPoint[] = [
     quote: "Vi ska sluta låtsas att CV-skrivning är integration.",
     quoteAuthor: "",
     category: "Kompetens & Arbete",
+    ogImage: "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/og-point-5_f959578e.png",
     metrics: [
       { label: "Årlig investering", value: "10 mdr kr", icon: "money" },
       { label: "Matchningar per år", value: "120 000", icon: "people" },
@@ -117,6 +123,7 @@ export const policyPoints: PolicyPoint[] = [
     quote: "Det är märkligt att vi accepterar mer intelligens i en reseapp än i statens beslut om människors framtid.",
     quoteAuthor: "",
     category: "Plattform & Onboarding",
+    ogImage: "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/og-point-6_96568d86.png",
     metrics: [
       { label: "Årlig investering", value: "8 mdr kr", icon: "money" },
       { label: "Kommuner med realtidsdata", value: "Alla 290", icon: "building" },
@@ -134,6 +141,7 @@ export const policyPoints: PolicyPoint[] = [
     quote: "Vi ska inte bygga botskolor. Vi ska ge bra lärare mycket större räckvidd.",
     quoteAuthor: "",
     category: "Barn & Utbildning",
+    ogImage: "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/og-point-7_c53a25e2.png",
     metrics: [
       { label: "Årlig investering", value: "35 mdr kr", icon: "money" },
       { label: "Barn som nås", value: "350 000", icon: "people" },
@@ -151,6 +159,7 @@ export const policyPoints: PolicyPoint[] = [
     quote: "Tekniken ska inte bara hjälpa staten att kontrollera. Den ska hjälpa människan att förstå sin rätt och våga använda den.",
     quoteAuthor: "",
     category: "Rättsstat & Skydd",
+    ogImage: "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/og-point-8_ba9f2c48.png",
     metrics: [
       { label: "Årlig investering", value: "8 mdr kr", icon: "money" },
       { label: "Arbetstagare med digitalt skydd", value: "500 000+", icon: "people" },
@@ -168,6 +177,7 @@ export const policyPoints: PolicyPoint[] = [
     quote: "Det räcker inte att digitalisera orättvisor. Sverige ska bli landet som mäter bias lika seriöst som vi mäter budget.",
     quoteAuthor: "",
     category: "Rättsstat & Skydd",
+    ogImage: "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/og-point-9_e69d617f.png",
     metrics: [
       { label: "Årlig investering", value: "6 mdr kr", icon: "money" },
       { label: "Berörda arbetsgivare", value: "85 000", icon: "building" },
@@ -185,6 +195,7 @@ export const policyPoints: PolicyPoint[] = [
     quote: "Det som i dag ser ut som ett personnummerproblem är ofta bara ett designproblem som staten ännu inte tagit på allvar.",
     quoteAuthor: "",
     category: "Digital Infrastruktur",
+    ogImage: "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/og-point-10_b716d594.png",
     metrics: [
       { label: "Årlig investering", value: "12 mdr kr", icon: "money" },
       { label: "Berörda från dag ett", value: "200 000+/år", icon: "people" },
@@ -202,6 +213,7 @@ export const policyPoints: PolicyPoint[] = [
     quote: "Internetlogik gäller här också: sänk trösklarna, öppna gränssnitten, låt fler bygga.",
     quoteAuthor: "",
     category: "Näringsliv & Entreprenörskap",
+    ogImage: "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/og-point-11_7ad1303e.png",
     metrics: [
       { label: "Fondkapital", value: "30 mdr kr", icon: "money" },
       { label: "Nya företag per år", value: "25 000", icon: "building" },
@@ -219,6 +231,7 @@ export const policyPoints: PolicyPoint[] = [
     quote: "Det dummaste ett kunskapsland kan göra är att utbilda global talang och sedan aktivt försvåra för den att stanna.",
     quoteAuthor: "",
     category: "Kompetens & Arbete",
+    ogImage: "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/og-point-12_96504b94.png",
     metrics: [
       { label: "Årlig investering", value: "5 mdr kr", icon: "money" },
       { label: "Internationella studenter/år", value: "40 000", icon: "people" },
@@ -236,6 +249,7 @@ export const policyPoints: PolicyPoint[] = [
     quote: "Diasporan är inte ett bortfall. Den är ett nätverk. Sverige ska vara ett nav i människors liv.",
     quoteAuthor: "",
     category: "Rörlighet & Nätverk",
+    ogImage: "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/og-point-13_5b676d6f.png",
     metrics: [
       { label: "Årlig investering", value: "4 mdr kr", icon: "money" },
       { label: "Svensk diaspora globalt", value: "500 000+", icon: "people" },
@@ -253,6 +267,7 @@ export const policyPoints: PolicyPoint[] = [
     quote: "Långsam otydlighet är inte neutral. Det är ett politiskt val.",
     quoteAuthor: "",
     category: "Rättsstat & Skydd",
+    ogImage: "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/og-point-14_76ff2624.png",
     metrics: [
       { label: "Årlig investering", value: "10 mdr kr", icon: "money" },
       { label: "Ärenden med realtidsstatus", value: "Alla", icon: "building" },
@@ -270,6 +285,7 @@ export const policyPoints: PolicyPoint[] = [
     quote: "Mät det som fungerar. Sluta vinna debatter med anekdoter.",
     quoteAuthor: "",
     category: "Styrning & Transparens",
+    ogImage: "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/og-point-15_b924cfee.png",
     metrics: [
       { label: "Årlig investering", value: "5 mdr kr", icon: "money" },
       { label: "Öppen dataplattform", value: "40+ språk", icon: "globe" },

@@ -15,6 +15,7 @@ export const policyPointsEn: PolicyPoint[] = [
     quote: "What today looks like an integration problem is often just a design problem the state hasn't taken seriously yet.",
     quoteAuthor: "",
     category: "Platform & Onboarding",
+    ogImage: "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/og-point-1_4530788a.png",
     metrics: [
       { label: "Annual investment", value: "SEK 18 bn", icon: "money" },
       { label: "People reached per year", value: "200,000+", icon: "people" },
@@ -32,6 +33,7 @@ export const policyPointsEn: PolicyPoint[] = [
     quote: "A document that doesn't fit a Swedish folder shouldn't erase an entire working life.",
     quoteAuthor: "",
     category: "Competence & Work",
+    ogImage: "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/og-point-2_6871597a.png",
     metrics: [
       { label: "Annual investment", value: "SEK 15 bn", icon: "money" },
       { label: "Validations per year", value: "90,000", icon: "people" },
@@ -49,6 +51,7 @@ export const policyPointsEn: PolicyPoint[] = [
     quote: "Language is best learned when it's used. Not in a classroom you've waited a year to enter.",
     quoteAuthor: "",
     category: "Language & Learning",
+    ogImage: "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/og-point-3_4a486f4d.png",
     metrics: [
       { label: "Annual investment", value: "SEK 22 bn", icon: "money" },
       { label: "People reached per year", value: "180,000", icon: "people" },
@@ -66,6 +69,7 @@ export const policyPointsEn: PolicyPoint[] = [
     quote: "Technology should compress the path to a Swedish license, not create more waiting rooms.",
     quoteAuthor: "",
     category: "Competence & Work",
+    ogImage: "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/og-point-4_6eec1d5e.png",
     metrics: [
       { label: "Annual investment", value: "SEK 12 bn", icon: "money" },
       { label: "Fast tracks in shortage occupations", value: "100+", icon: "building" },
@@ -83,6 +87,7 @@ export const policyPointsEn: PolicyPoint[] = [
     quote: "We need to stop pretending that CV writing is integration.",
     quoteAuthor: "",
     category: "Competence & Work",
+    ogImage: "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/og-point-5_f959578e.png",
     metrics: [
       { label: "Annual investment", value: "SEK 10 bn", icon: "money" },
       { label: "Matches per year", value: "120,000", icon: "people" },
@@ -100,6 +105,7 @@ export const policyPointsEn: PolicyPoint[] = [
     quote: "It's strange that we accept more intelligence in a travel app than in the state's decisions about people's futures.",
     quoteAuthor: "",
     category: "Platform & Onboarding",
+    ogImage: "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/og-point-6_96568d86.png",
     metrics: [
       { label: "Annual investment", value: "SEK 8 bn", icon: "money" },
       { label: "Municipalities with real-time data", value: "All 290", icon: "building" },
@@ -117,6 +123,7 @@ export const policyPointsEn: PolicyPoint[] = [
     quote: "We're not building bot schools. We're giving good teachers much greater reach.",
     quoteAuthor: "",
     category: "Children & Education",
+    ogImage: "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/og-point-7_c53a25e2.png",
     metrics: [
       { label: "Annual investment", value: "SEK 35 bn", icon: "money" },
       { label: "Children reached", value: "350,000", icon: "people" },
@@ -134,6 +141,7 @@ export const policyPointsEn: PolicyPoint[] = [
     quote: "Technology shouldn't just help the state control. It should help people understand their rights and dare to use them.",
     quoteAuthor: "",
     category: "Rule of Law & Protection",
+    ogImage: "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/og-point-8_ba9f2c48.png",
     metrics: [
       { label: "Annual investment", value: "SEK 8 bn", icon: "money" },
       { label: "Workers with digital protection", value: "500,000+", icon: "people" },
@@ -151,6 +159,7 @@ export const policyPointsEn: PolicyPoint[] = [
     quote: "It's not enough to digitize injustice. Sweden should become the country that measures bias as seriously as we measure budgets.",
     quoteAuthor: "",
     category: "Rule of Law & Protection",
+    ogImage: "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/og-point-9_e69d617f.png",
     metrics: [
       { label: "Annual investment", value: "SEK 6 bn", icon: "money" },
       { label: "Employers affected", value: "85,000", icon: "building" },
@@ -168,6 +177,7 @@ export const policyPointsEn: PolicyPoint[] = [
     quote: "What today looks like a personal number problem is often just a design problem the state hasn't taken seriously yet.",
     quoteAuthor: "",
     category: "Digital Infrastructure",
+    ogImage: "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/og-point-10_b716d594.png",
     metrics: [
       { label: "Annual investment", value: "SEK 12 bn", icon: "money" },
       { label: "Reached from day one", value: "200,000+/yr", icon: "people" },
@@ -185,6 +195,7 @@ export const policyPointsEn: PolicyPoint[] = [
     quote: "Internet logic applies here too: lower the thresholds, open the interfaces, let more people build.",
     quoteAuthor: "",
     category: "Business & Entrepreneurship",
+    ogImage: "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/og-point-11_7ad1303e.png",
     metrics: [
       { label: "Fund capital", value: "SEK 30 bn", icon: "money" },
       { label: "New companies per year", value: "25,000", icon: "building" },
@@ -202,6 +213,7 @@ export const policyPointsEn: PolicyPoint[] = [
     quote: "The dumbest thing a knowledge nation can do is educate global talent and then actively make it harder for them to stay.",
     quoteAuthor: "",
     category: "Competence & Work",
+    ogImage: "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/og-point-12_96504b94.png",
     metrics: [
       { label: "Annual investment", value: "SEK 5 bn", icon: "money" },
       { label: "International students/yr", value: "40,000", icon: "people" },
@@ -219,6 +231,7 @@ export const policyPointsEn: PolicyPoint[] = [
     quote: "The diaspora is not a loss. It's a network. Sweden should be a hub in people's lives.",
     quoteAuthor: "",
     category: "Mobility & Networks",
+    ogImage: "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/og-point-13_5b676d6f.png",
     metrics: [
       { label: "Annual investment", value: "SEK 4 bn", icon: "money" },
       { label: "Swedish diaspora globally", value: "500,000+", icon: "people" },
@@ -236,6 +249,7 @@ export const policyPointsEn: PolicyPoint[] = [
     quote: "Slow opacity is not neutral. It's a political choice.",
     quoteAuthor: "",
     category: "Rule of Law & Protection",
+    ogImage: "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/og-point-14_76ff2624.png",
     metrics: [
       { label: "Annual investment", value: "SEK 10 bn", icon: "money" },
       { label: "Cases with real-time status", value: "All", icon: "building" },
@@ -253,6 +267,7 @@ export const policyPointsEn: PolicyPoint[] = [
     quote: "Measure what works. Stop winning debates with anecdotes.",
     quoteAuthor: "",
     category: "Governance & Transparency",
+    ogImage: "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/og-point-15_b924cfee.png",
     metrics: [
       { label: "Annual investment", value: "SEK 5 bn", icon: "money" },
       { label: "Open data platform", value: "40+ languages", icon: "globe" },

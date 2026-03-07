@@ -9,9 +9,9 @@ import { useRef } from "react";
 import { useLang } from "@/contexts/LanguageContext";
 import { t } from "@/lib/i18n";
 
-const CITY_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/hero-city-ehXfcsewrQtWDGyMgLfMFS.webp";
-const HANDS_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/hero-hands-cc94ysmYxizXqHVYkshocc.webp";
-const FUTURE_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/hero-future-XX6gpdkvxmkujz9GHPEY2u.webp";
+const CITY_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/closing-city-jSfBBxsq4hkCCKrCvT3SWL.webp";
+const HANDS_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/closing-together-H5LCH9M6RsgZmyNms5FSZD.webp";
+const FUTURE_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/closing-future-S7eLDSEQC5pHoohpTBpWwk.webp";
 
 export default function ClosingSection() {
   const ref = useRef<HTMLDivElement>(null);
