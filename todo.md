@@ -61,3 +61,8 @@
 - [x] Add inspiration text to ManifestoIntro crediting Troed Troedson's Facebook post
 - [x] Include link to Troed's original post
 - [x] Add English translation of the inspiration text
+
+## Footer Updates
+- [x] Add CC0 license with note about keeping author in the loop
+- [x] Update version number to v093b
+- [x] Add contact email joakim@jardenberg.com

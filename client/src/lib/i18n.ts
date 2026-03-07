@@ -155,6 +155,15 @@ const strings = {
     sv: "Sagt och gjort. Jag workshoppade med mitt team och kom fram till 15 punkter som är, så klart, väldigt mycket mina. Lutar mig tungt på internet, digitalisering generellt och AI i synnerhet. Och som lika självklart är work in progress. Better together, som vanligt.",
     en: "Said and done. I workshopped with my team and came up with 15 points that are, of course, very much my own. Leaning heavily on the internet, digitalisation in general and AI in particular. And which are, equally obviously, a work in progress. Better together, as always.",
   },
+  // Footer - License & Contact
+  footerLicense: {
+    sv: "Licensierat under CC0 — fritt att plocka och återanvända. Men håll mig gärna i loopen, jag är genuint nyfiken på om någon har nytta av det här.",
+    en: "Licensed under CC0 — free to use and reuse. But I'd love to stay in the loop, I'm genuinely curious if anyone finds this useful.",
+  },
+  footerContact: {
+    sv: "Kontakt",
+    en: "Contact",
+  },
 } as const;
 
 export type StringKey = keyof typeof strings;

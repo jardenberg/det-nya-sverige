@@ -1,6 +1,6 @@
 /**
  * Footer – Minimal, warm footer
- * Warm light theme, language-aware
+ * CC0 license, version, contact info, language-aware
  */
 
 import { useLang } from "@/contexts/LanguageContext";
@@ -10,24 +10,64 @@ export default function Footer() {
   const { lang } = useLang();
 
   return (
-    <footer className="relative py-12 md:py-16" style={{ borderTop: '1px solid oklch(0.18 0.02 50 / 0.07)' }}>
-      <div className="max-w-6xl mx-auto px-6 md:px-16 flex flex-col md:flex-row items-center justify-between gap-6">
-        <div className="flex flex-col items-center md:items-start gap-2">
-          <p className="font-display text-lg" style={{ color: '#8a7a6a' }}>
-            {t("footerTitle", lang)}
-          </p>
-          <p className="font-body text-xs" style={{ color: '#b0a090' }}>
-            {t("footerSubtitle", lang)}
-          </p>
+    <footer className="relative py-12 md:py-20" style={{ borderTop: '1px solid oklch(0.18 0.02 50 / 0.07)' }}>
+      <div className="max-w-6xl mx-auto px-6 md:px-16">
+        {/* Top row: Title + Nav hint */}
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-10">
+          <div className="flex flex-col items-center md:items-start gap-2">
+            <p className="font-display text-lg" style={{ color: '#8a7a6a' }}>
+              {t("footerTitle", lang)}
+            </p>
+            <p className="font-body text-xs" style={{ color: '#b0a090' }}>
+              {t("footerSubtitle", lang)}
+            </p>
+          </div>
+
+          <div className="flex flex-col items-center md:items-end gap-2">
+            <p className="font-body text-xs" style={{ color: '#b0a090' }}>
+              {t("footerNav", lang)}
+            </p>
+          </div>
         </div>
 
-        <div className="flex flex-col items-center md:items-end gap-2">
-          <p className="font-body text-xs" style={{ color: '#b0a090' }}>
-            {t("footerNav", lang)}
-          </p>
-          <p className="font-mono-display text-xs tracking-wider" style={{ color: 'oklch(0.58 0.16 55 / 0.4)' }}>
-            v2.1
-          </p>
+        {/* Divider */}
+        <div className="h-[1px] mb-8" style={{ backgroundColor: 'oklch(0.18 0.02 50 / 0.06)' }} />
+
+        {/* Bottom row: License, Contact, Version */}
+        <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-6">
+          {/* CC0 License */}
+          <div className="flex flex-col items-center md:items-start gap-2 max-w-lg">
+            <div className="flex items-center gap-2">
+              <span className="font-mono-display text-xs tracking-wider font-medium" style={{ color: '#9B6B1A' }}>
+                CC0
+              </span>
+              <span className="font-body text-xs" style={{ color: '#b0a090' }}>
+                Public Domain
+              </span>
+            </div>
+            <p className="font-body text-xs leading-relaxed text-center md:text-left" style={{ color: '#b0a090' }}>
+              {t("footerLicense", lang)}
+            </p>
+          </div>
+
+          {/* Contact + Version */}
+          <div className="flex flex-col items-center md:items-end gap-3">
+            <div className="flex flex-col items-center md:items-end gap-1">
+              <p className="font-mono-display text-xs tracking-wider" style={{ color: '#9B6B1A' }}>
+                {t("footerContact", lang)}
+              </p>
+              <a
+                href="mailto:joakim@jardenberg.com"
+                className="font-body text-xs underline underline-offset-2 hover:no-underline transition-all"
+                style={{ color: '#8a7a6a' }}
+              >
+                joakim@jardenberg.com
+              </a>
+            </div>
+            <p className="font-mono-display text-xs tracking-wider" style={{ color: 'oklch(0.58 0.16 55 / 0.4)' }}>
+              v093b
+            </p>
+          </div>
         </div>
       </div>
     </footer>
