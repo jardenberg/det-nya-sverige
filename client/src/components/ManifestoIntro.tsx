@@ -1,7 +1,7 @@
 /**
  * ManifestoIntro – The philosophical framing before the 15 points
  * Warm light theme: dark text on warm background, ochre accents
- * Language-aware
+ * Language-aware – now includes the core thesis and core rule
  */
 
 import { motion, useInView } from "framer-motion";
@@ -48,6 +48,22 @@ export default function ManifestoIntro() {
               {t("introP3", lang)}
             </p>
           </div>
+
+          {/* Core thesis & rule – the new intellectual framework */}
+          <motion.div
+            className="mt-12 md:mt-20 border-l-2 pl-6 md:pl-10 space-y-4"
+            style={{ borderColor: '#9B6B1A' }}
+            initial={{ opacity: 0, x: -20 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <p className="font-display text-xl md:text-2xl lg:text-3xl font-semibold leading-snug" style={{ color: '#2c1810' }}>
+              {t("introThesis", lang)}
+            </p>
+            <p className="font-display text-lg md:text-xl lg:text-2xl font-normal leading-snug" style={{ color: '#6b5a4a' }}>
+              {t("introRule", lang)}
+            </p>
+          </motion.div>
         </motion.div>
 
         {/* Image break */}

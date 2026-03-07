@@ -78,7 +78,7 @@ export default function TotalCounter() {
       icon: Banknote,
       label: t("counterInvestment", lang),
       value: t("counterInvestmentValue", lang),
-      numericEnd: 250,
+      numericEnd: 200,
       suffix: lang === "sv" ? " mdr" : "B",
     },
     {

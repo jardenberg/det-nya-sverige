@@ -23,3 +23,14 @@
 - [x] Test commenting flow (login, post, display) - API calls confirmed working
 - [x] Test language switching with new components
 - [x] Verify mobile responsiveness
+
+## Content Rewrite (Walk & Talk)
+- [x] Rewrite all 15 points in points.ts with new content, AI-integrated approach, new tone
+- [x] Rewrite all 15 points in points-en.ts with English translations
+- [x] Update ManifestoIntro with new framing (design problem, platform thinking)
+- [x] Update ClosingSection with new closing text
+- [x] Update TotalCounter metrics to match new data
+- [x] Update i18n strings for any changed UI text
+- [x] Update categories to match new structure
+- [x] Test and verify everything compiles and renders (15 tests passing, no TS errors)
+- [x] Save checkpoint

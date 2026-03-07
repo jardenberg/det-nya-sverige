@@ -35,6 +35,14 @@ const strings = {
     sv: "Vi håller faktiskt, på riktigt, på att bli för få. Så här är 15 punkter som underlättar människors resa. Inte det motsatta.",
     en: "We are actually, truly, becoming too few. Here are 15 points that ease people's journey. Not the opposite.",
   },
+  introThesis: {
+    sv: "Grundtes: Problemet är inte människor. Det är friktion.",
+    en: "Core thesis: The problem isn't people. It's friction.",
+  },
+  introRule: {
+    sv: "Huvudregel: AI där den minskar friktion. Människor där de utövar makt.",
+    en: "Core rule: AI where it reduces friction. Humans where they exercise power.",
+  },
   introImageCaption: { sv: "FRAMÅT, TILLSAMMANS", en: "FORWARD, TOGETHER" },
   introSeparator: { sv: "15 PUNKTER", en: "15 POINTS" },
   readMore: { sv: "Läs mer", en: "Read more" },
@@ -56,18 +64,18 @@ const strings = {
     en: "How do we build a country so good at welcoming people that the whole world wants to learn from us?",
   },
   closingP3: {
-    sv: "Sverige rankas redan bland världens mest innovativa, mest digitaliserade och mest hållbara länder. Vi har universiteten, infrastrukturen och – framför allt – människorna. Det enda som saknas är modet att formulera problemet rätt och viljan att lösa det.",
-    en: "Sweden already ranks among the world's most innovative, most digitalised and most sustainable countries. We have the universities, the infrastructure and – above all – the people. The only thing missing is the courage to frame the problem correctly and the will to solve it.",
+    sv: "Det som i dag ser ut som ett integrationsproblem är ofta bara ett designproblem som staten ännu inte tagit på allvar. Vi har verktygen. Vi har tekniken. Vi har människorna. Det enda som saknas är modet att formulera problemet rätt och viljan att lösa det.",
+    en: "What today looks like an integration problem is often just a design problem the state hasn't taken seriously yet. We have the tools. We have the technology. We have the people. The only thing missing is the courage to frame the problem correctly and the will to solve it.",
   },
   closingP4: {
-    sv: "Dessa 15 punkter är inte utopier. De är investeringar. Varje krona vi lägger på att hjälpa människor hitta sin plats i samhället kommer tillbaka mångfalt – i skatteintäkter, i innovation, i kultur, i livskraft. Vi håller på att bli för få. Lösningen går inte på gatan – den bor redan här.",
-    en: "These 15 points are not utopias. They are investments. Every krona we spend helping people find their place in society comes back many times over – in tax revenue, in innovation, in culture, in vitality. We are becoming too few. The solution isn't walking the streets – it already lives here.",
+    sv: "Dessa 15 punkter är inte utopier. De är designval. Varje krona vi lägger på att minska friktion – inte människor – kommer tillbaka mångfalt. I skatteintäkter, i innovation, i kultur, i livskraft. Vi håller på att bli för få. Lösningen går inte på gatan – den bor redan här.",
+    en: "These 15 points are not utopias. They are design choices. Every krona we spend reducing friction – not people – comes back many times over. In tax revenue, in innovation, in culture, in vitality. We are becoming too few. The solution isn't walking the streets – it already lives here.",
   },
   totalInvestmentLabel: { sv: "Total investering", en: "Total investment" },
-  totalInvestmentValue: { sv: "~250 miljarder kr/år", en: "~250 billion SEK/year" },
+  totalInvestmentValue: { sv: "~200 miljarder kr/år", en: "~200 billion SEK/year" },
   totalInvestmentDesc: {
-    sv: "Motsvarar cirka 4% av BNP – jämförbart med vad vi redan investerar i försvaret och rättsväsendet tillsammans. Förväntad avkastning: ett land som tar täten i alla internationella rankingar.",
-    en: "Equivalent to about 4% of GDP – comparable to what we already invest in defence and the justice system combined. Expected return: a country that leads all international rankings.",
+    sv: "Motsvarar cirka 3,5% av BNP – en offensiv investering i att minska friktion och öka kapacitet. Förväntad avkastning: ett land som tar täten i alla internationella rankingar.",
+    en: "Equivalent to about 3.5% of GDP – an offensive investment in reducing friction and increasing capacity. Expected return: a country that leads all international rankings.",
   },
   closingQuote: {
     sv: "\"Riksdagspartier! Håll varsin presskonferens med 15 punkter som underlättar människors resa i stället för det motsatta.\"",
@@ -96,7 +104,7 @@ const strings = {
   // Total counter
   counterTitle: { sv: "PROGRAMMET I SIFFROR", en: "THE PROGRAMME IN NUMBERS" },
   counterInvestment: { sv: "Total årlig investering", en: "Total annual investment" },
-  counterInvestmentValue: { sv: "~250 mdr kr", en: "~250B SEK" },
+  counterInvestmentValue: { sv: "~200 mdr kr", en: "~200B SEK" },
   counterPeople: { sv: "Människor som berörs direkt", en: "People directly affected" },
   counterPeopleValue: { sv: "2+ miljoner", en: "2+ million" },
   counterJobs: { sv: "Nya jobb inom 5 år", en: "New jobs within 5 years" },
