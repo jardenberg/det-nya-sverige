@@ -76,3 +76,7 @@
 ## Build Report Links
 - [x] Add link to full 15p build report (ai.jardenberg.se/15p-build)
 - [x] Add link to JJOS build report (ai.jardenberg.se/jjos-build)
+
+## SEO Fixes
+- [x] Add meta keywords to the page (14 relevant keywords)
+- [x] Adjust title to 42 characters: "Det Nya Sverige – 15 Punkter för Framtiden"

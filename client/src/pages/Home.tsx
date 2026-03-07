@@ -28,6 +28,11 @@ export default function Home() {
   // Get route params (from /punkt/:id)
   const params = useParams<{ id?: string }>();
 
+  // Set document title
+  useEffect(() => {
+    document.title = "Det Nya Sverige \u2013 15 Punkter f\u00f6r Framtiden";
+  }, []);
+
   // Handle navigation to specific point on page load
   // Supports: /punkt/3 (clean URL), ?punkt=3 (legacy), #punkt-3 (hash)
   useEffect(() => {
