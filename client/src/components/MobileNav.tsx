@@ -1,12 +1,15 @@
 /**
  * MobileNav – Mobile-friendly navigation overlay for the 15 points
  * Warm light theme: warm overlay, ochre accents
+ * Language-aware
  */
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Menu, X, ArrowUp } from "lucide-react";
-import { policyPoints } from "@/lib/points";
+import { usePoints } from "@/hooks/usePoints";
+import { useLang } from "@/contexts/LanguageContext";
+import { t } from "@/lib/i18n";
 
 interface MobileNavProps {
   activePoint: number;
@@ -16,6 +19,8 @@ interface MobileNavProps {
 
 export default function MobileNav({ activePoint, onNavigate, showNav }: MobileNavProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const points = usePoints();
+  const { lang } = useLang();
 
   const handleNavigate = (idx: number) => {
     onNavigate(idx);
@@ -41,7 +46,7 @@ export default function MobileNav({ activePoint, onNavigate, showNav }: MobileNa
           onClick={scrollToTop}
           className="w-11 h-11 rounded-full flex items-center justify-center backdrop-blur-sm shadow-md"
           style={{ backgroundColor: 'oklch(0.99 0.005 80 / 0.9)', border: '1px solid oklch(0.18 0.02 50 / 0.1)' }}
-          aria-label="Tillbaka till toppen"
+          aria-label={t("goToTop", lang)}
         >
           <ArrowUp className="w-4 h-4" style={{ color: '#6a5a4a' }} />
         </button>
@@ -51,7 +56,7 @@ export default function MobileNav({ activePoint, onNavigate, showNav }: MobileNa
           onClick={() => setIsOpen(!isOpen)}
           className="w-11 h-11 rounded-full flex items-center justify-center shadow-lg"
           style={{ backgroundColor: '#9B6B1A', boxShadow: '0 4px 15px oklch(0.58 0.16 55 / 0.3)' }}
-          aria-label="Öppna innehållsförteckning"
+          aria-label={t("openToc", lang)}
         >
           {isOpen ? (
             <X className="w-5 h-5 text-white" />
@@ -79,10 +84,10 @@ export default function MobileNav({ activePoint, onNavigate, showNav }: MobileNa
           >
             <div className="h-full overflow-y-auto py-16 px-6">
               <p className="font-mono-display tracking-[0.3em] text-xs mb-8" style={{ color: '#8B6914' }}>
-                INNEHÅLL
+                {t("mobileNavTitle", lang)}
               </p>
               <div className="space-y-1">
-                {policyPoints.map((point, idx) => {
+                {points.map((point, idx) => {
                   const isActive = idx === activePoint;
                   return (
                     <button

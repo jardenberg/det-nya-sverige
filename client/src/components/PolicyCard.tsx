@@ -1,12 +1,15 @@
 /**
  * PolicyCard – Each of the 15 points as a manifest chapter
- * Warm light theme with data metrics dashboard
+ * Warm light theme with data metrics dashboard, share button, and language support
  * Alternating layouts for visual variety
  */
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { type PolicyPoint } from "@/lib/points";
+import { useLang } from "@/contexts/LanguageContext";
+import { t } from "@/lib/i18n";
+import ShareButton from "./ShareButton";
 import { ChevronDown, ChevronUp, Banknote, Users2, BarChart3 as BarIcon, Clock, Building, Globe } from "lucide-react";
 import {
   BookOpen, Home, Briefcase, Rocket, GraduationCap,
@@ -45,6 +48,7 @@ export default function PolicyCard({ point, index, isActive }: PolicyCardProps) 
   const isInView = useInView(ref, { once: true, margin: "-60px" });
   const [expanded, setExpanded] = useState(false);
   const layout = getLayoutStyle(index);
+  const { lang } = useLang();
 
   const numberStr = point.id.toString().padStart(2, "0");
   const Icon = ICONS[index] || BookOpen;
@@ -178,22 +182,27 @@ export default function PolicyCard({ point, index, isActive }: PolicyCardProps) 
               </p>
             </motion.div>
 
-            <button
-              onClick={() => setExpanded(!expanded)}
-              className={`group flex items-center gap-2 mt-3 font-body text-xs transition-colors ${
-                layout === "right" ? "ml-auto" : layout === "center" ? "mx-auto" : ""
-              }`}
-              style={{ color: '#9B6B1A' }}
-            >
-              <span className="tracking-[0.15em] uppercase">
-                {expanded ? "Stäng" : "Läs mer"}
-              </span>
-              {expanded ? (
-                <ChevronUp className="w-3.5 h-3.5 group-hover:-translate-y-0.5 transition-transform" />
-              ) : (
-                <ChevronDown className="w-3.5 h-3.5 group-hover:translate-y-0.5 transition-transform" />
-              )}
-            </button>
+            {/* Action row: Read more + Share */}
+            <div className={`flex items-center gap-6 mt-3 ${
+              layout === "right" ? "justify-end" : layout === "center" ? "justify-center" : ""
+            }`}>
+              <button
+                onClick={() => setExpanded(!expanded)}
+                className="group flex items-center gap-2 font-body text-xs transition-colors"
+                style={{ color: '#9B6B1A' }}
+              >
+                <span className="tracking-[0.15em] uppercase">
+                  {expanded ? t("close", lang) : t("readMore", lang)}
+                </span>
+                {expanded ? (
+                  <ChevronUp className="w-3.5 h-3.5 group-hover:-translate-y-0.5 transition-transform" />
+                ) : (
+                  <ChevronDown className="w-3.5 h-3.5 group-hover:translate-y-0.5 transition-transform" />
+                )}
+              </button>
+
+              <ShareButton point={point} layout={layout} />
+            </div>
           </div>
         </motion.div>
       </div>

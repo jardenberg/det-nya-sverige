@@ -1,10 +1,13 @@
 /**
  * ClosingSection – The emotional closing after all 15 points
  * Warm light theme: warm imagery, personal voice, call to action
+ * Language-aware
  */
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { useLang } from "@/contexts/LanguageContext";
+import { t } from "@/lib/i18n";
 
 const CITY_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/hero-city-ehXfcsewrQtWDGyMgLfMFS.webp";
 const HANDS_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/hero-hands-cc94ysmYxizXqHVYkshocc.webp";
@@ -13,6 +16,7 @@ const FUTURE_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQX
 export default function ClosingSection() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const { lang } = useLang();
 
   return (
     <section className="relative">
@@ -20,7 +24,7 @@ export default function ClosingSection() {
       <div className="relative h-[50vh] md:h-[60vh] overflow-hidden">
         <img
           src={CITY_IMAGE}
-          alt="Skandinavisk stad vid vatten, kvällsljus"
+          alt={lang === "sv" ? "Skandinavisk stad vid vatten, kvällsljus" : "Scandinavian city by water, evening light"}
           className="w-full h-full object-cover"
           style={{ filter: 'saturate(1.1) brightness(1.05)' }}
         />
@@ -49,21 +53,22 @@ export default function ClosingSection() {
           <div className="w-12 h-[2px] mb-10" style={{ backgroundColor: '#9B6B1A' }} />
 
           <h2 className="font-display text-3xl md:text-5xl font-black leading-tight mb-8" style={{ color: '#2c1810' }}>
-            Gjort är gjort och vi får spela bollen där den ligger
+            {t("closingTitle", lang)}
           </h2>
 
           <div className="space-y-6">
             <p className="font-body text-lg md:text-xl leading-relaxed font-light" style={{ color: '#5a4a3a' }}>
-              Mitt svar på frågan? Nej, jag tycker inte vi har "släppt in för många" och för övrigt är det ju en helt meningslös fråga. Gjort är gjort och vi får spela bollen där den ligger, som golfarna säger.
+              {t("closingP1", lang)}
             </p>
             <p className="font-body text-lg md:text-xl leading-relaxed font-light" style={{ color: '#5a4a3a' }}>
-              Men det intressanta är inte svaret – det är att vi ställer fel fråga. Frågan borde vara: <span className="font-medium" style={{ color: '#9B6B1A' }}>Hur bygger vi ett land som är så bra på att ta emot människor att hela världen vill lära sig av oss?</span>
+              {t("closingP2Prefix", lang)}
+              <span className="font-medium" style={{ color: '#9B6B1A' }}>{t("closingP2Highlight", lang)}</span>
             </p>
             <p className="font-body text-lg md:text-xl leading-relaxed font-light" style={{ color: '#5a4a3a' }}>
-              Sverige rankas redan bland världens mest innovativa, mest digitaliserade och mest hållbara länder. Vi har universiteten, infrastrukturen och – framför allt – människorna. Det enda som saknas är modet att formulera problemet rätt och viljan att lösa det.
+              {t("closingP3", lang)}
             </p>
             <p className="font-body text-lg md:text-xl leading-relaxed font-normal" style={{ color: '#3d2a1e' }}>
-              Dessa 15 punkter är inte utopier. De är investeringar. Varje krona vi lägger på att hjälpa människor hitta sin plats i samhället kommer tillbaka mångfalt – i skatteintäkter, i innovation, i kultur, i livskraft. Vi håller på att bli för få. Lösningen går inte på gatan – den bor redan här.
+              {t("closingP4", lang)}
             </p>
           </div>
         </motion.div>
@@ -78,13 +83,13 @@ export default function ClosingSection() {
           transition={{ duration: 0.8 }}
         >
           <p className="font-mono-display tracking-[0.2em] text-xs uppercase mb-4" style={{ color: '#8B6914' }}>
-            Total investering
+            {t("totalInvestmentLabel", lang)}
           </p>
           <p className="font-display text-4xl md:text-6xl font-black mb-3" style={{ color: '#2c1810' }}>
-            ~250 miljarder kr/år
+            {t("totalInvestmentValue", lang)}
           </p>
           <p className="font-body text-base md:text-lg font-light" style={{ color: '#5a4a3a' }}>
-            Motsvarar cirka 4% av BNP – jämförbart med vad vi redan investerar i försvaret och rättsväsendet tillsammans. Förväntad avkastning: ett land som tar täten i alla internationella rankingar.
+            {t("totalInvestmentDesc", lang)}
           </p>
         </motion.div>
 
@@ -99,7 +104,7 @@ export default function ClosingSection() {
           <div className="relative aspect-square overflow-hidden rounded-sm">
             <img
               src={HANDS_IMAGE}
-              alt="Händer som sträcker sig uppåt tillsammans"
+              alt={lang === "sv" ? "Händer som sträcker sig uppåt tillsammans" : "Hands reaching upward together"}
               className="w-full h-full object-cover"
               style={{ filter: 'sepia(0.1) saturate(1.1)' }}
             />
@@ -108,7 +113,7 @@ export default function ClosingSection() {
           <div className="relative aspect-square overflow-hidden rounded-sm">
             <img
               src={FUTURE_IMAGE}
-              alt="Arkitektonisk struktur som sträcker sig uppåt mot ljuset"
+              alt={lang === "sv" ? "Arkitektonisk struktur som sträcker sig uppåt mot ljuset" : "Architectural structure reaching toward the light"}
               className="w-full h-full object-cover"
               style={{ filter: 'sepia(0.1) saturate(1.1)' }}
             />
@@ -125,13 +130,13 @@ export default function ClosingSection() {
           transition={{ duration: 0.8 }}
         >
           <p className="font-display text-2xl md:text-3xl italic mb-6" style={{ color: '#6a5a4a' }}>
-            "Riksdagspartier! Håll varsin presskonferens med 15 punkter som underlättar människors resa i stället för det motsatta."
+            {t("closingQuote", lang)}
           </p>
           <p className="font-body text-sm" style={{ color: '#9a8a7a' }}>
-            Men håll en workshop först så det inte blir så där taffligt som det gärna blir annars.
+            {t("closingQuoteNote", lang)}
           </p>
           <div className="mt-10 font-mono-display tracking-[0.3em] text-sm" style={{ color: '#9B6B1A' }}>
-            GOD MORGON!
+            {t("goodMorning", lang)}
           </div>
         </motion.div>
       </div>

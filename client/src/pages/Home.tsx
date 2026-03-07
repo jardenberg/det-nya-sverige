@@ -7,16 +7,19 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import { AnimatePresence } from "framer-motion";
-import { policyPoints } from "@/lib/points";
+import { usePoints } from "@/hooks/usePoints";
 import HeroSection from "@/components/HeroSection";
 import ManifestoIntro from "@/components/ManifestoIntro";
 import PolicyCard from "@/components/PolicyCard";
 import ProgressNav from "@/components/ProgressNav";
 import MobileNav from "@/components/MobileNav";
+import TotalCounter from "@/components/TotalCounter";
 import ClosingSection from "@/components/ClosingSection";
 import Footer from "@/components/Footer";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 export default function Home() {
+  const points = usePoints();
   const [activePoint, setActivePoint] = useState<number>(0);
   const [showNav, setShowNav] = useState(false);
   const sectionRefs = useRef<(HTMLElement | null)[]>([]);
@@ -58,7 +61,7 @@ export default function Home() {
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === "ArrowDown" || e.key === "j") {
         e.preventDefault();
-        const next = Math.min(activePoint + 1, policyPoints.length - 1);
+        const next = Math.min(activePoint + 1, points.length - 1);
         sectionRefs.current[next]?.scrollIntoView({ behavior: "smooth" });
       } else if (e.key === "ArrowUp" || e.key === "k") {
         e.preventDefault();
@@ -68,7 +71,7 @@ export default function Home() {
     };
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
-  }, [activePoint]);
+  }, [activePoint, points.length]);
 
   const scrollToPoint = useCallback((idx: number) => {
     sectionRefs.current[idx]?.scrollIntoView({ behavior: "smooth" });
@@ -76,6 +79,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+      <LanguageSwitcher />
       <HeroSection />
       <ManifestoIntro />
 
@@ -83,7 +87,7 @@ export default function Home() {
       <AnimatePresence>
         {showNav && (
           <ProgressNav
-            points={policyPoints}
+            points={points}
             activePoint={activePoint}
             onNavigate={scrollToPoint}
           />
@@ -99,7 +103,7 @@ export default function Home() {
 
       {/* The 15 Points */}
       <div className="relative">
-        {policyPoints.map((point, idx) => (
+        {points.map((point, idx) => (
           <section
             key={point.id}
             ref={(el) => { sectionRefs.current[idx] = el; }}
@@ -110,6 +114,7 @@ export default function Home() {
         ))}
       </div>
 
+      <TotalCounter />
       <ClosingSection />
       <Footer />
     </div>

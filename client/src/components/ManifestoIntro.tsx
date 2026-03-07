@@ -1,16 +1,20 @@
 /**
  * ManifestoIntro – The philosophical framing before the 15 points
  * Warm light theme: dark text on warm background, ochre accents
+ * Language-aware
  */
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { useLang } from "@/contexts/LanguageContext";
+import { t } from "@/lib/i18n";
 
 const PEOPLE_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/hero-people-KijM7cKvAUoegdZdWHkwQU.webp";
 
 export default function ManifestoIntro() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const { lang } = useLang();
 
   return (
     <section className="relative py-24 md:py-40 overflow-hidden">
@@ -28,18 +32,20 @@ export default function ManifestoIntro() {
           <div className="w-12 h-[2px] mb-8" style={{ backgroundColor: '#9B6B1A' }} />
 
           <p className="font-display text-2xl md:text-4xl lg:text-[2.75rem] font-normal leading-snug italic" style={{ color: '#2c1810' }}>
-            "Tycker du att Sverige har släppt in för många invandrare?"
+            {t("introQuestion", lang)}
           </p>
 
           <div className="mt-10 md:mt-16 space-y-6">
             <p className="font-body text-lg md:text-xl leading-relaxed font-light" style={{ color: '#5a4a3a' }}>
-              Frågan utgår ifrån att Sverige har ett tak för hur många som kan flytta hit, integreras och bidra till samhället. Men det där taket är inte en fysisk eller rationell nivå – det är en social och legal konstruktion.
+              {t("introP1", lang)}
             </p>
             <p className="font-body text-lg md:text-xl leading-relaxed font-light" style={{ color: '#5a4a3a' }}>
-              Politikerna borde svara på frågan <span className="font-medium" style={{ color: '#9B6B1A' }}>”Hur kan vi integrera många fler?”</span> i stället för att lura i oss att vi måste dansa limbo under en given ribba.
+              {t("introP2Prefix", lang)}
+              <span className="font-medium" style={{ color: '#9B6B1A' }}>{t("introP2Highlight", lang)}</span>
+              {t("introP2Suffix", lang)}
             </p>
             <p className="font-body text-lg md:text-xl leading-relaxed font-light" style={{ color: '#5a4a3a' }}>
-              Vi håller faktiskt, på riktigt, på att bli för få. Så här är 15 punkter som underlättar människors resa. Inte det motsatta.
+              {t("introP3", lang)}
             </p>
           </div>
         </motion.div>
@@ -54,7 +60,7 @@ export default function ManifestoIntro() {
           <div className="aspect-[16/7] relative overflow-hidden">
             <img
               src={PEOPLE_IMAGE}
-              alt="Människor som går framåt tillsammans"
+              alt={lang === "sv" ? "Människor som går framåt tillsammans" : "People moving forward together"}
               className="w-full h-full object-cover"
               style={{ filter: 'sepia(0.15) saturate(1.1)' }}
             />
@@ -62,7 +68,7 @@ export default function ManifestoIntro() {
           </div>
           <div className="absolute bottom-6 left-6 md:bottom-10 md:left-10">
             <p className="font-mono-display tracking-[0.2em] text-xs md:text-sm" style={{ color: '#8B6914' }}>
-              FRAMÅT, TILLSAMMANS
+              {t("introImageCaption", lang)}
             </p>
           </div>
         </motion.div>
@@ -71,7 +77,7 @@ export default function ManifestoIntro() {
         <div className="mt-16 md:mt-24 flex items-center gap-6">
           <div className="flex-1 h-[1px]" style={{ backgroundColor: 'oklch(0.18 0.02 50 / 0.1)' }} />
           <p className="font-mono-display tracking-[0.3em] text-xs md:text-sm" style={{ color: '#8B6914' }}>
-            15 PUNKTER
+            {t("introSeparator", lang)}
           </p>
           <div className="flex-1 h-[1px]" style={{ backgroundColor: 'oklch(0.18 0.02 50 / 0.1)' }} />
         </div>

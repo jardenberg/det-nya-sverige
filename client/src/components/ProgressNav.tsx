@@ -1,10 +1,12 @@
 /**
  * ProgressNav – Fixed side navigation showing progress through the 15 points
  * Warm light theme: ochre dots on warm background
+ * Language-aware
  */
 
 import { motion } from "framer-motion";
 import { type PolicyPoint } from "@/lib/points";
+import { useLang } from "@/contexts/LanguageContext";
 
 interface ProgressNavProps {
   points: PolicyPoint[];
@@ -13,6 +15,8 @@ interface ProgressNavProps {
 }
 
 export default function ProgressNav({ points, activePoint, onNavigate }: ProgressNavProps) {
+  const { lang } = useLang();
+
   return (
     <motion.nav
       initial={{ opacity: 0, x: 30 }}
@@ -33,7 +37,7 @@ export default function ProgressNav({ points, activePoint, onNavigate }: Progres
             key={point.id}
             onClick={() => onNavigate(idx)}
             className="relative group py-[6px] px-3 flex items-center"
-            aria-label={`Gå till punkt ${point.id}: ${point.title}`}
+            aria-label={lang === "sv" ? `Gå till punkt ${point.id}: ${point.title}` : `Go to point ${point.id}: ${point.title}`}
           >
             {/* Dot */}
             <div

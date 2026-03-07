@@ -1,17 +1,20 @@
 /**
  * HeroSection – Full-viewport dramatic opening
  * Split layout: solid warm cream left panel with text, image on right
- * Warm light theme
+ * Warm light theme with language support
  */
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { ChevronDown } from "lucide-react";
+import { useLang } from "@/contexts/LanguageContext";
+import { t } from "@/lib/i18n";
 
 const HERO_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/hero-main-NuQjcyFRLohKo72gZL75QT.webp";
 
 export default function HeroSection() {
   const ref = useRef<HTMLDivElement>(null);
+  const { lang } = useLang();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
@@ -20,6 +23,8 @@ export default function HeroSection() {
   const imageScale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
   const textY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+
+  const subtitleLines = t("heroSubtitle", lang).split("\n");
 
   return (
     <div ref={ref} className="relative h-screen overflow-hidden" style={{ backgroundColor: '#f3ece3' }}>
@@ -52,22 +57,22 @@ export default function HeroSection() {
             className="font-mono-display tracking-[0.3em] text-sm md:text-base mb-5 md:mb-7 uppercase"
             style={{ color: '#5a3d00' }}
           >
-            Ett manifest för framtiden
+            {t("heroTagline", lang)}
           </p>
           <h1
             className="font-display text-[3.2rem] md:text-7xl lg:text-[6.5rem] font-black leading-[0.88] tracking-tight"
             style={{ color: '#000000' }}
           >
-            Det Nya
+            {t("heroTitle1", lang)}
             <br />
-            <span style={{ color: '#7a4d00' }}>Sverige</span>
+            <span style={{ color: '#7a4d00' }}>{t("heroTitle2", lang)}</span>
           </h1>
           <div className="mt-7 md:mt-10 flex items-start gap-4">
             <div className="w-12 md:w-20 h-[2px] mt-3 shrink-0" style={{ backgroundColor: '#7a4d00' }} />
             <p className="font-body text-base md:text-xl font-light max-w-md" style={{ color: '#1a0e08' }}>
-              15 punkter som underlättar människors resa
+              {subtitleLines[0]}
               <br className="hidden md:block" />
-              i stället för det motsatta
+              {subtitleLines[1]}
             </p>
           </div>
         </motion.div>
