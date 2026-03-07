@@ -39,6 +39,11 @@ Under resans gång skapade vi skills — återanvändbara kunskapspaket — som 
 
 På den tekniska sidan byggde Manus sajten med React, Tailwind, tRPC och Express — med server-side rendering av OG-taggar så att rätt bild och titel dyker upp när någon delar en punkt på sociala medier. Kommentarsfunktion och röstning med databas bakom. Hosting via Manus med CNAME-pekare till min egen domän.`,
 
+    // Read more / reports
+    reportsTitle: "Läs vidare",
+    report15p: "Hela vår beskrivning av hur man gör sånt här 2026",
+    reportJjos: "En motsvarande rapport om ett mycket större system som helt har revolutionerat hur jag jobbar — mycket högre leveranskvalitet, mycket högre tempo, mycket mer lärande och otroligt mycket roligare",
+
     // Tech
     techTitle: "Teknik",
     techStack: [
@@ -102,6 +107,10 @@ On the technical side, Manus built the site with React, Tailwind, tRPC and Expre
       { label: "Hosting", value: "Manus with custom domain (CNAME)" },
       { label: "AI agent", value: "Manus" },
     ],
+
+    reportsTitle: "Read more",
+    report15p: "Our full write-up on how you build something like this in 2026",
+    reportJjos: "A similar report on a much larger system that has completely revolutionised how I work — much higher delivery quality, much higher pace, much more learning, and incredibly much more fun",
 
     licenseTitle: "License",
     licenseText: `This project is licensed under CC0 — Creative Commons Zero. This means all content and code is free to use, reuse, remix and build upon. No attribution required.
@@ -202,6 +211,50 @@ export default function About() {
                 {p}
               </p>
             ))}
+          </div>
+        </motion.section>
+
+        {/* Divider */}
+        <div className="my-14 h-[1px]" style={{ backgroundColor: 'oklch(0.18 0.02 50 / 0.08)' }} />
+
+        {/* Read more / Reports */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.35 }}
+        >
+          <h2 className="font-display text-xl md:text-2xl font-semibold mb-6" style={{ color: '#2c1810' }}>
+            {c.reportsTitle}
+          </h2>
+          <div className="space-y-4">
+            <a
+              href="https://ai.jardenberg.se/15p-build"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block p-5 rounded-sm transition-all hover:translate-x-1"
+              style={{ backgroundColor: 'oklch(0.95 0.01 80 / 0.5)', borderLeft: '3px solid #9B6B1A' }}
+            >
+              <span className="font-body text-base leading-relaxed" style={{ color: '#5a4a3a' }}>
+                {c.report15p}
+              </span>
+              <span className="block mt-1 font-mono-display text-xs tracking-wider" style={{ color: '#9B6B1A' }}>
+                ai.jardenberg.se/15p-build →
+              </span>
+            </a>
+            <a
+              href="https://ai.jardenberg.se/jjos-build"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block p-5 rounded-sm transition-all hover:translate-x-1"
+              style={{ backgroundColor: 'oklch(0.95 0.01 80 / 0.5)', borderLeft: '3px solid #9B6B1A' }}
+            >
+              <span className="font-body text-base leading-relaxed" style={{ color: '#5a4a3a' }}>
+                {c.reportJjos}
+              </span>
+              <span className="block mt-1 font-mono-display text-xs tracking-wider" style={{ color: '#9B6B1A' }}>
+                ai.jardenberg.se/jjos-build →
+              </span>
+            </a>
           </div>
         </motion.section>
 

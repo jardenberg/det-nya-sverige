@@ -72,3 +72,7 @@
 - [x] Register /om route in App.tsx (also /about for English)
 - [x] Add link to /om from ManifestoIntro section
 - [x] Add English translation support
+
+## Build Report Links
+- [x] Add link to full 15p build report (ai.jardenberg.se/15p-build)
+- [x] Add link to JJOS build report (ai.jardenberg.se/jjos-build)
