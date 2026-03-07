@@ -51,3 +51,8 @@
 - [x] Add illustrated images as visual elements in PolicyCard
 - [x] Test sharing links work correctly (23 tests passing)
 - [x] Fix ?punkt=N → #punkt-N client-side redirect for social sharing URLs
+
+## Fixes Round 2
+- [x] Replace "FRAMÅT, TILLSAMMANS" image (svartvit folkmassan) with illustrated version
+- [x] Fix OG image injection — confirmed working in both dev and production builds (was stale deploy)
+- [x] Clean up sharing URLs: /punkt/N paths with server-side OG injection + client-side scroll

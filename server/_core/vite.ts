@@ -27,77 +27,96 @@ const OG_IMAGES: Record<number, string> = {
 
 // Swedish titles for OG tags (server-side, no i18n context)
 const POINT_TITLES: Record<number, string> = {
-  1: "Ett Sverige in, inte femton k\u00f6er",
-  2: "100-dagarsgaranti f\u00f6r kompetens",
-  3: "Svenska genom arbete, inte f\u00f6re arbete",
+  1: "Ett Sverige in, inte femton köer",
+  2: "100-dagarsgaranti för kompetens",
+  3: "Svenska genom arbete, inte före arbete",
   4: "Nationell snabbfil till bristyrken",
-  5: "F\u00f6rsta riktiga jobbet inom 180 dagar",
-  6: "Bos\u00e4tt efter m\u00f6jlighet, inte efter passivitet",
-  7: "Barnen f\u00f6rst, alltid",
-  8: "H\u00e5rd mot exploatering, mjuk mot m\u00e4nniskor",
+  5: "Första riktiga jobbet inom 180 dagar",
+  6: "Bosätt efter möjlighet, inte efter passivitet",
+  7: "Barnen först, alltid",
+  8: "Hård mot exploatering, mjuk mot människor",
   9: "Nolltolerans mot diskriminering",
-  10: "Digitalt medlemskap fr\u00e5n dag ett",
-  11: "Europas enklaste land att starta f\u00f6retag i",
+  10: "Digitalt medlemskap från dag ett",
+  11: "Europas enklaste land att starta företag i",
   12: "Student till byggare av Sverige",
-  13: "Cirkul\u00e4r r\u00f6rlighet som styrka",
-  14: "Snabb och f\u00f6ruts\u00e4gbar r\u00e4ttsstat",
+  13: "Cirkulär rörlighet som styrka",
+  14: "Snabb och förutsägbar rättsstat",
   15: "Integration som nationell elitgren",
 };
 
 /**
- * Inject per-point OG meta tags when the URL contains ?punkt=N
- * Social crawlers don't read hash fragments, so sharing uses query params.
- * The client-side ShareButton generates URLs with ?punkt=N which the server
- * intercepts to inject the correct OG image and title.
+ * Extract point ID from URL. Supports two formats:
+ * - Clean path: /punkt/3
+ * - Query param: /?punkt=3  (legacy/fallback)
  */
-function injectPointOgTags(html: string, url: string): string {
+function extractPointId(url: string): number | null {
   try {
+    // Check clean path format: /punkt/N
+    const pathMatch = url.match(/^\/punkt\/(\d+)/);
+    if (pathMatch) {
+      const id = parseInt(pathMatch[1], 10);
+      if (id >= 1 && id <= 15) return id;
+    }
+
+    // Fallback: check query param ?punkt=N
     const urlObj = new URL(url, "http://localhost");
     const punktParam = urlObj.searchParams.get("punkt");
-    if (!punktParam) return html;
-
-    const pointId = parseInt(punktParam, 10);
-    if (isNaN(pointId) || pointId < 1 || pointId > 15) return html;
-
-    const ogImage = OG_IMAGES[pointId];
-    const title = POINT_TITLES[pointId];
-    if (!ogImage || !title) return html;
-
-    const ogTitle = `Punkt ${pointId}: ${title} \u2013 Det Nya Sverige`;
-    const ogDesc = `Punkt ${pointId} av 15 i Det Nya Sverige-manifestet. L\u00e4s mer om: ${title}`;
-
-    // Replace existing OG tags with point-specific ones
-    html = html.replace(
-      /<meta property="og:title" content="[^"]*" \/>/,
-      `<meta property="og:title" content="${ogTitle}" />`
-    );
-    html = html.replace(
-      /<meta property="og:description" content="[^"]*" \/>/,
-      `<meta property="og:description" content="${ogDesc}" />`
-    );
-    html = html.replace(
-      /<meta property="og:image" content="[^"]*" \/>/,
-      `<meta property="og:image" content="${ogImage}" />`
-    );
-    html = html.replace(
-      /<meta name="twitter:title" content="[^"]*" \/>/,
-      `<meta name="twitter:title" content="${ogTitle}" />`
-    );
-    html = html.replace(
-      /<meta name="twitter:description" content="[^"]*" \/>/,
-      `<meta name="twitter:description" content="${ogDesc}" />`
-    );
-    html = html.replace(
-      /<meta name="twitter:image" content="[^"]*" \/>/,
-      `<meta name="twitter:image" content="${ogImage}" />`
-    );
-    html = html.replace(
-      /<title>[^<]*<\/title>/,
-      `<title>${ogTitle}</title>`
-    );
+    if (punktParam) {
+      const id = parseInt(punktParam, 10);
+      if (id >= 1 && id <= 15) return id;
+    }
   } catch {
-    // If URL parsing fails, return original HTML
+    // ignore
   }
+  return null;
+}
+
+/**
+ * Inject per-point OG meta tags when the URL refers to a specific point.
+ * Supports /punkt/N (clean) and ?punkt=N (legacy).
+ * Social crawlers don't read hash fragments, so sharing uses server-side paths.
+ */
+function injectPointOgTags(html: string, url: string): string {
+  const pointId = extractPointId(url);
+  if (!pointId) return html;
+
+  const ogImage = OG_IMAGES[pointId];
+  const title = POINT_TITLES[pointId];
+  if (!ogImage || !title) return html;
+
+  const ogTitle = `Punkt ${pointId}: ${title} – Det Nya Sverige`;
+  const ogDesc = `Punkt ${pointId} av 15 i Det Nya Sverige-manifestet. Läs mer om: ${title}`;
+
+  // Replace existing OG tags with point-specific ones
+  html = html.replace(
+    /<meta property="og:title" content="[^"]*" \/>/,
+    `<meta property="og:title" content="${ogTitle}" />`
+  );
+  html = html.replace(
+    /<meta property="og:description" content="[^"]*" \/>/,
+    `<meta property="og:description" content="${ogDesc}" />`
+  );
+  html = html.replace(
+    /<meta property="og:image" content="[^"]*" \/>/,
+    `<meta property="og:image" content="${ogImage}" />`
+  );
+  html = html.replace(
+    /<meta name="twitter:title" content="[^"]*" \/>/,
+    `<meta name="twitter:title" content="${ogTitle}" />`
+  );
+  html = html.replace(
+    /<meta name="twitter:description" content="[^"]*" \/>/,
+    `<meta name="twitter:description" content="${ogDesc}" />`
+  );
+  html = html.replace(
+    /<meta name="twitter:image" content="[^"]*" \/>/,
+    `<meta name="twitter:image" content="${ogImage}" />`
+  );
+  html = html.replace(
+    /<title>[^<]*<\/title>/,
+    `<title>${ogTitle}</title>`
+  );
+
   return html;
 }
 

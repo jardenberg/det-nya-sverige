@@ -33,9 +33,8 @@ export default function ShareButton({ point, layout }: ShareButtonProps) {
     return () => document.removeEventListener("mousedown", handler);
   }, [isOpen]);
 
-  // Use ?punkt=N for social sharing (server injects correct OG tags)
-  // Also include #punkt-N hash so the client scrolls to the right point
-  const pointUrl = `${window.location.origin}/?punkt=${point.id}#punkt-${point.id}`;
+  // Use clean /punkt/N paths for social sharing (server injects correct OG tags)
+  const pointUrl = `${window.location.origin}/punkt/${point.id}`;
   const shareText = lang === "sv"
     ? `${point.title} – Punkt ${point.id} av 15 i Det Nya Sverige-manifestet: "${point.subtitle}"`
     : `${point.title} – Point ${point.id} of 15 in The New Sweden manifesto: "${point.subtitle}"`;

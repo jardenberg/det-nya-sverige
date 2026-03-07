@@ -9,7 +9,7 @@ import { useRef } from "react";
 import { useLang } from "@/contexts/LanguageContext";
 import { t } from "@/lib/i18n";
 
-const PEOPLE_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/hero-people-KijM7cKvAUoegdZdWHkwQU.webp";
+const PEOPLE_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/framat-tillsammans-RCdD2wYiAGJo8XLMUNJfkt.webp";
 
 export default function ManifestoIntro() {
   const ref = useRef<HTMLDivElement>(null);
@@ -78,9 +78,9 @@ export default function ManifestoIntro() {
               src={PEOPLE_IMAGE}
               alt={lang === "sv" ? "Människor som går framåt tillsammans" : "People moving forward together"}
               className="w-full h-full object-cover"
-              style={{ filter: 'sepia(0.15) saturate(1.1)' }}
+              style={{ filter: 'saturate(1.05)' }}
             />
-            <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, oklch(0.97 0.01 80 / 0.9), transparent, oklch(0.97 0.01 80 / 0.2))' }} />
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, oklch(0.97 0.01 80 / 0.6), transparent 40%, oklch(0.97 0.01 80 / 0.1))' }} />
           </div>
           <div className="absolute bottom-6 left-6 md:bottom-10 md:left-10">
             <p className="font-mono-display tracking-[0.2em] text-xs md:text-sm" style={{ color: '#8B6914' }}>

@@ -7,6 +7,7 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import { AnimatePresence } from "framer-motion";
+import { useParams } from "wouter";
 import { usePoints } from "@/hooks/usePoints";
 import HeroSection from "@/components/HeroSection";
 import ManifestoIntro from "@/components/ManifestoIntro";
@@ -24,27 +25,46 @@ export default function Home() {
   const [showNav, setShowNav] = useState(false);
   const sectionRefs = useRef<(HTMLElement | null)[]>([]);
 
-  // Handle hash-based navigation on page load and hash change
-  // Also handles ?punkt=N query parameter from social sharing links
-  useEffect(() => {
-    const scrollToHash = () => {
-      let hash = window.location.hash;
+  // Get route params (from /punkt/:id)
+  const params = useParams<{ id?: string }>();
 
-      // If no hash but ?punkt=N query param exists (from social sharing), derive hash
-      if (!hash || !hash.startsWith('#punkt-')) {
-        const params = new URLSearchParams(window.location.search);
-        const punktParam = params.get('punkt');
+  // Handle navigation to specific point on page load
+  // Supports: /punkt/3 (clean URL), ?punkt=3 (legacy), #punkt-3 (hash)
+  useEffect(() => {
+    const scrollToPoint = () => {
+      let targetId: number | null = null;
+
+      // Priority 1: /punkt/:id route param
+      if (params?.id) {
+        targetId = parseInt(params.id, 10);
+      }
+
+      // Priority 2: ?punkt=N query param (legacy from old shares)
+      if (!targetId) {
+        const searchParams = new URLSearchParams(window.location.search);
+        const punktParam = searchParams.get('punkt');
         if (punktParam) {
-          hash = `#punkt-${punktParam}`;
-          // Clean URL: replace ?punkt=N with just the hash
-          window.history.replaceState(null, '', `/${hash}`);
+          targetId = parseInt(punktParam, 10);
         }
       }
 
-      if (hash && hash.startsWith('#punkt-')) {
-        // Small delay to ensure DOM is fully rendered
+      // Priority 3: #punkt-N hash
+      if (!targetId) {
+        const hash = window.location.hash;
+        if (hash && hash.startsWith('#punkt-')) {
+          targetId = parseInt(hash.replace('#punkt-', ''), 10);
+        }
+      }
+
+      if (targetId && targetId >= 1 && targetId <= 15) {
+        // Clean up URL to just show /punkt/N (no query params or hashes)
+        if (window.location.pathname !== `/punkt/${targetId}`) {
+          window.history.replaceState(null, '', `/punkt/${targetId}`);
+        }
+
+        // Scroll to the point after a short delay for DOM rendering
         setTimeout(() => {
-          const el = document.querySelector(hash);
+          const el = document.getElementById(`punkt-${targetId}`);
           if (el) {
             el.scrollIntoView({ behavior: 'smooth' });
             hasEnteredPoints.current = true;
@@ -53,10 +73,10 @@ export default function Home() {
       }
     };
 
-    scrollToHash();
-    window.addEventListener('hashchange', scrollToHash);
-    return () => window.removeEventListener('hashchange', scrollToHash);
-  }, []);
+    scrollToPoint();
+    window.addEventListener('hashchange', scrollToPoint);
+    return () => window.removeEventListener('hashchange', scrollToPoint);
+  }, [params?.id]);
 
   // Track scroll to determine active section
   useEffect(() => {
