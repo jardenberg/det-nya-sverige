@@ -38,7 +38,7 @@ export default function HeroSection() {
           style={{ backgroundImage: `url(${HERO_IMAGE})` }}
         />
         {/* Soft left edge blend into the warm background */}
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, #f3ece3 0%, #f3ece3 20%, rgba(243,236,227,0.95) 30%, rgba(243,236,227,0.6) 45%, transparent 65%)' }} />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, #f3ece3 0%, #f3ece3 25%, rgba(243,236,227,0.98) 35%, rgba(243,236,227,0.7) 50%, transparent 70%)' }} />
         {/* Bottom fade */}
         <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, transparent 60%, #f3ece3 100%)' }} />
       </motion.div>

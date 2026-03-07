@@ -107,6 +107,25 @@ const strings = {
   counterMunicipalitiesValue: { sv: "Alla 290", en: "All 290" },
   counterLanguages: { sv: "Språk i samhällsservice", en: "Languages in public services" },
   counterLanguagesValue: { sv: "40+", en: "40+" },
+  // Comments & Votes
+  voteButton: { sv: "Stöd denna punkt", en: "Support this point" },
+  voteButtonVoted: { sv: "Du stödjer denna punkt", en: "You support this point" },
+  votesCount: { sv: "röster", en: "votes" },
+  votesSingular: { sv: "röst", en: "vote" },
+  commentsTitle: { sv: "Diskussion", en: "Discussion" },
+  commentsCount: { sv: "kommentarer", en: "comments" },
+  commentsSingular: { sv: "kommentar", en: "comment" },
+  commentPlaceholder: { sv: "Dela dina tankar om denna punkt...", en: "Share your thoughts on this point..." },
+  commentSubmit: { sv: "Publicera", en: "Post" },
+  commentLoginPrompt: { sv: "Logga in för att kommentera och rösta", en: "Log in to comment and vote" },
+  commentLoginButton: { sv: "Logga in", en: "Log in" },
+  commentDelete: { sv: "Ta bort", en: "Delete" },
+  commentJustNow: { sv: "Just nu", en: "Just now" },
+  commentMinutesAgo: { sv: "min sedan", en: "min ago" },
+  commentHoursAgo: { sv: "tim sedan", en: "h ago" },
+  commentDaysAgo: { sv: "dagar sedan", en: "days ago" },
+  noComments: { sv: "Var först med att kommentera!", en: "Be the first to comment!" },
+  feedbackSection: { sv: "Vad tycker du?", en: "What do you think?" },
 } as const;
 
 export type StringKey = keyof typeof strings;

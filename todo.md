@@ -1,18 +1,25 @@
-# Feature Implementation Todo
+# Commenting & Voting System Todo
 
-## 1. Total Counter
-- [ ] Create TotalCounter component with animated counting numbers
-- [ ] Sum investments, people reached, BNP effect from all 15 points
-- [ ] Place between last policy card and closing section
+## Phase 1: Backend Upgrade
+- [x] Run webdev_add_feature for web-db-user
+- [x] Review upgrade README and migration steps
 
-## 2. Share Buttons
-- [ ] Create ShareButton component (Twitter/X, LinkedIn, Facebook, copy link)
-- [ ] Add OG meta tags for beautiful social cards
-- [ ] Integrate into each PolicyCard
+## Phase 2: Database & API
+- [x] Create database schema: comments table, votes table
+- [x] Run migrations
+- [x] Create API routes: POST/GET comments, POST/DELETE votes, GET vote counts
+- [x] Add rate limiting and basic validation (Zod validation on all inputs)
 
-## 3. English Translation
-- [ ] Create LanguageContext with sv/en toggle
-- [ ] Create points-en.ts with all 15 points translated
-- [ ] Create i18n.ts with UI string translations
-- [ ] Add LanguageSwitcher component in hero/header
-- [ ] Update all components to use language context
+## Phase 3: Frontend Components
+- [x] Build VoteButton component (upvote per point, toggle on/off)
+- [x] Build CommentSection component (list + form)
+- [x] Build CommentCard component (individual comment display, inline in CommentSection)
+- [x] Integrate VoteButton and CommentSection into PolicyCard
+- [x] Add language support (sv/en) for all new UI strings
+- [x] Style consistently with warm light theme
+
+## Phase 4: Test & Polish
+- [x] Test voting flow (login, vote, unvote) - API calls confirmed working
+- [x] Test commenting flow (login, post, display) - API calls confirmed working
+- [x] Test language switching with new components
+- [x] Verify mobile responsiveness

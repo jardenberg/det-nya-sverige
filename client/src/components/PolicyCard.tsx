@@ -1,6 +1,6 @@
 /**
  * PolicyCard – Each of the 15 points as a manifest chapter
- * Warm light theme with data metrics dashboard, share button, and language support
+ * Warm light theme with data metrics dashboard, share button, vote button, comment section, and language support
  * Alternating layouts for visual variety
  */
 
@@ -10,6 +10,8 @@ import { type PolicyPoint } from "@/lib/points";
 import { useLang } from "@/contexts/LanguageContext";
 import { t } from "@/lib/i18n";
 import ShareButton from "./ShareButton";
+import VoteButton from "./VoteButton";
+import CommentSection from "./CommentSection";
 import { ChevronDown, ChevronUp, Banknote, Users2, BarChart3 as BarIcon, Clock, Building, Globe } from "lucide-react";
 import {
   BookOpen, Home, Briefcase, Rocket, GraduationCap,
@@ -182,13 +184,13 @@ export default function PolicyCard({ point, index, isActive }: PolicyCardProps) 
               </p>
             </motion.div>
 
-            {/* Action row: Read more + Share */}
-            <div className={`flex items-center gap-6 mt-3 ${
+            {/* Action row: Read more + Share + Vote */}
+            <div className={`flex flex-wrap items-center gap-3 mt-3 ${
               layout === "right" ? "justify-end" : layout === "center" ? "justify-center" : ""
             }`}>
               <button
                 onClick={() => setExpanded(!expanded)}
-                className="group flex items-center gap-2 font-body text-xs transition-colors"
+                className="group flex items-center gap-2 font-body text-xs transition-colors cursor-pointer"
                 style={{ color: '#9B6B1A' }}
               >
                 <span className="tracking-[0.15em] uppercase">
@@ -202,8 +204,13 @@ export default function PolicyCard({ point, index, isActive }: PolicyCardProps) 
               </button>
 
               <ShareButton point={point} layout={layout} />
+
+              <VoteButton pointId={point.id} layout={layout} />
             </div>
           </div>
+
+          {/* Comment Section */}
+          <CommentSection pointId={point.id} layout={layout} />
         </motion.div>
       </div>
     </div>
