@@ -36,7 +36,7 @@ export default function ManifestoIntro() {
               Frågan utgår ifrån att Sverige har ett tak för hur många som kan flytta hit, integreras och bidra till samhället. Men det där taket är inte en fysisk eller rationell nivå – det är en social och legal konstruktion.
             </p>
             <p className="font-body text-lg md:text-xl leading-relaxed font-light" style={{ color: '#5a4a3a' }}>
-              Politikerna borde svara på frågan <span className="font-medium" style={{ color: '#9B6B1A' }}>"Hur kan vi integrera många fler?"</span> i stället för att lura i oss att vi måste dansa limbo under en given ribba.
+              Politikerna borde svara på frågan <span className="font-medium" style={{ color: '#9B6B1A' }}>”Hur kan vi integrera många fler?”</span> i stället för att lura i oss att vi måste dansa limbo under en given ribba.
             </p>
             <p className="font-body text-lg md:text-xl leading-relaxed font-light" style={{ color: '#5a4a3a' }}>
               Vi håller faktiskt, på riktigt, på att bli för få. Så här är 15 punkter som underlättar människors resa. Inte det motsatta.
