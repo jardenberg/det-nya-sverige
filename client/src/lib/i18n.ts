@@ -168,6 +168,18 @@ const strings = {
     sv: "Läs mer om projektet",
     en: "Read more about the project",
   },
+  downloadPdf: {
+    sv: "Ladda ner som PDF",
+    en: "Download as PDF",
+  },
+  downloadSv: {
+    sv: "Svenska (PDF)",
+    en: "Swedish (PDF)",
+  },
+  downloadEn: {
+    sv: "English (PDF)",
+    en: "English (PDF)",
+  },
 } as const;
 
 export type StringKey = keyof typeof strings;

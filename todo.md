@@ -88,3 +88,16 @@
 - [x] Update server-side OG injection for /en paths (English OG titles and descriptions)
 - [x] Update language switcher to navigate between /en/... and /... URL paths
 - [x] Update ShareButton, ManifestoIntro, About back-link to use langPrefix
+
+## Standing Rules
+- [ ] ALWAYS update the version number in Footer.tsx on every checkpoint/deploy (increment from current version)
+
+## Pending for Next Update
+- [x] Update version number in footer (v093b → v093c)
+
+## PDF Download Feature
+- [x] Build server-side PDF generation endpoint (/api/pdf/sv and /api/pdf/en)
+- [x] Add download links in Footer (with Download icon)
+- [x] Add download links on /om page (dedicated section)
+- [x] Simple, accessible format (PDFKit, clean typography, CC0 license on title page)
+- [x] Update version number to v093c

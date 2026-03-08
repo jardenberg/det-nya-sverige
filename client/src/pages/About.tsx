@@ -6,7 +6,7 @@
 
 import { motion } from "framer-motion";
 import { useLang } from "@/contexts/LanguageContext";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Download } from "lucide-react";
 import { Link } from "wouter";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 
@@ -43,6 +43,11 @@ På den tekniska sidan byggde Manus sajten med React, Tailwind, tRPC och Express
     reportsTitle: "Läs vidare",
     report15p: "Hela vår beskrivning av hur man gör sånt här 2026",
     reportJjos: "En motsvarande rapport om ett mycket större system som helt har revolutionerat hur jag jobbar — mycket högre leveranskvalitet, mycket högre tempo, mycket mer lärande och otroligt mycket roligare",
+
+    downloadTitle: "Ladda ner som PDF",
+    downloadDesc: "Hela manifestet finns att ladda ner som PDF — på svenska och engelska.",
+    downloadSv: "Svenska (PDF)",
+    downloadEn: "English (PDF)",
 
     // Tech
     techTitle: "Teknik",
@@ -111,6 +116,11 @@ On the technical side, Manus built the site with React, Tailwind, tRPC and Expre
     reportsTitle: "Read more",
     report15p: "Our full write-up on how you build something like this in 2026",
     reportJjos: "A similar report on a much larger system that has completely revolutionised how I work — much higher delivery quality, much higher pace, much more learning, and incredibly much more fun",
+
+    downloadTitle: "Download as PDF",
+    downloadDesc: "The full manifesto is available as a PDF — in Swedish and English.",
+    downloadSv: "Swedish (PDF)",
+    downloadEn: "English (PDF)",
 
     licenseTitle: "License",
     licenseText: `This project is licensed under CC0 — Creative Commons Zero. This means all content and code is free to use, reuse, remix and build upon. No attribution required.
@@ -261,6 +271,43 @@ export default function About() {
         {/* Divider */}
         <div className="my-14 h-[1px]" style={{ backgroundColor: 'oklch(0.18 0.02 50 / 0.08)' }} />
 
+        {/* PDF Downloads */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.37 }}
+        >
+          <h2 className="font-display text-xl md:text-2xl font-semibold mb-4" style={{ color: '#2c1810' }}>
+            {c.downloadTitle}
+          </h2>
+          <p className="font-body text-base md:text-lg leading-relaxed font-light mb-6" style={{ color: '#5a4a3a' }}>
+            {c.downloadDesc}
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <a
+              href="/api/pdf/sv"
+              download
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-sm font-body text-sm transition-all hover:translate-x-1"
+              style={{ backgroundColor: 'oklch(0.95 0.01 80 / 0.5)', borderLeft: '3px solid #9B6B1A', color: '#5a4a3a' }}
+            >
+              <Download size={14} style={{ color: '#9B6B1A' }} />
+              {c.downloadSv}
+            </a>
+            <a
+              href="/api/pdf/en"
+              download
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-sm font-body text-sm transition-all hover:translate-x-1"
+              style={{ backgroundColor: 'oklch(0.95 0.01 80 / 0.5)', borderLeft: '3px solid #9B6B1A', color: '#5a4a3a' }}
+            >
+              <Download size={14} style={{ color: '#9B6B1A' }} />
+              {c.downloadEn}
+            </a>
+          </div>
+        </motion.section>
+
+        {/* Divider */}
+        <div className="my-14 h-[1px]" style={{ backgroundColor: 'oklch(0.18 0.02 50 / 0.08)' }} />
+
         {/* Tech stack */}
         <motion.section
           initial={{ opacity: 0, y: 20 }}
@@ -351,7 +398,7 @@ export default function About() {
         {/* Version */}
         <div className="mt-20 pt-8" style={{ borderTop: '1px solid oklch(0.18 0.02 50 / 0.07)' }}>
           <p className="font-mono-display text-xs tracking-wider" style={{ color: 'oklch(0.58 0.16 55 / 0.4)' }}>
-            {c.versionLabel}: v093b
+            {c.versionLabel}: v093c
           </p>
         </div>
       </div>

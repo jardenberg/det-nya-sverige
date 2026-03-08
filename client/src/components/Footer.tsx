@@ -1,10 +1,11 @@
 /**
  * Footer – Minimal, warm footer
- * CC0 license, version, contact info, language-aware
+ * CC0 license, version, contact info, PDF downloads, language-aware
  */
 
 import { useLang } from "@/contexts/LanguageContext";
 import { t } from "@/lib/i18n";
+import { Download } from "lucide-react";
 
 export default function Footer() {
   const { lang } = useLang();
@@ -27,6 +28,37 @@ export default function Footer() {
             <p className="font-body text-xs" style={{ color: '#b0a090' }}>
               {t("footerNav", lang)}
             </p>
+          </div>
+        </div>
+
+        {/* Divider */}
+        <div className="h-[1px] mb-8" style={{ backgroundColor: 'oklch(0.18 0.02 50 / 0.06)' }} />
+
+        {/* PDF Downloads */}
+        <div className="flex flex-col items-center gap-3 mb-8">
+          <p className="font-mono-display text-xs tracking-wider font-medium" style={{ color: '#9B6B1A' }}>
+            {t("downloadPdf", lang)}
+          </p>
+          <div className="flex items-center gap-4">
+            <a
+              href="/api/pdf/sv"
+              download
+              className="flex items-center gap-1.5 font-body text-xs underline underline-offset-2 hover:no-underline transition-all"
+              style={{ color: '#8a7a6a' }}
+            >
+              <Download size={12} />
+              {t("downloadSv", lang)}
+            </a>
+            <span style={{ color: '#d4c9b8' }}>|</span>
+            <a
+              href="/api/pdf/en"
+              download
+              className="flex items-center gap-1.5 font-body text-xs underline underline-offset-2 hover:no-underline transition-all"
+              style={{ color: '#8a7a6a' }}
+            >
+              <Download size={12} />
+              {t("downloadEn", lang)}
+            </a>
           </div>
         </div>
 
@@ -65,7 +97,7 @@ export default function Footer() {
               </a>
             </div>
             <p className="font-mono-display text-xs tracking-wider" style={{ color: 'oklch(0.58 0.16 55 / 0.4)' }}>
-              v093b
+              v093c
             </p>
           </div>
         </div>
