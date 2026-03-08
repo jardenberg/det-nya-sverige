@@ -11,10 +11,18 @@ function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
     <Switch>
+      {/* Swedish (default) routes */}
       <Route path="/" component={Home} />
       <Route path="/punkt/:id" component={Home} />
       <Route path="/om" component={About} />
       <Route path="/about" component={About} />
+
+      {/* English routes with /en prefix */}
+      <Route path="/en" component={Home} />
+      <Route path="/en/punkt/:id" component={Home} />
+      <Route path="/en/om" component={About} />
+      <Route path="/en/about" component={About} />
+
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>

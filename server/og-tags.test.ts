@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 
 /**
  * Test the OG tag injection logic for per-point sharing.
- * Tests both clean /punkt/N paths and legacy ?punkt=N query params.
+ * Tests clean /punkt/N paths, /en/punkt/N English paths, and legacy ?punkt=N query params.
  */
 
 // Replicate the data and logic from vite.ts for testing
@@ -12,27 +12,33 @@ const OG_IMAGES: Record<number, string> = {
   3: "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/og-point-3_4a486f4d.png",
 };
 
-const POINT_TITLES: Record<number, string> = {
+const POINT_TITLES_SV: Record<number, string> = {
   1: "Ett Sverige in, inte femton köer",
   2: "100-dagarsgaranti för kompetens",
   3: "Svenska genom arbete, inte före arbete",
 };
 
-function extractPointId(url: string): number | null {
+const POINT_TITLES_EN: Record<number, string> = {
+  1: "One Sweden In, Not Fifteen Queues",
+  2: "100-Day Competence Guarantee",
+  3: "Swedish Through Work, Not Before Work",
+};
+
+function extractPointInfo(url: string): { id: number; lang: "sv" | "en" } | null {
   try {
-    // Check clean path format: /punkt/N
-    const pathMatch = url.match(/^\/punkt\/(\d+)/);
+    const isEnglish = url.startsWith("/en/") || url === "/en";
+
+    const pathMatch = url.match(/^(?:\/en)?\/punkt\/(\d+)/);
     if (pathMatch) {
       const id = parseInt(pathMatch[1], 10);
-      if (id >= 1 && id <= 15) return id;
+      if (id >= 1 && id <= 15) return { id, lang: isEnglish ? "en" : "sv" };
     }
 
-    // Fallback: check query param ?punkt=N
     const urlObj = new URL(url, "http://localhost");
     const punktParam = urlObj.searchParams.get("punkt");
     if (punktParam) {
       const id = parseInt(punktParam, 10);
-      if (id >= 1 && id <= 15) return id;
+      if (id >= 1 && id <= 15) return { id, lang: isEnglish ? "en" : "sv" };
     }
   } catch {
     // ignore
@@ -41,15 +47,20 @@ function extractPointId(url: string): number | null {
 }
 
 function injectPointOgTags(html: string, url: string): string {
-  const pointId = extractPointId(url);
-  if (!pointId) return html;
+  const info = extractPointInfo(url);
+  if (!info) return html;
 
-  const ogImage = OG_IMAGES[pointId];
-  const title = POINT_TITLES[pointId];
+  const ogImage = OG_IMAGES[info.id];
+  const titles = info.lang === "en" ? POINT_TITLES_EN : POINT_TITLES_SV;
+  const title = titles[info.id];
   if (!ogImage || !title) return html;
 
-  const ogTitle = `Punkt ${pointId}: ${title} – Det Nya Sverige`;
-  const ogDesc = `Punkt ${pointId} av 15 i Det Nya Sverige-manifestet. Läs mer om: ${title}`;
+  const siteName = info.lang === "en" ? "The New Sweden" : "Det Nya Sverige";
+  const pointLabel = info.lang === "en" ? "Point" : "Punkt";
+  const ofLabel = info.lang === "en" ? "of 15 in The New Sweden manifesto. Read more about" : "av 15 i Det Nya Sverige-manifestet. Läs mer om";
+
+  const ogTitle = `${pointLabel} ${info.id}: ${title} – ${siteName}`;
+  const ogDesc = `${pointLabel} ${info.id} ${ofLabel}: ${title}`;
 
   html = html.replace(
     /<meta property="og:title" content="[^"]*" \/>/,
@@ -97,36 +108,41 @@ const BASE_HTML = `<!doctype html>
   <body><div id="root"></div></body>
 </html>`;
 
-describe("extractPointId", () => {
-  it("should extract from clean /punkt/N path", () => {
-    expect(extractPointId("/punkt/3")).toBe(3);
-    expect(extractPointId("/punkt/1")).toBe(1);
-    expect(extractPointId("/punkt/15")).toBe(15);
+describe("extractPointInfo", () => {
+  it("should extract from clean /punkt/N path (Swedish)", () => {
+    expect(extractPointInfo("/punkt/3")).toEqual({ id: 3, lang: "sv" });
+    expect(extractPointInfo("/punkt/1")).toEqual({ id: 1, lang: "sv" });
+    expect(extractPointInfo("/punkt/15")).toEqual({ id: 15, lang: "sv" });
+  });
+
+  it("should extract from /en/punkt/N path (English)", () => {
+    expect(extractPointInfo("/en/punkt/3")).toEqual({ id: 3, lang: "en" });
+    expect(extractPointInfo("/en/punkt/1")).toEqual({ id: 1, lang: "en" });
+    expect(extractPointInfo("/en/punkt/15")).toEqual({ id: 15, lang: "en" });
   });
 
   it("should extract from legacy ?punkt=N query param", () => {
-    expect(extractPointId("/?punkt=3")).toBe(3);
-    expect(extractPointId("/?punkt=1")).toBe(1);
-    expect(extractPointId("/?punkt=15")).toBe(15);
+    expect(extractPointInfo("/?punkt=3")).toEqual({ id: 3, lang: "sv" });
+    expect(extractPointInfo("/?punkt=1")).toEqual({ id: 1, lang: "sv" });
   });
 
   it("should return null for invalid inputs", () => {
-    expect(extractPointId("/")).toBeNull();
-    expect(extractPointId("/?punkt=abc")).toBeNull();
-    expect(extractPointId("/?punkt=0")).toBeNull();
-    expect(extractPointId("/?punkt=16")).toBeNull();
-    expect(extractPointId("/punkt/0")).toBeNull();
-    expect(extractPointId("/punkt/16")).toBeNull();
-    expect(extractPointId("/other/path")).toBeNull();
+    expect(extractPointInfo("/")).toBeNull();
+    expect(extractPointInfo("/en")).toBeNull();
+    expect(extractPointInfo("/?punkt=abc")).toBeNull();
+    expect(extractPointInfo("/?punkt=0")).toBeNull();
+    expect(extractPointInfo("/?punkt=16")).toBeNull();
+    expect(extractPointInfo("/punkt/0")).toBeNull();
+    expect(extractPointInfo("/punkt/16")).toBeNull();
+    expect(extractPointInfo("/other/path")).toBeNull();
   });
 
   it("should prefer /punkt/N path over ?punkt=N query param", () => {
-    // If both are present, path should win
-    expect(extractPointId("/punkt/3?punkt=5")).toBe(3);
+    expect(extractPointInfo("/punkt/3?punkt=5")).toEqual({ id: 3, lang: "sv" });
   });
 });
 
-describe("OG tag injection for per-point sharing", () => {
+describe("OG tag injection – Swedish paths", () => {
   it("should not modify HTML when no punkt is present", () => {
     const result = injectPointOgTags(BASE_HTML, "/");
     expect(result).toBe(BASE_HTML);
@@ -168,5 +184,37 @@ describe("OG tag injection for per-point sharing", () => {
 
     const result16 = injectPointOgTags(BASE_HTML, "/punkt/16");
     expect(result16).toBe(BASE_HTML);
+  });
+});
+
+describe("OG tag injection – English paths", () => {
+  it("should inject English OG tags for /en/punkt/3", () => {
+    const result = injectPointOgTags(BASE_HTML, "/en/punkt/3");
+
+    expect(result).toContain('content="Point 3: Swedish Through Work, Not Before Work – The New Sweden"');
+    expect(result).toContain(`content="${OG_IMAGES[3]}"`);
+    expect(result).toContain("<title>Point 3: Swedish Through Work, Not Before Work – The New Sweden</title>");
+  });
+
+  it("should inject English OG tags for /en/punkt/1", () => {
+    const result = injectPointOgTags(BASE_HTML, "/en/punkt/1");
+
+    expect(result).toContain('content="Point 1: One Sweden In, Not Fifteen Queues – The New Sweden"');
+    expect(result).toContain("Point 1 of 15 in The New Sweden manifesto. Read more about: One Sweden In, Not Fifteen Queues");
+  });
+
+  it("should use English labels for /en/punkt/2", () => {
+    const result = injectPointOgTags(BASE_HTML, "/en/punkt/2");
+
+    expect(result).toContain("Point 2:");
+    expect(result).toContain("The New Sweden");
+    expect(result).toContain("100-Day Competence Guarantee");
+    expect(result).not.toContain("Punkt");
+    expect(result).not.toContain("Det Nya Sverige");
+  });
+
+  it("should not modify HTML for /en without punkt", () => {
+    const result = injectPointOgTags(BASE_HTML, "/en");
+    expect(result).toBe(BASE_HTML);
   });
 });

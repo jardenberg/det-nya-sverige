@@ -80,3 +80,11 @@
 ## SEO Fixes
 - [x] Add meta keywords to the page (14 relevant keywords)
 - [x] Adjust title to 42 characters: "Det Nya Sverige – 15 Punkter för Framtiden"
+
+## English URL Routing (/en prefix)
+- [x] Add /en route for English homepage
+- [x] Add /en/punkt/N routes for English point pages
+- [x] Add /en/om route for English about page
+- [x] Update server-side OG injection for /en paths (English OG titles and descriptions)
+- [x] Update language switcher to navigate between /en/... and /... URL paths
+- [x] Update ShareButton, ManifestoIntro, About back-link to use langPrefix

@@ -9,6 +9,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { AnimatePresence } from "framer-motion";
 import { useParams } from "wouter";
 import { usePoints } from "@/hooks/usePoints";
+import { useLang } from "@/contexts/LanguageContext";
 import HeroSection from "@/components/HeroSection";
 import ManifestoIntro from "@/components/ManifestoIntro";
 import PolicyCard from "@/components/PolicyCard";
@@ -21,25 +22,28 @@ import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 export default function Home() {
   const points = usePoints();
+  const { lang, langPrefix } = useLang();
   const [activePoint, setActivePoint] = useState<number>(0);
   const [showNav, setShowNav] = useState(false);
   const sectionRefs = useRef<(HTMLElement | null)[]>([]);
 
-  // Get route params (from /punkt/:id)
+  // Get route params (from /punkt/:id or /en/punkt/:id)
   const params = useParams<{ id?: string }>();
 
-  // Set document title
+  // Set document title based on language
   useEffect(() => {
-    document.title = "Det Nya Sverige \u2013 15 Punkter f\u00f6r Framtiden";
-  }, []);
+    document.title = lang === "sv"
+      ? "Det Nya Sverige \u2013 15 Punkter f\u00f6r Framtiden"
+      : "The New Sweden \u2013 15 Points for the Future";
+  }, [lang]);
 
   // Handle navigation to specific point on page load
-  // Supports: /punkt/3 (clean URL), ?punkt=3 (legacy), #punkt-3 (hash)
+  // Supports: /punkt/3, /en/punkt/3 (clean URL), ?punkt=3 (legacy), #punkt-3 (hash)
   useEffect(() => {
     const scrollToPoint = () => {
       let targetId: number | null = null;
 
-      // Priority 1: /punkt/:id route param
+      // Priority 1: /punkt/:id route param (works for both /punkt/3 and /en/punkt/3)
       if (params?.id) {
         targetId = parseInt(params.id, 10);
       }
@@ -62,9 +66,10 @@ export default function Home() {
       }
 
       if (targetId && targetId >= 1 && targetId <= 15) {
-        // Clean up URL to just show /punkt/N (no query params or hashes)
-        if (window.location.pathname !== `/punkt/${targetId}`) {
-          window.history.replaceState(null, '', `/punkt/${targetId}`);
+        // Clean up URL to show /punkt/N or /en/punkt/N
+        const expectedPath = `${langPrefix}/punkt/${targetId}`;
+        if (window.location.pathname !== expectedPath) {
+          window.history.replaceState(null, '', expectedPath);
         }
 
         // Scroll to the point after a short delay for DOM rendering
@@ -81,7 +86,7 @@ export default function Home() {
     scrollToPoint();
     window.addEventListener('hashchange', scrollToPoint);
     return () => window.removeEventListener('hashchange', scrollToPoint);
-  }, [params?.id]);
+  }, [params?.id, langPrefix]);
 
   // Track scroll to determine active section
   useEffect(() => {

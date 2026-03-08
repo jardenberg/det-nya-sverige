@@ -15,7 +15,7 @@ const PEOPLE_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQX
 export default function ManifestoIntro() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const { lang } = useLang();
+  const { lang, langPrefix } = useLang();
 
   return (
     <section className="relative py-24 md:py-40 overflow-hidden">
@@ -77,7 +77,7 @@ export default function ManifestoIntro() {
             <p className="font-body text-base md:text-lg leading-relaxed mt-4" style={{ color: '#5a4a3a' }}>
               {t("inspirationResponse", lang)}
             </p>
-            <Link href="/om">
+            <Link href={`${langPrefix}/om`}>
               <span className="inline-block mt-4 font-body text-sm underline underline-offset-2 hover:no-underline transition-all cursor-pointer" style={{ color: '#9B6B1A' }}>
                 {t("aboutLink", lang)} →
               </span>

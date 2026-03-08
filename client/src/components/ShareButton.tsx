@@ -19,7 +19,7 @@ export default function ShareButton({ point, layout }: ShareButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [copied, setCopied] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
-  const { lang } = useLang();
+  const { lang, langPrefix } = useLang();
 
   // Close on click outside
   useEffect(() => {
@@ -33,8 +33,8 @@ export default function ShareButton({ point, layout }: ShareButtonProps) {
     return () => document.removeEventListener("mousedown", handler);
   }, [isOpen]);
 
-  // Use clean /punkt/N paths for social sharing (server injects correct OG tags)
-  const pointUrl = `${window.location.origin}/punkt/${point.id}`;
+  // Use clean /punkt/N or /en/punkt/N paths for social sharing
+  const pointUrl = `${window.location.origin}${langPrefix}/punkt/${point.id}`;
   const shareText = lang === "sv"
     ? `${point.title} – Punkt ${point.id} av 15 i Det Nya Sverige-manifestet: "${point.subtitle}"`
     : `${point.title} – Point ${point.id} of 15 in The New Sweden manifesto: "${point.subtitle}"`;

@@ -127,7 +127,7 @@ But I'd love to stay in the loop. I'm genuinely curious if anyone finds this use
 };
 
 export default function About() {
-  const { lang } = useLang();
+  const { lang, langPrefix } = useLang();
   const c = content[lang];
 
   return (
@@ -136,7 +136,7 @@ export default function About() {
 
       <div className="max-w-3xl mx-auto px-6 md:px-16 py-16 md:py-24">
         {/* Back link */}
-        <Link href="/">
+        <Link href={`${langPrefix}/` || "/"}>
           <motion.div
             className="inline-flex items-center gap-2 mb-12 cursor-pointer group"
             initial={{ opacity: 0, x: -10 }}

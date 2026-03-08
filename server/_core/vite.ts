@@ -25,8 +25,8 @@ const OG_IMAGES: Record<number, string> = {
   15: "https://d2xsxph8kpxj0f.cloudfront.net/109756679/fWvW9nTzQXWbjktyLERMVj/og-point-15_b924cfee.png",
 };
 
-// Swedish titles for OG tags (server-side, no i18n context)
-const POINT_TITLES: Record<number, string> = {
+// Swedish titles for OG tags
+const POINT_TITLES_SV: Record<number, string> = {
   1: "Ett Sverige in, inte femton köer",
   2: "100-dagarsgaranti för kompetens",
   3: "Svenska genom arbete, inte före arbete",
@@ -44,18 +44,41 @@ const POINT_TITLES: Record<number, string> = {
   15: "Integration som nationell elitgren",
 };
 
+// English titles for OG tags
+const POINT_TITLES_EN: Record<number, string> = {
+  1: "One Sweden In, Not Fifteen Queues",
+  2: "100-Day Competence Guarantee",
+  3: "Swedish Through Work, Not Before Work",
+  4: "National Fast Track to Shortage Occupations",
+  5: "First Real Job Within 180 Days",
+  6: "Settle by Opportunity, Not by Passivity",
+  7: "Children First, Always",
+  8: "Hard on Exploitation, Soft on People",
+  9: "Zero Tolerance for Discrimination",
+  10: "Digital Membership From Day One",
+  11: "Europe's Easiest Country to Start a Business In",
+  12: "From Student to Builder of Sweden",
+  13: "Circular Mobility as Strength",
+  14: "Fast and Predictable Rule of Law",
+  15: "Integration as a National Elite Discipline",
+};
+
 /**
- * Extract point ID from URL. Supports two formats:
- * - Clean path: /punkt/3
- * - Query param: /?punkt=3  (legacy/fallback)
+ * Extract point ID and language from URL. Supports:
+ * - /punkt/3 (Swedish)
+ * - /en/punkt/3 (English)
+ * - /?punkt=3 (legacy, Swedish)
+ * - /en?punkt=3 (legacy, English)
  */
-function extractPointId(url: string): number | null {
+function extractPointInfo(url: string): { id: number; lang: "sv" | "en" } | null {
   try {
-    // Check clean path format: /punkt/N
-    const pathMatch = url.match(/^\/punkt\/(\d+)/);
+    const isEnglish = url.startsWith("/en/") || url === "/en";
+
+    // Check clean path format: /punkt/N or /en/punkt/N
+    const pathMatch = url.match(/^(?:\/en)?\/punkt\/(\d+)/);
     if (pathMatch) {
       const id = parseInt(pathMatch[1], 10);
-      if (id >= 1 && id <= 15) return id;
+      if (id >= 1 && id <= 15) return { id, lang: isEnglish ? "en" : "sv" };
     }
 
     // Fallback: check query param ?punkt=N
@@ -63,7 +86,7 @@ function extractPointId(url: string): number | null {
     const punktParam = urlObj.searchParams.get("punkt");
     if (punktParam) {
       const id = parseInt(punktParam, 10);
-      if (id >= 1 && id <= 15) return id;
+      if (id >= 1 && id <= 15) return { id, lang: isEnglish ? "en" : "sv" };
     }
   } catch {
     // ignore
@@ -73,19 +96,24 @@ function extractPointId(url: string): number | null {
 
 /**
  * Inject per-point OG meta tags when the URL refers to a specific point.
- * Supports /punkt/N (clean) and ?punkt=N (legacy).
+ * Supports /punkt/N, /en/punkt/N (clean) and ?punkt=N (legacy).
  * Social crawlers don't read hash fragments, so sharing uses server-side paths.
  */
 function injectPointOgTags(html: string, url: string): string {
-  const pointId = extractPointId(url);
-  if (!pointId) return html;
+  const info = extractPointInfo(url);
+  if (!info) return html;
 
-  const ogImage = OG_IMAGES[pointId];
-  const title = POINT_TITLES[pointId];
+  const ogImage = OG_IMAGES[info.id];
+  const titles = info.lang === "en" ? POINT_TITLES_EN : POINT_TITLES_SV;
+  const title = titles[info.id];
   if (!ogImage || !title) return html;
 
-  const ogTitle = `Punkt ${pointId}: ${title} – Det Nya Sverige`;
-  const ogDesc = `Punkt ${pointId} av 15 i Det Nya Sverige-manifestet. Läs mer om: ${title}`;
+  const siteName = info.lang === "en" ? "The New Sweden" : "Det Nya Sverige";
+  const pointLabel = info.lang === "en" ? "Point" : "Punkt";
+  const ofLabel = info.lang === "en" ? "of 15 in The New Sweden manifesto. Read more about" : "av 15 i Det Nya Sverige-manifestet. Läs mer om";
+
+  const ogTitle = `${pointLabel} ${info.id}: ${title} – ${siteName}`;
+  const ogDesc = `${pointLabel} ${info.id} ${ofLabel}: ${title}`;
 
   // Replace existing OG tags with point-specific ones
   html = html.replace(
