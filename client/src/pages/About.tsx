@@ -44,10 +44,10 @@ På den tekniska sidan byggde Manus sajten med React, Tailwind, tRPC och Express
     report15p: "Hela vår beskrivning av hur man gör sånt här 2026",
     reportJjos: "En motsvarande rapport om ett mycket större system som helt har revolutionerat hur jag jobbar — mycket högre leveranskvalitet, mycket högre tempo, mycket mer lärande och otroligt mycket roligare",
 
-    downloadTitle: "Ladda ner som PDF",
-    downloadDesc: "Hela manifestet finns att ladda ner som PDF — på svenska och engelska.",
-    downloadSv: "Svenska (PDF)",
-    downloadEn: "English (PDF)",
+    downloadTitle: "Ladda ner manifestet",
+    downloadDesc: "Hela manifestet finns att ladda ner — på svenska och engelska.",
+    downloadSv: "Svenska (.md)",
+    downloadEn: "English (.md)",
 
     // Tech
     techTitle: "Teknik",
@@ -117,10 +117,10 @@ On the technical side, Manus built the site with React, Tailwind, tRPC and Expre
     report15p: "Our full write-up on how you build something like this in 2026",
     reportJjos: "A similar report on a much larger system that has completely revolutionised how I work — much higher delivery quality, much higher pace, much more learning, and incredibly much more fun",
 
-    downloadTitle: "Download as PDF",
-    downloadDesc: "The full manifesto is available as a PDF — in Swedish and English.",
-    downloadSv: "Swedish (PDF)",
-    downloadEn: "English (PDF)",
+    downloadTitle: "Download the manifesto",
+    downloadDesc: "The full manifesto is available for download — in Swedish and English.",
+    downloadSv: "Swedish (.md)",
+    downloadEn: "English (.md)",
 
     licenseTitle: "License",
     licenseText: `This project is licensed under CC0 — Creative Commons Zero. This means all content and code is free to use, reuse, remix and build upon. No attribution required.
@@ -285,7 +285,7 @@ export default function About() {
           </p>
           <div className="flex flex-col sm:flex-row gap-3">
             <a
-              href="/api/pdf/sv"
+              href="/api/download/sv"
               download
               className="inline-flex items-center gap-2 px-5 py-3 rounded-sm font-body text-sm transition-all hover:translate-x-1"
               style={{ backgroundColor: 'oklch(0.95 0.01 80 / 0.5)', borderLeft: '3px solid #9B6B1A', color: '#5a4a3a' }}
@@ -294,7 +294,7 @@ export default function About() {
               {c.downloadSv}
             </a>
             <a
-              href="/api/pdf/en"
+              href="/api/download/en"
               download
               className="inline-flex items-center gap-2 px-5 py-3 rounded-sm font-body text-sm transition-all hover:translate-x-1"
               style={{ backgroundColor: 'oklch(0.95 0.01 80 / 0.5)', borderLeft: '3px solid #9B6B1A', color: '#5a4a3a' }}

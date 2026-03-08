@@ -169,16 +169,16 @@ const strings = {
     en: "Read more about the project",
   },
   downloadPdf: {
-    sv: "Ladda ner som PDF",
-    en: "Download as PDF",
+    sv: "Ladda ner manifestet",
+    en: "Download the manifesto",
   },
   downloadSv: {
-    sv: "Svenska (PDF)",
-    en: "Swedish (PDF)",
+    sv: "Svenska (.md)",
+    en: "Swedish (.md)",
   },
   downloadEn: {
-    sv: "English (PDF)",
-    en: "English (PDF)",
+    sv: "English (.md)",
+    en: "English (.md)",
   },
 } as const;
 

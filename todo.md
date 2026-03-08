@@ -101,3 +101,11 @@
 - [x] Add download links on /om page (dedicated section)
 - [x] Simple, accessible format (PDFKit, clean typography, CC0 license on title page)
 - [x] Update version number to v093c
+
+## Fix Downloads (PDF → Markdown)
+- [x] Replace PDF generation with Markdown file generation
+- [x] Serve .md files as downloads from /api/download/sv and /api/download/en
+- [x] Update Footer download links to /api/download/
+- [x] Update About page download links to /api/download/
+- [x] Include ALL text content (body, quotes, key figures, metrics) in the Markdown
+- [x] Update version number to v093d
