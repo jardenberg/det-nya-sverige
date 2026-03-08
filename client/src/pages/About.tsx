@@ -398,7 +398,7 @@ export default function About() {
         {/* Version */}
         <div className="mt-20 pt-8" style={{ borderTop: '1px solid oklch(0.18 0.02 50 / 0.07)' }}>
           <p className="font-mono-display text-xs tracking-wider" style={{ color: 'oklch(0.58 0.16 55 / 0.4)' }}>
-            {c.versionLabel}: v093c
+            {c.versionLabel}: v094b
           </p>
         </div>
       </div>

@@ -109,3 +109,7 @@
 - [x] Update About page download links to /api/download/
 - [x] Include ALL text content (body, quotes, key figures, metrics) in the Markdown
 - [x] Update version number to v093d
+
+## Export & Version Update
+- [x] Add about/om text to the beginning of Markdown export (background + how we built it + link to report)
+- [x] Update version to v094b (always keep 'b' suffix for beta)
