@@ -113,3 +113,13 @@
 ## Export & Version Update
 - [x] Add about/om text to the beginning of Markdown export (background + how we built it + link to report)
 - [x] Update version to v094b (always keep 'b' suffix for beta)
+
+## Partiledardebatt Analysis
+- [x] Read and analyze SVT partiledardebatt transcript
+- [x] Match debate statements against each of the 15 manifesto points
+- [x] Create comprehensive analysis with tables (party-by-party matching)
+- [x] Add JJ comments where relevant
+- [x] Generate downloadable PDF of the analysis
+- [x] Integrate debate analysis as info-box section on the website
+- [x] Design for multiple debates (this is the first of several)
+- [x] Update version number to v095b

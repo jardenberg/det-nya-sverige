@@ -6,6 +6,7 @@
 import { useLang } from "@/contexts/LanguageContext";
 import { t } from "@/lib/i18n";
 import { Download } from "lucide-react";
+import { Link } from "wouter";
 
 export default function Footer() {
   const { lang } = useLang();
@@ -28,6 +29,21 @@ export default function Footer() {
             <p className="font-body text-xs" style={{ color: '#b0a090' }}>
               {t("footerNav", lang)}
             </p>
+            <div className="flex items-center gap-3">
+              <Link href={lang === "en" ? "/en/om" : "/om"}
+                className="font-body text-xs underline underline-offset-2 hover:no-underline transition-all"
+                style={{ color: '#8a7a6a' }}
+              >
+                {lang === "sv" ? "Om" : "About"}
+              </Link>
+              <span style={{ color: '#d4c9b8' }}>|</span>
+              <Link href={lang === "en" ? "/en/debatter" : "/debatter"}
+                className="font-body text-xs underline underline-offset-2 hover:no-underline transition-all"
+                style={{ color: '#8a7a6a' }}
+              >
+                {lang === "sv" ? "Debattanalys" : "Debate Analysis"}
+              </Link>
+            </div>
           </div>
         </div>
 
@@ -97,7 +113,7 @@ export default function Footer() {
               </a>
             </div>
             <p className="font-mono-display text-xs tracking-wider" style={{ color: 'oklch(0.58 0.16 55 / 0.4)' }}>
-              v094b
+              v095b
             </p>
           </div>
         </div>
