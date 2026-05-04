@@ -19,6 +19,7 @@ import TotalCounter from "@/components/TotalCounter";
 import ClosingSection from "@/components/ClosingSection";
 import Footer from "@/components/Footer";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import DebateBanner from "@/components/DebateBanner";
 
 export default function Home() {
   const points = usePoints();
@@ -164,6 +165,7 @@ export default function Home() {
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <LanguageSwitcher />
       <HeroSection />
+      <DebateBanner />
       <ManifestoIntro />
 
       {/* Desktop Progress Navigation */}

@@ -123,3 +123,10 @@
 - [x] Integrate debate analysis as info-box section on the website
 - [x] Design for multiple debates (this is the first of several)
 - [x] Update version number to v095b
+
+## Debate Analysis Banner on Homepage
+- [x] Add visually striking news banner/notis on homepage linking to /debatter
+- [x] Place high up on page (after hero, before manifesto intro) so it's immediately visible
+- [x] Make it shine (animated, eye-catching)
+- [x] Bilingual (sv/en)
+- [x] Update version number to v096b
