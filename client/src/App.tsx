@@ -18,7 +18,9 @@ function Router() {
       <Route path="/om" component={About} />
       <Route path="/about" component={About} />
       <Route path="/debatter" component={Debates} />
+      <Route path="/debatter/:id" component={Debates} />
       <Route path="/debates" component={Debates} />
+      <Route path="/debates/:id" component={Debates} />
 
       {/* English routes with /en prefix */}
       <Route path="/en" component={Home} />
@@ -26,7 +28,9 @@ function Router() {
       <Route path="/en/om" component={About} />
       <Route path="/en/about" component={About} />
       <Route path="/en/debatter" component={Debates} />
+      <Route path="/en/debatter/:id" component={Debates} />
       <Route path="/en/debates" component={Debates} />
+      <Route path="/en/debates/:id" component={Debates} />
 
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />

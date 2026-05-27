@@ -5,10 +5,10 @@
  * Warm light theme consistent with the rest of the site.
  */
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLang } from "@/contexts/LanguageContext";
-import { Link } from "wouter";
+import { Link, useParams } from "wouter";
 import { ArrowLeft, Download, ChevronDown, ChevronUp, MessageSquareQuote, AlertTriangle } from "lucide-react";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { debates, type DebateAnalysis } from "@/lib/debates";
@@ -48,10 +48,19 @@ function ScoreBar({ score, maxScore }: { score: number; maxScore: number }) {
   );
 }
 
-function DebateCard({ debate }: { debate: DebateAnalysis }) {
+function DebateCard({ debate, startExpanded = false }: { debate: DebateAnalysis; startExpanded?: boolean }) {
   const { lang } = useLang();
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(startExpanded);
   const [activeSection, setActiveSection] = useState<number | null>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (startExpanded && cardRef.current) {
+      setTimeout(() => {
+        cardRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 300);
+    }
+  }, [startExpanded]);
 
   const directCount = debate.pointMatches.filter((p) => p.relevance === "direct").length;
   const indirectCount = debate.pointMatches.filter((p) => p.relevance === "indirect").length;
@@ -59,8 +68,9 @@ function DebateCard({ debate }: { debate: DebateAnalysis }) {
 
   return (
     <motion.div
+      ref={cardRef}
       className="rounded-sm overflow-hidden"
-      style={{ backgroundColor: "oklch(0.97 0.01 80 / 0.6)", border: "1px solid oklch(0.18 0.02 50 / 0.08)" }}
+      style={{ backgroundColor: "oklch(0.97 0.01 80 / 0.6)", border: startExpanded ? "2px solid #9B6B1A" : "1px solid oklch(0.18 0.02 50 / 0.08)" }}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
@@ -413,6 +423,8 @@ function DebateCard({ debate }: { debate: DebateAnalysis }) {
 
 export default function Debates() {
   const { lang, langPrefix } = useLang();
+  const params = useParams<{ id?: string }>();
+  const focusedId = params.id || null;
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -462,7 +474,7 @@ export default function Debates() {
         {/* Debate cards */}
         <div className="mt-12 space-y-6">
           {debates.map((debate) => (
-            <DebateCard key={debate.id} debate={debate} />
+            <DebateCard key={debate.id} debate={debate} startExpanded={debate.id === focusedId} />
           ))}
         </div>
 

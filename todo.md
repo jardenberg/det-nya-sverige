@@ -142,3 +142,10 @@
 - [x] Update page description to cover interviews too
 - [x] Write/update tests for new entry
 - [x] Update version number to v097b
+
+## Direct Linking to Debates/Interviews (v097b)
+- [x] Add /debatter/:id routes (sv + en)
+- [x] Auto-expand targeted debate card when navigating via direct link
+- [x] Scroll to targeted card with smooth animation
+- [x] Highlight focused card with accent border
+- [x] Verify both debate IDs work: svt-partiledardebatt-2026-05, ai-sweden-etr-2026-05
