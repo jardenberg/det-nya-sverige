@@ -218,3 +218,112 @@ describe("OG tag injection – English paths", () => {
     expect(result).toBe(BASE_HTML);
   });
 });
+
+// --- Debate/Interview OG tag injection tests ---
+
+const DEBATE_OG: Record<string, { title: string; titleEn: string; desc: string; descEn: string }> = {
+  "svt-partiledardebatt-2026-05": {
+    title: "SVT Partiledardebatt vs. de 15 punkterna",
+    titleEn: "SVT Party Leader Debate vs. the 15 Points",
+    desc: "0 av 15 punkter berördes direkt. 9 indirekt. Ingen partiledare nämnde AI, digitalisering eller kompetensvalidering som integrationsverktyg.",
+    descEn: "0 of 15 points addressed directly. 9 indirectly. No party leader mentioned AI, digitalisation or competence validation as integration tools.",
+  },
+  "ai-sweden-etr-2026-05": {
+    title: "ETR (C) om AI-politik vs. de 15 punkterna",
+    titleEn: "ETR (C) on AI Policy vs. the 15 Points",
+    desc: "ETR når 4 direkta och 8 indirekta matchningar. Hennes AI-infrastrukturtänk är förutsättningen för programmet, men kopplingen till integration saknas.",
+    descEn: "ETR scores 4 direct and 8 indirect matches. Her AI infrastructure thinking is the prerequisite, but the connection to integration is missing.",
+  },
+};
+
+function extractDebateInfo(url: string): { id: string; lang: "sv" | "en" } | null {
+  const match = url.match(/^(?:\/en)?\/(?:debatter|debates)\/([\w-]+)/);
+  if (!match) return null;
+  const id = match[1];
+  if (!DEBATE_OG[id]) return null;
+  const isEnglish = url.startsWith("/en/");
+  return { id, lang: isEnglish ? "en" : "sv" };
+}
+
+function injectDebateOgTags(html: string, url: string): string {
+  const info = extractDebateInfo(url);
+  if (!info) return html;
+
+  const debate = DEBATE_OG[info.id];
+  const siteName = info.lang === "en" ? "The New Sweden" : "Det Nya Sverige";
+  const ogTitle = `${info.lang === "en" ? debate.titleEn : debate.title} \u2013 ${siteName}`;
+  const ogDesc = info.lang === "en" ? debate.descEn : debate.desc;
+
+  html = html.replace(
+    /<meta property="og:title" content="[^"]*" \/>/,
+    `<meta property="og:title" content="${ogTitle}" />`
+  );
+  html = html.replace(
+    /<meta property="og:description" content="[^"]*" \/>/,
+    `<meta property="og:description" content="${ogDesc}" />`
+  );
+  html = html.replace(
+    /<meta name="twitter:title" content="[^"]*" \/>/,
+    `<meta name="twitter:title" content="${ogTitle}" />`
+  );
+  html = html.replace(
+    /<meta name="twitter:description" content="[^"]*" \/>/,
+    `<meta name="twitter:description" content="${ogDesc}" />`
+  );
+  html = html.replace(
+    /<title>[^<]*<\/title>/,
+    `<title>${ogTitle}</title>`
+  );
+
+  return html;
+}
+
+describe("OG tag injection – Debate/Interview pages", () => {
+  it("should inject Swedish OG tags for /debatter/svt-partiledardebatt-2026-05", () => {
+    const result = injectDebateOgTags(BASE_HTML, "/debatter/svt-partiledardebatt-2026-05");
+
+    expect(result).toContain('<meta property="og:title" content="SVT Partiledardebatt vs. de 15 punkterna \u2013 Det Nya Sverige"');
+    expect(result).toContain('<meta property="og:description" content="0 av 15 punkter berördes direkt.');
+    expect(result).toContain("<title>SVT Partiledardebatt vs. de 15 punkterna \u2013 Det Nya Sverige</title>");
+  });
+
+  it("should inject Swedish OG tags for /debatter/ai-sweden-etr-2026-05", () => {
+    const result = injectDebateOgTags(BASE_HTML, "/debatter/ai-sweden-etr-2026-05");
+
+    expect(result).toContain('<meta property="og:title" content="ETR (C) om AI-politik vs. de 15 punkterna \u2013 Det Nya Sverige"');
+    expect(result).toContain("ETR når 4 direkta och 8 indirekta matchningar");
+  });
+
+  it("should inject English OG tags for /en/debates/ai-sweden-etr-2026-05", () => {
+    const result = injectDebateOgTags(BASE_HTML, "/en/debates/ai-sweden-etr-2026-05");
+
+    expect(result).toContain('<meta property="og:title" content="ETR (C) on AI Policy vs. the 15 Points \u2013 The New Sweden"');
+    expect(result).toContain("ETR scores 4 direct and 8 indirect matches");
+    expect(result).toContain("<title>ETR (C) on AI Policy vs. the 15 Points \u2013 The New Sweden</title>");
+  });
+
+  it("should inject English OG tags for /en/debates/svt-partiledardebatt-2026-05", () => {
+    const result = injectDebateOgTags(BASE_HTML, "/en/debates/svt-partiledardebatt-2026-05");
+
+    expect(result).toContain("SVT Party Leader Debate vs. the 15 Points");
+    expect(result).toContain("The New Sweden");
+    expect(result).not.toContain("Det Nya Sverige");
+  });
+
+  it("should not modify HTML for unknown debate ID", () => {
+    const result = injectDebateOgTags(BASE_HTML, "/debatter/unknown-debate-id");
+    expect(result).toBe(BASE_HTML);
+  });
+
+  it("should not modify HTML for /debatter without ID", () => {
+    const result = injectDebateOgTags(BASE_HTML, "/debatter");
+    expect(result).toBe(BASE_HTML);
+  });
+
+  it("should handle /en/debatter/ path (Swedish path with English prefix)", () => {
+    const result = injectDebateOgTags(BASE_HTML, "/en/debatter/ai-sweden-etr-2026-05");
+
+    expect(result).toContain("The New Sweden");
+    expect(result).toContain("ETR (C) on AI Policy vs. the 15 Points");
+  });
+});

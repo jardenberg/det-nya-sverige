@@ -149,3 +149,10 @@
 - [x] Scroll to targeted card with smooth animation
 - [x] Highlight focused card with accent border
 - [x] Verify both debate IDs work: svt-partiledardebatt-2026-05, ai-sweden-etr-2026-05
+
+## OG Metadata, Direct Links UX, Transcripts & Methodology (v098b)
+- [x] Add unique OG metadata per debate/interview for social sharing
+- [x] Add "Länka direkt hit" / copy-link UX on each debate card
+- [x] Upload transcripts and add download links alongside PDF/MD
+- [x] Update methodology text to cover interviews (not just debates)
+- [x] Update version number to v098b

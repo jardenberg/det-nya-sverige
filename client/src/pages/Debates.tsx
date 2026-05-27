@@ -9,9 +9,37 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLang } from "@/contexts/LanguageContext";
 import { Link, useParams } from "wouter";
-import { ArrowLeft, Download, ChevronDown, ChevronUp, MessageSquareQuote, AlertTriangle } from "lucide-react";
+import { ArrowLeft, Download, ChevronDown, ChevronUp, MessageSquareQuote, AlertTriangle, LinkIcon, Check } from "lucide-react";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { debates, type DebateAnalysis } from "@/lib/debates";
+
+function DirectLinkButton({ debateId, lang, langPrefix }: { debateId: string; lang: string; langPrefix: string }) {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = () => {
+    const base = window.location.origin;
+    const path = `${langPrefix}/debatter/${debateId}`;
+    const url = `${base}${path}`;
+    navigator.clipboard.writeText(url).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2500);
+    });
+  };
+
+  return (
+    <button
+      onClick={handleCopy}
+      className="inline-flex items-center gap-2 mt-3 px-4 py-2.5 rounded-sm font-body text-xs transition-all hover:translate-x-1 cursor-pointer"
+      style={{ backgroundColor: copied ? "oklch(0.90 0.04 145 / 0.3)" : "oklch(0.92 0.01 80 / 0.5)", borderLeft: `3px solid ${copied ? "#2d6a4f" : "#9B6B1A"}`, color: copied ? "#2d6a4f" : "#5a4a3a" }}
+    >
+      {copied ? <Check size={12} /> : <LinkIcon size={12} style={{ color: "#9B6B1A" }} />}
+      {copied
+        ? (lang === "sv" ? "Kopierad!" : "Copied!")
+        : (lang === "sv" ? "Kopiera direktlänk" : "Copy direct link")
+      }
+    </button>
+  );
+}
 
 function RelevanceBadge({ relevance }: { relevance: "direct" | "indirect" | "none" }) {
   const colors = {
@@ -49,7 +77,7 @@ function ScoreBar({ score, maxScore }: { score: number; maxScore: number }) {
 }
 
 function DebateCard({ debate, startExpanded = false }: { debate: DebateAnalysis; startExpanded?: boolean }) {
-  const { lang } = useLang();
+  const { lang, langPrefix } = useLang();
   const [expanded, setExpanded] = useState(startExpanded);
   const [activeSection, setActiveSection] = useState<number | null>(null);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -391,7 +419,7 @@ function DebateCard({ debate, startExpanded = false }: { debate: DebateAnalysis;
               </div>
 
               {/* Download links */}
-              <div className="flex flex-col sm:flex-row gap-3 pt-4" style={{ borderTop: "1px solid oklch(0.18 0.02 50 / 0.06)" }}>
+              <div className="flex flex-col sm:flex-row flex-wrap gap-3 pt-4" style={{ borderTop: "1px solid oklch(0.18 0.02 50 / 0.06)" }}>
                 <a
                   href={debate.pdfUrl}
                   target="_blank"
@@ -412,7 +440,20 @@ function DebateCard({ debate, startExpanded = false }: { debate: DebateAnalysis;
                   <Download size={12} style={{ color: "#9B6B1A" }} />
                   {lang === "sv" ? "Ladda ner analys (Markdown)" : "Download analysis (Markdown)"}
                 </a>
+                <a
+                  href={debate.transcriptUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-sm font-body text-xs transition-all hover:translate-x-1"
+                  style={{ backgroundColor: "oklch(0.92 0.01 80 / 0.5)", borderLeft: "3px solid #9B6B1A", color: "#5a4a3a" }}
+                >
+                  <Download size={12} style={{ color: "#9B6B1A" }} />
+                  {lang === "sv" ? debate.transcriptLabel : debate.transcriptLabelEn}
+                </a>
               </div>
+
+              {/* Direct link */}
+              <DirectLinkButton debateId={debate.id} lang={lang} langPrefix={langPrefix} />
             </div>
           </motion.div>
         )}
@@ -491,8 +532,8 @@ export default function Debates() {
           </h3>
           <p className="font-body text-xs leading-relaxed" style={{ color: "#8a7a6a" }}>
             {lang === "sv"
-              ? "Analyserna baseras på fullständiga transkript av debatterna (transkriberade via klang.ai). Varje uttalande matchas mot de 15 punkternas innehåll. 'Direkt' betyder att en partiledare föreslog något som i substans överensstämmer med en punkt. 'Indirekt' betyder att ämnet berördes men utan den specifika lösning som punkten föreslår. 'Ej berört' betyder att varken problemet eller lösningen nämndes. Partiernas poäng mäter bara vad som sades i den specifika debatten, inte deras fullständiga partiprogram. JJ:s kommentarer är personliga reflektioner och markeras tydligt som sådana."
-              : "The analyses are based on complete debate transcripts (transcribed via klang.ai). Each statement is matched against the content of the 15 points. 'Direct' means a party leader proposed something that substantively aligns with a point. 'Indirect' means the topic was touched but without the specific solution the point proposes. 'Not covered' means neither the problem nor the solution was mentioned. Party scores only measure what was said in the specific debate, not their full party programmes. JJ's comments are personal reflections and are clearly marked as such."}
+              ? "Analyserna baseras p\u00e5 fullst\u00e4ndiga transkript av debatter och intervjuer (transkriberade via klang.ai). Varje uttalande matchas mot de 15 punkternas inneh\u00e5ll. 'Direkt' betyder att en partiledare f\u00f6reslog n\u00e5got som i substans \u00f6verensst\u00e4mmer med en punkt. 'Indirekt' betyder att \u00e4mnet ber\u00f6rdes men utan den specifika l\u00f6sning som punkten f\u00f6resl\u00e5r. 'Ej ber\u00f6rt' betyder att varken problemet eller l\u00f6sningen n\u00e4mndes. Po\u00e4ngen m\u00e4ter bara vad som sades i den specifika debatten eller intervjun, inte partiernas fullst\u00e4ndiga partiprogram. F\u00f6r intervjuer inkluderar vi \u00e4ven andra och tredje ordningens konsekvenser d\u00e4r en partiledares politik indirekt m\u00f6jligg\u00f6r de 15 punkternas f\u00f6rslag. JJ:s kommentarer \u00e4r personliga reflektioner och markeras tydligt som s\u00e5dana. Transkript finns tillg\u00e4ngliga f\u00f6r nedladdning under varje analys."
+              : "The analyses are based on complete transcripts of debates and interviews (transcribed via klang.ai). Each statement is matched against the content of the 15 points. 'Direct' means a party leader proposed something that substantively aligns with a point. 'Indirect' means the topic was touched but without the specific solution the point proposes. 'Not covered' means neither the problem nor the solution was mentioned. Scores only measure what was said in the specific debate or interview, not the parties' full programmes. For interviews, we also include second and third-order consequences where a leader's policy indirectly enables the 15 points' proposals. JJ's comments are personal reflections and are clearly marked as such. Transcripts are available for download under each analysis."}
           </p>
         </motion.div>
       </div>

@@ -54,6 +54,11 @@ export interface DebateAnalysis {
   jjFinalCommentEn: string;
   pdfUrl: string;
   mdUrl: string;
+  transcriptUrl: string;
+  transcriptLabel: string;
+  transcriptLabelEn: string;
+  ogDescription: string;
+  ogDescriptionEn: string;
 }
 
 export const debates: DebateAnalysis[] = [
@@ -243,6 +248,11 @@ Three things the debate showed:
     jjFinalCommentEn: "I went into this analysis hoping to find more points of contact. It would have been encouraging if at least one party had talked about competence validation, AI-supported language training or digital identity. But the debate was a reminder of why the 15 points are needed: not because they're perfect, but because they ask questions no one else is asking. And it's hard to find good answers if you're not even asking the right questions.",
     pdfUrl: "/manus-storage/debatt-analys-1_7a9c0fcd.pdf",
     mdUrl: "/manus-storage/debatt-analys-1_ee1b4b1b.md",
+    transcriptUrl: "/manus-storage/partiledardebatt-2026-1-transcript_6580ce76.docx",
+    transcriptLabel: "Ladda ner transkript (DOCX)",
+    transcriptLabelEn: "Download transcript (DOCX)",
+    ogDescription: "0 av 15 punkter berördes direkt. 9 indirekt. Ingen partiledare nämnde AI, digitalisering eller kompetensvalidering som integrationsverktyg.",
+    ogDescriptionEn: "0 of 15 points addressed directly. 9 indirectly. No party leader mentioned AI, digitalisation or competence validation as integration tools.",
   },
   {
     id: "ai-sweden-etr-2026-05",
@@ -462,5 +472,10 @@ Three things the interview showed:
     jjFinalCommentEn: "This is the most hopeful analysis I've done so far. Not because ETR has all the answers, but because she has the right infrastructure thinking. If someone sits down with her and says 'everything you just said about AI in agencies, research scholarships and sandboxes, now imagine the recipient isn't a Swedish engineer but a Syrian surgeon who's waited 18 months for their license', I think the penny would drop immediately. The Centre Party is the party closest to being able to adopt the entire programme. They just need to make that final connection.",
     pdfUrl: "/manus-storage/etr-ai-sweden-analys_e642f0cf.pdf",
     mdUrl: "/manus-storage/etr-ai-sweden-analys_e150b613.md",
+    transcriptUrl: "/manus-storage/AUDIO-2026-05-26-22-44-29.mp3_2caab3bd.txt",
+    transcriptLabel: "Ladda ner transkript (TXT)",
+    transcriptLabelEn: "Download transcript (TXT)",
+    ogDescription: "ETR når 4 direkta och 8 indirekta matchningar mot de 15 punkterna. Hennes AI-infrastrukturtänk är förutsättningen för programmet, men kopplingen till integration saknas.",
+    ogDescriptionEn: "ETR scores 4 direct and 8 indirect matches against the 15 points. Her AI infrastructure thinking is the prerequisite for the programme, but the connection to integration is missing.",
   },
 ];
