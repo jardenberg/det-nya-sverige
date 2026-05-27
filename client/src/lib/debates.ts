@@ -244,4 +244,223 @@ Three things the debate showed:
     pdfUrl: "/manus-storage/debatt-analys-1_7a9c0fcd.pdf",
     mdUrl: "/manus-storage/debatt-analys-1_ee1b4b1b.md",
   },
+  {
+    id: "ai-sweden-etr-2026-05",
+    date: "2026-05-26",
+    title: "Elisabeth Thand Ringqvist (C) om AI-politik",
+    titleEn: "Elisabeth Thand Ringqvist (C) on AI Policy",
+    subtitle: "37 minuter om AI-infrastruktur som aldrig kopplas till integration",
+    subtitleEn: "37 minutes on AI infrastructure never connected to integration",
+    source: "AI Sweden Podcast",
+    duration: "37 minuter",
+    participants: [
+      "Elisabeth Thand Ringqvist (C)",
+      "Anders Thoresson (AI Sweden)",
+    ],
+    summary: `I en djupintervju med AI Sweden beskriver Centerpartiets partiledare Elisabeth Thand Ringqvist en AI-politik som i praktiken utgör infrastrukturen för Det Nya Sveriges 15 punkter, utan att hon någonsin gör den kopplingen själv. Hon talar om AI-general, myndighetseffektivisering, regulatoriska sandlådor, en miljard till forskarstipendier, och arbetsmarknadens omställning. Det som saknas är den sista länken: att denna infrastruktur kan lösa integrationens friktion. ETR bygger motorvägen men pratar aldrig om vart den leder.`,
+    summaryEn: `In a deep interview with AI Sweden, the Centre Party leader Elisabeth Thand Ringqvist describes an AI policy that in practice constitutes the infrastructure for Det Nya Sverige's 15 points, without ever making that connection herself. She talks about an AI general, government efficiency, regulatory sandboxes, a billion SEK for research scholarships, and labour market transformation. What's missing is the final link: that this infrastructure can solve integration's friction. ETR builds the motorway but never talks about where it leads.`,
+    sections: [
+      {
+        title: "AI i offentlig förvaltning",
+        titleEn: "AI in public administration",
+        facts: [
+          "En mindre myndighet har redan byggt en AI-lösning för inkommande ärenden och sparat personal",
+          "Myndigheterna saknar incitament att använda AI",
+          "C vill ha en 'AI-general' med ett råd nära regeringskansliet",
+          "Varje viktig myndighet bör ha en AI-ansvarig",
+          "Administrativa pengar borde flyttas till kärnverksamhet (vård, skola)",
+        ],
+        factsEn: [
+          "A smaller agency has already built an AI solution for incoming cases, saving staff",
+          "Government agencies lack incentives to use AI",
+          "C wants an 'AI general' with a council close to the government offices",
+          "Every important agency should have an AI officer",
+          "Administrative funds should move to core services (healthcare, education)",
+        ],
+        quotes: [
+          { text: "Myndigheterna måste ju få incitament att verkligen använda AI för den typen av bedömningar som är ganska transaktionella, enkla.", speaker: "Elisabeth Thand Ringqvist (C)" },
+          { text: "Det vore ju toppen om vi kan flytta administrativa pengar till pengar där det händer och människor är absolut viktiga.", speaker: "Elisabeth Thand Ringqvist (C)" },
+        ],
+        connection: "Direkt koppling till punkt 1 (AI i offentlig förvaltning som plattform), punkt 14 (snabb rättsstat med AI-stöd) och indirekt punkt 15 (mätbarhet). ETR:s vision om att flytta resurser från administration till kärnverksamhet är exakt den logik punkt 1 bygger på: staten som plattform, inte hinderbana.",
+        connectionEn: "Direct connection to point 1 (AI in public administration as platform), point 14 (fast rule of law with AI support) and indirectly point 15 (measurability). ETR's vision of moving resources from administration to core services is exactly the logic point 1 builds on: the state as platform, not obstacle course.",
+        jjComment: "ETR beskriver exakt den infrastruktur som de 15 punkterna förutsätter, utan att nämna integration. Det är som att bygga motorvägen utan att prata om vart den leder. Frågan är om det är medveten avgränsning eller om kopplingen AI-infrastruktur → integrationslösningar inte finns i hennes mentala modell. Jag tror det senare. Och det är synd, för hennes resonemang om incitament och AI-ansvariga på myndigheter är precis vad Migrationsverket och AF behöver.",
+        jjCommentEn: "ETR describes exactly the infrastructure the 15 points presuppose, without mentioning integration. It's like building the motorway without talking about where it leads. The question is whether it's a deliberate delimitation or whether the connection AI infrastructure → integration solutions doesn't exist in her mental model. I believe the latter. And that's a shame, because her reasoning about incentives and AI officers at agencies is precisely what the Migration Agency and Employment Service need.",
+      },
+      {
+        title: "Internationell talang och forskning",
+        titleEn: "International talent and research",
+        facts: [
+          "C vill satsa 1 miljard kronor på att locka internationella AI-forskare och doktorander",
+          "Modellen inspirerad av Life Science Lab i Stockholm (samarbete mellan universitet)",
+          "Sverige ska vara bäst på applicerad AI-forskning, inte nödvändigtvis grundmodeller",
+          "Stipendier och utlysningar ska locka de bästa att tillbringa fyra år i Sverige",
+        ],
+        factsEn: [
+          "C wants to invest 1 billion SEK to attract international AI researchers and PhD students",
+          "Model inspired by Life Science Lab in Stockholm (university collaboration)",
+          "Sweden should excel at applied AI research, not necessarily foundation models",
+          "Scholarships and calls should attract the best to spend four years in Sweden",
+        ],
+        quotes: [
+          { text: "Vi kanske inte kommer vara bäst på att sätta upp nya grundmodeller eller språkmodeller. Men däremot den applicerade forskningen ska vi vara bra på.", speaker: "Elisabeth Thand Ringqvist (C)" },
+          { text: "Vi har sagt att vi borde lägga en miljard på att locka hit studenter från hela världen som kan doktorera eller gå vidare och få sina professurer i Sverige.", speaker: "Elisabeth Thand Ringqvist (C)" },
+        ],
+        connection: "Direkt matchning med punkt 12 (Student till byggare av Sverige). ETR vill locka internationell talang och ge dem förutsättningar. Det är punkt 12:s logik: investera i utbildning, bygg övergångsspår. Det som saknas: det automatiska övergångsspåret efter examen och löftet om automatiskt uppehållstillstånd.",
+        connectionEn: "Direct match with point 12 (Student to builder of Sweden). ETR wants to attract international talent and give them conditions. It's point 12's logic: invest in education, build transition tracks. What's missing: the automatic transition track after graduation and the promise of automatic residence permits.",
+        jjComment: "En miljard till AI-forskarstipendier är bra. Men det intressanta är vad som händer efter de fyra åren. Om vi lockar hit världens bästa AI-forskare och sedan kör dem genom samma byråkratiska kvarn som alla andra, har vi bara byggt en dyrare version av samma problem. Punkt 12 löser det. ETR:s förslag är halva lösningen.",
+        jjCommentEn: "A billion for AI research scholarships is good. But the interesting part is what happens after those four years. If we attract the world's best AI researchers and then run them through the same bureaucratic mill as everyone else, we've just built a more expensive version of the same problem. Point 12 solves that. ETR's proposal is half the solution.",
+      },
+      {
+        title: "Arbetsmarknad och omställning",
+        titleEn: "Labour market and transition",
+        facts: [
+          "ETR jämför AI-omställningen med globaliseringens tidiga fas (tillverkning till Kina)",
+          "Civilingenjörer, samhällsvetare, ekonomer och jurister tappar instegsjobb",
+          "Kontorsarbete försvinner som manuell bokföring försvann",
+          "Människonära yrken (läkare, sjuksköterskor, poliser) kommer inte ersättas",
+          "Samhället behöver en 'upplysande debatt' om framtidsjobb",
+        ],
+        factsEn: [
+          "ETR compares AI transition to early globalisation (manufacturing to China)",
+          "Engineers, social scientists, economists and lawyers losing entry-level jobs",
+          "Office work disappearing like manual bookkeeping disappeared",
+          "People-facing professions (doctors, nurses, police) won't be replaced",
+          "Society needs an 'enlightening debate' about future jobs",
+        ],
+        quotes: [
+          { text: "Det finns ju, och det hörde vi på radion senast idag, om civilingenjörer och samhällsvetare och ekonomer och jurister där en hel del av instegsjobben har försvunnit.", speaker: "Elisabeth Thand Ringqvist (C)" },
+          { text: "Samma sak händer ju nu när det gäller mer avancerade arbetsuppgifter, eller beskrivningar av PM och annat.", speaker: "Elisabeth Thand Ringqvist (C)" },
+        ],
+        connection: "Indirekt koppling till punkt 4 (snabbfil till bristyrken) och punkt 5 (första jobb inom 180 dagar). ETR identifierar problemet men föreslår ingen konkret mekanism. Manifestet föreslår AI-matchning, digitala snabbspår och kompetensbevis. ETR stannar vid 'upplysande debatt'.",
+        connectionEn: "Indirect connection to point 4 (fast track to shortage occupations) and point 5 (first job within 180 days). ETR identifies the problem but proposes no concrete mechanism. The manifesto proposes AI matching, digital fast tracks and competence proof. ETR stops at 'enlightening debate'.",
+        jjComment: "ETR beskriver problemet korrekt men hennes lösning är 'upplysande debatt'. Det är ungefär som att säga att lösningen på bostadskrisen är 'en bra diskussion om arkitektur'. De 15 punkterna ger konkreta verktyg: AI-matchning, kompetenspass, 180-dagarsgaranti. Det är skillnaden mellan att diagnostisera och att behandla.",
+        jjCommentEn: "ETR describes the problem correctly but her solution is 'enlightening debate'. That's roughly like saying the solution to the housing crisis is 'a good discussion about architecture'. The 15 points provide concrete tools: AI matching, competence passport, 180-day guarantee. It's the difference between diagnosing and treating.",
+      },
+      {
+        title: "Reglering och innovation",
+        titleEn: "Regulation and innovation",
+        facts: [
+          "EU:s AI-reglering (AI Act) är för strikt enligt ETR, riskerar att hämma innovation",
+          "Om Europa reglerar för hårt utvecklas AI i Kina och USA istället",
+          "Storbritannien har regulatoriska sandlådor med myndighetstillsyn",
+          "C vill ha 'innovationsanpassad reglering' i EU",
+          "Balans: tuffare på konsumentsidan, lösare på innovationssidan",
+        ],
+        factsEn: [
+          "EU's AI regulation (AI Act) is too strict according to ETR, risks hampering innovation",
+          "If Europe over-regulates, AI develops in China and USA instead",
+          "UK has regulatory sandboxes with agency oversight",
+          "C wants 'innovation-adapted regulation' in EU",
+          "Balance: tougher on consumer side, looser on innovation side",
+        ],
+        quotes: [
+          { text: "Om vi har för strikt lagstiftning här, då kommer den att utvecklas i Kina och USA. Då kommer vi att vara mottagare av en smartare AI än vi själva har förmåga att utveckla. Det är ju en katastrof för Europa.", speaker: "Elisabeth Thand Ringqvist (C)" },
+        ],
+        connection: "Indirekt koppling till punkt 9 (AI-system som granskas för bias) och punkt 15 (öppna testbäddar). ETR:s sandlådor tangerar punkt 15:s vision. Men hennes fokus är på att minska reglering, medan manifestet vill ha smart reglering: granska för bias men öppna för innovation.",
+        connectionEn: "Indirect connection to point 9 (AI systems audited for bias) and point 15 (open testbeds). ETR's sandboxes touch point 15's vision. But her focus is on reducing regulation, while the manifesto wants smart regulation: audit for bias but open for innovation.",
+        jjComment: "Här finns en intressant spänning. ETR vill ha mindre reglering för att inte hämma innovation. Manifestet vill ha smart reglering som granskar AI för bias men öppnar för experiment. Det är inte samma sak, men det är inte heller motsatser. En AI-general med mandat att både öppna sandlådor OCH granska bias vore den syntes som varken ETR eller manifestet riktigt formulerar.",
+        jjCommentEn: "There's an interesting tension here. ETR wants less regulation to not hamper innovation. The manifesto wants smart regulation that audits AI for bias but opens for experimentation. It's not the same thing, but they're not opposites either. An AI general with mandate to both open sandboxes AND audit for bias would be the synthesis that neither ETR nor the manifesto quite articulates.",
+      },
+      {
+        title: "Utbildning och AI i skolan",
+        titleEn: "Education and AI in schools",
+        facts: [
+          "'Pärm och skärm': barn ska lära sig grundläggande hantverk OCH AI-verktyg",
+          "AI kan ge interaktiva dialoger med historiska figurer (Gustav Vasa, Karl XII)",
+          "Elever med svårare för inläsning kan ha lättare för interaktiv dialog",
+          "Kritiskt tänkande och förmåga att identifiera fejk är centralt",
+          "Man måste lära sig grunderna innan man använder verktyg",
+        ],
+        factsEn: [
+          "'Book and screen': children should learn basic craft AND AI tools",
+          "AI can provide interactive dialogues with historical figures (Gustav Vasa, Karl XII)",
+          "Students struggling with reading may find interactive dialogue easier",
+          "Critical thinking and ability to identify fakes is central",
+          "Must learn fundamentals before using tools",
+        ],
+        quotes: [
+          { text: "Du kan sitta där och så kan du ha Gustav Vasa och så kan du prata med Gustav Vasa. Varför gjorde du så där?", speaker: "Elisabeth Thand Ringqvist (C)" },
+          { text: "Jag tror att blandningen av de här kommer också göra att elever som har svårare för det, den inläsningen kommer också kunna ha lättare för många ämnen.", speaker: "Elisabeth Thand Ringqvist (C)" },
+        ],
+        connection: "Indirekt koppling till punkt 7 (barnen först, alltid). ETR talar om AI i skolan generellt men nämner aldrig flerspråkiga elever, studiehandledning på modersmål, eller nyanlända barns specifika utmaningar. Manifestet handlar om att ge flerspråkiga barn verktyg; ETR talar om alla barn.",
+        connectionEn: "Indirect connection to point 7 (children first, always). ETR talks about AI in schools generally but never mentions multilingual students, study guidance in mother tongue, or the specific challenges of newly arrived children. The manifesto is about giving multilingual children tools; ETR talks about all children.",
+        jjComment: "ETR:s Gustav Vasa-exempel är charmigt men avslöjande. Hon tänker på AI i skolan som ett verktyg för alla barn, inte som en hävstång för de barn som har störst behov. Ett barn som talar dari hemma och svenska i skolan skulle ha enormt mycket mer nytta av en AI-tutor som kan förklara på dari och träna svenska simultant. Det är punkt 7. Men den kopplingen gör hon aldrig.",
+        jjCommentEn: "ETR's Gustav Vasa example is charming but revealing. She thinks of AI in schools as a tool for all children, not as a lever for those with the greatest needs. A child speaking Dari at home and Swedish at school would benefit enormously more from an AI tutor that can explain in Dari and train Swedish simultaneously. That's point 7. But she never makes that connection.",
+      },
+      {
+        title: "Digital suveränitet och europeisk infrastruktur",
+        titleEn: "Digital sovereignty and European infrastructure",
+        facts: [
+          "Europa behöver egen digital infrastruktur och egna språkmodeller",
+          "Risk att bolag köps av aktörer som innebär tappad datakontroll",
+          "Balansen mellan suveränitet och öppenhet är svår men nödvändig",
+          "Kvantdatorer kan bli nästa stora språng: 'kombinationen av AI och kvant'",
+          "AI-generalen bör styra diskussionen om digital suveränitet",
+        ],
+        factsEn: [
+          "Europe needs its own digital infrastructure and language models",
+          "Risk of companies being acquired by actors causing loss of data control",
+          "Balance between sovereignty and openness is difficult but necessary",
+          "Quantum computers may be the next big leap: 'the combination of AI and quantum'",
+          "The AI general should steer the discussion on digital sovereignty",
+        ],
+        quotes: [
+          { text: "Vi tyckte att det var väl toppen att USA byggde upp allt och vi inte har någonting. Tills att vi nu inser att för vår framtid och för vår europeiska robusthet så behöver vi bygga en hel del även i Europa.", speaker: "Elisabeth Thand Ringqvist (C)" },
+        ],
+        connection: "Tredje ordningens koppling till punkt 1, 3 och 10. Om Europa bygger egen AI-infrastruktur kan den användas för de 15 punkternas lösningar utan beroendeställning till USA/Kina. Europeisk AI-suveränitet → svensk offentlig AI-infrastruktur → integrationslösningar som fungerar.",
+        connectionEn: "Third-order connection to points 1, 3 and 10. If Europe builds its own AI infrastructure, it can be used for the 15 points' solutions without dependency on USA/China. European AI sovereignty → Swedish public AI infrastructure → integration solutions that work.",
+        jjComment: "Det här är den mest intressanta underströmmen i hela intervjun. ETR förstår att digital suveränitet inte bara handlar om säkerhet utan om handlingsfrihet. Om Sverige ska bygga en AI-lots i fickan (punkt 1), en AI-språkcoach (punkt 3), eller ett AI-stött kompetenspass (punkt 2), behöver vi infrastruktur vi kontrollerar. ETR bygger argumentet utan att dra slutsatsen. Men slutsatsen finns där.",
+        jjCommentEn: "This is the most interesting undercurrent in the entire interview. ETR understands that digital sovereignty isn't just about security but about freedom of action. If Sweden is to build an AI guide in the pocket (point 1), an AI language coach (point 3), or an AI-supported competence passport (point 2), we need infrastructure we control. ETR builds the argument without drawing the conclusion. But the conclusion is there.",
+      },
+    ],
+    pointMatches: [
+      { pointId: 1, pointTitle: "Ett Sverige in, inte femton köer", relevance: "indirect", closestParties: ["C"], comment: "Talar om AI i myndigheter och incitament att effektivisera, men nämner aldrig den samlade digitala onboardingen" },
+      { pointId: 2, pointTitle: "100-dagarsgaranti för kompetens", relevance: "none", closestParties: [], comment: "Nämner aldrig kompetensvalidering, utländska examina eller tidsgarantier" },
+      { pointId: 3, pointTitle: "Svenska genom arbete, inte före arbete", relevance: "none", closestParties: [], comment: "Nämner aldrig språkträning, SFI eller AI-språkcoach" },
+      { pointId: 4, pointTitle: "Nationell snabbfil till bristyrken", relevance: "indirect", closestParties: ["C"], comment: "Talar om att bristyrken behöver folk och att omställning krävs, men föreslår ingen snabbfil" },
+      { pointId: 5, pointTitle: "Första riktiga jobbet inom 180 dagar", relevance: "indirect", closestParties: ["C"], comment: "Identifierar att instegsjobb försvinner, men ingen konkret matchningslösning" },
+      { pointId: 6, pointTitle: "Bosätt efter möjlighet, inte passivitet", relevance: "none", closestParties: [], comment: "Nämner aldrig bosättning eller datadriven placering" },
+      { pointId: 7, pointTitle: "Barnen först, alltid", relevance: "indirect", closestParties: ["C"], comment: "Talar om AI i skolan men aldrig om flerspråkiga barn specifikt" },
+      { pointId: 8, pointTitle: "Hård mot exploatering, mjuk mot människor", relevance: "indirect", closestParties: ["C"], comment: "Talar om konsumentskydd och reglering men aldrig om arbetslivskriminalitet" },
+      { pointId: 9, pointTitle: "Nolltolerans mot diskriminering", relevance: "indirect", closestParties: ["C"], comment: "Tangerar bias-granskning via regulatoriska sandlådor" },
+      { pointId: 10, pointTitle: "Digitalt medlemskap från dag ett", relevance: "indirect", closestParties: ["C"], comment: "Talar om myndighetsdigitalisering men aldrig om digital identitet för nyanlända" },
+      { pointId: 11, pointTitle: "Europas enklaste land att starta företag i", relevance: "direct", closestParties: ["C"], comment: "Talar explicit om innovationskluster, entreprenörskap och sänkta trösklar" },
+      { pointId: 12, pointTitle: "Student till byggare av Sverige", relevance: "direct", closestParties: ["C"], comment: "Explicit: 1 miljard för att locka internationella forskare, inspirerat av Life Science Lab" },
+      { pointId: 13, pointTitle: "Cirkulär rörlighet som styrka", relevance: "direct", closestParties: ["C"], comment: "Tangerar diaspora-logiken: 'de bästa forskarna kanske inte alltid finns i Sverige'" },
+      { pointId: 14, pointTitle: "Snabb och förutsägbar rättsstat", relevance: "direct", closestParties: ["C"], comment: "AI-general som effektiviserar myndigheter, AI för transaktionella bedömningar" },
+      { pointId: 15, pointTitle: "Integration som nationell elitgren", relevance: "indirect", closestParties: ["C"], comment: "Öppna testbäddar och sandlådor tangeras, men aldrig kopplat till integration som mätbar disciplin" },
+    ],
+    partyRankings: [
+      { party: "Centerpartiet", abbreviation: "C", score: 8, maxScore: 15, reasoning: "ETR når 4 direkta och 8 indirekta matchningar. Hennes AI-infrastrukturtänk är i princip förutsättningen för de 15 punkterna. Det som saknas är den explicita kopplingen till integration." },
+    ],
+    missingThemes: [
+      { theme: "Integration som designproblem", themeEn: "Integration as design problem", points: "Alla", comment: "ETR talar om AI som infrastruktur för samhället i stort men gör aldrig kopplingen till integration specifikt", commentEn: "ETR talks about AI as infrastructure for society broadly but never connects it to integration specifically" },
+      { theme: "Den enskilda människans upplevelse", themeEn: "The individual's experience", points: "1, 2, 3, 5, 10, 14", comment: "Talar om myndigheter, företag och system men aldrig om den somalisktalande läkaren som kör taxi", commentEn: "Talks about agencies, companies and systems but never about the Somali-speaking doctor driving a taxi" },
+      { theme: "Konkreta tidsgarantier", themeEn: "Concrete time guarantees", points: "2, 5, 10, 14", comment: "Manifestet har 100-dagarsgaranti, 180-dagarsgaranti, 24 timmars digital identitet. ETR har 'vi borde' och 'det behövs'", commentEn: "The manifesto has 100-day guarantee, 180-day guarantee, 24-hour digital identity. ETR has 'we should' and 'it's needed'" },
+      { theme: "Kompetensvalidering", themeEn: "Competence validation", points: "2, 4", comment: "Aldrig nämnt trots att det är en av de mest konkreta AI-tillämpningarna", commentEn: "Never mentioned despite being one of the most concrete AI applications" },
+      { theme: "AI-stödd språkträning", themeEn: "AI-supported language training", points: "3", comment: "Aldrig nämnt trots att intervjun handlar om AI:s möjligheter", commentEn: "Never mentioned despite the interview being about AI's possibilities" },
+    ],
+    conclusion: `Elisabeth Thand Ringqvist är den svenska partiledare som ligger närmast Det Nya Sveriges grundpremiss: att AI är infrastruktur, inte gadget. Hennes resonemang om AI-general, myndighetseffektivisering, internationell talang och innovationsanpassad reglering är i princip förutsättningarna för att de 15 punkterna ska kunna byggas.
+
+Men hon gör aldrig det sista steget: att koppla AI-infrastrukturen till integrationens konkreta utmaningar. Det är som att bygga bredband till varje hushåll utan att fundera på vad folk ska använda det till.
+
+Tre saker intervjun visade:
+
+1. ETR förstår AI på en nivå som ingen annan partiledare visat offentligt.
+2. Hon har konkreta förslag (1 miljard till forskarstipendier, AI-general, regulatoriska sandlådor).
+3. Men kopplingen AI → integration → samhällsbygge saknas helt. Det är ett blindfält, inte en oenighet.`,
+    conclusionEn: `Elisabeth Thand Ringqvist is the Swedish party leader closest to Det Nya Sverige's core premise: that AI is infrastructure, not gadget. Her reasoning about an AI general, government efficiency, international talent and innovation-adapted regulation are essentially the prerequisites for the 15 points to be built.
+
+But she never takes the final step: connecting AI infrastructure to integration's concrete challenges. It's like building broadband to every household without thinking about what people will use it for.
+
+Three things the interview showed:
+
+1. ETR understands AI at a level no other party leader has shown publicly.
+2. She has concrete proposals (1 billion for research scholarships, AI general, regulatory sandboxes).
+3. But the connection AI → integration → nation-building is completely absent. It's a blind spot, not a disagreement.`,
+    jjFinalComment: "Det här är den mest hoppfulla analysen jag gjort hittills. Inte för att ETR har alla svaren, utan för att hon har rätt infrastruktur-tänk. Om någon sätter sig ner med henne och säger 'allt det du just sa om AI i myndigheter, forskarstipendier och sandlådor, tänk nu att mottagaren inte är en svensk civilingenjör utan en syrisk kirurg som väntat 18 månader på att få sin legitimation', tror jag att polletten trillar ner direkt. Centerpartiet är det parti som ligger närmast att kunna adoptera hela programmet. De behöver bara göra den sista kopplingen.",
+    jjFinalCommentEn: "This is the most hopeful analysis I've done so far. Not because ETR has all the answers, but because she has the right infrastructure thinking. If someone sits down with her and says 'everything you just said about AI in agencies, research scholarships and sandboxes, now imagine the recipient isn't a Swedish engineer but a Syrian surgeon who's waited 18 months for their license', I think the penny would drop immediately. The Centre Party is the party closest to being able to adopt the entire programme. They just need to make that final connection.",
+    pdfUrl: "/manus-storage/etr-ai-sweden-analys_e642f0cf.pdf",
+    mdUrl: "/manus-storage/etr-ai-sweden-analys_e150b613.md",
+  },
 ];

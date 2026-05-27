@@ -130,3 +130,15 @@
 - [x] Make it shine (animated, eye-catching)
 - [x] Bilingual (sv/en)
 - [x] Update version number to v096b
+
+## ETR/AI Sweden Interview Analysis (v097b)
+- [x] Read and analyze ETR/AI Sweden interview transcript
+- [x] Match interview statements against each of the 15 manifesto points
+- [x] Create comprehensive analysis with point-by-point matching (including 2nd/3rd order consequences)
+- [x] Add JJ comments where relevant
+- [x] Generate downloadable PDF of the analysis
+- [x] Add as second card on /debatter page
+- [x] Update banner to show latest analysis and total count
+- [x] Update page description to cover interviews too
+- [x] Write/update tests for new entry
+- [x] Update version number to v097b

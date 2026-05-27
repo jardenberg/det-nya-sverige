@@ -147,7 +147,7 @@ function DebateCard({ debate }: { debate: DebateAnalysis }) {
               {/* Debate sections */}
               <div>
                 <h4 className="font-display text-lg font-semibold mb-4" style={{ color: "#2c1810" }}>
-                  {lang === "sv" ? "Debattens ämnen" : "Debate topics"}
+                  {lang === "sv" ? "Teman" : "Topics"}
                 </h4>
                 <div className="space-y-3">
                   {debate.sections.map((section, idx) => (
@@ -454,8 +454,8 @@ export default function Debates() {
           </p>
           <p className="font-body text-sm mt-4 leading-relaxed" style={{ color: "#5a4a3a" }}>
             {lang === "sv"
-              ? "Inför valet 2026 analyserar vi varje partiledardebatt mot de 15 punkterna i Det Nya Sverige. Syftet är inte att rangordna partier, utan att synliggöra vad som diskuteras, vad som saknas, och var de 15 punkterna erbjuder ett annat perspektiv. Fakta skiljs tydligt från spekulation."
-              : "Ahead of the 2026 election, we analyse each party leader debate against the 15 points of The New Sweden. The purpose is not to rank parties, but to make visible what is discussed, what is missing, and where the 15 points offer a different perspective. Facts are clearly separated from speculation."}
+              ? "Inför valet 2026 analyserar vi debatter, intervjuer och uttalanden mot de 15 punkterna i Det Nya Sverige. Syftet är inte att rangordna partier, utan att synliggöra vad som diskuteras, vad som saknas, och var de 15 punkterna erbjuder ett annat perspektiv. Fakta skiljs tydligt från spekulation."
+              : "Ahead of the 2026 election, we analyse debates, interviews and statements against the 15 points of The New Sweden. The purpose is not to rank parties, but to make visible what is discussed, what is missing, and where the 15 points offer a different perspective. Facts are clearly separated from speculation."}
           </p>
         </motion.div>
 

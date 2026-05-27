@@ -53,6 +53,30 @@ describe("Debates data structure", () => {
     }
   });
 
+  it("should have the ETR/AI Sweden interview as second entry", () => {
+    expect(debates.length).toBeGreaterThanOrEqual(2);
+    const etr = debates[1];
+    expect(etr.id).toBe("ai-sweden-etr-2026-05");
+    expect(etr.source).toBe("AI Sweden Podcast");
+    expect(etr.participants).toContain("Elisabeth Thand Ringqvist (C)");
+    expect(etr.partyRankings.length).toBe(1); // Single party interview
+    expect(etr.partyRankings[0].abbreviation).toBe("C");
+    expect(etr.partyRankings[0].score).toBe(8);
+    expect(etr.sections.length).toBe(6);
+  });
+
+  it("should have valid party rankings for all entries", () => {
+    for (const debate of debates) {
+      for (const pr of debate.partyRankings) {
+        expect(pr.score).toBeGreaterThanOrEqual(0);
+        expect(pr.score).toBeLessThanOrEqual(pr.maxScore);
+        expect(pr.abbreviation).toBeTruthy();
+        expect(pr.party).toBeTruthy();
+        expect(pr.reasoning).toBeTruthy();
+      }
+    }
+  });
+
   it("should have debate sections with facts and quotes", () => {
     for (const debate of debates) {
       expect(debate.sections.length).toBeGreaterThan(0);

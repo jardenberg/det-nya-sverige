@@ -2,27 +2,29 @@
  * DebateBanner – A visually striking "news flash" banner
  * linking to the debate analysis page.
  * Placed high on the homepage, after the hero section.
- * Animated entrance, warm theme, eye-catching without being garish.
+ * Shows the latest analysis and a count of total analyses.
  */
 
 import { motion } from "framer-motion";
 import { useLang } from "@/contexts/LanguageContext";
 import { Link } from "wouter";
 import { ArrowRight, Zap } from "lucide-react";
+import { debates } from "@/lib/debates";
 
 export default function DebateBanner() {
   const { lang, langPrefix } = useLang();
 
-  const title = lang === "sv"
-    ? "Ny analys: Partiledardebatten vs. de 15 punkterna"
-    : "New analysis: Party leader debate vs. the 15 points";
+  // Show the latest debate/interview analysis
+  const latest = debates[debates.length - 1];
+  const totalCount = debates.length;
 
-  const subtitle = lang === "sv"
-    ? "0 punkter berördes direkt. 9 indirekt. 6 inte alls. Ingen nämnde AI, digitalisering eller kompetensvalidering."
-    : "0 points addressed directly. 9 indirectly. 6 not at all. No one mentioned AI, digitalisation or competence validation.";
+  const title = lang === "sv" ? latest.title : latest.titleEn;
+  const subtitle = lang === "sv" ? latest.subtitle : latest.subtitleEn;
 
   const cta = lang === "sv" ? "Läs analysen" : "Read the analysis";
-  const date = "2026-05-03";
+  const countLabel = lang === "sv"
+    ? `${totalCount} analyser`
+    : `${totalCount} analyses`;
 
   return (
     <motion.div
@@ -59,7 +61,7 @@ export default function DebateBanner() {
 
             {/* Content */}
             <div className="flex-1 min-w-0">
-              <div className="flex items-center gap-3 mb-1">
+              <div className="flex items-center gap-3 mb-1 flex-wrap">
                 <span
                   className="inline-block px-2 py-0.5 rounded-sm font-mono-display text-[10px] tracking-widest uppercase"
                   style={{ backgroundColor: "#9B6B1A", color: "#fff" }}
@@ -67,8 +69,16 @@ export default function DebateBanner() {
                   {lang === "sv" ? "Nytt" : "New"}
                 </span>
                 <span className="font-mono-display text-[11px] tracking-wider" style={{ color: "#b0a090" }}>
-                  {date}
+                  {latest.date} · {latest.source}
                 </span>
+                {totalCount > 1 && (
+                  <span
+                    className="inline-block px-2 py-0.5 rounded-sm font-mono-display text-[10px] tracking-wider"
+                    style={{ backgroundColor: "oklch(0.92 0.01 55)", color: "#5a4a3a" }}
+                  >
+                    {countLabel}
+                  </span>
+                )}
               </div>
 
               <h3
