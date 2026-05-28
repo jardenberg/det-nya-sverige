@@ -156,3 +156,7 @@
 - [x] Upload transcripts and add download links alongside PDF/MD
 - [x] Update methodology text to cover interviews (not just debates)
 - [x] Update version number to v098b
+
+## Bug Fix: Accordion scroll jump (v098b)
+- [x] When collapsing a topic section by clicking next one, viewport jumps because content above shrinks without scroll compensation
+- [x] Fix: scroll to the newly opened section header when toggling

@@ -11,7 +11,7 @@ import { useLang } from "@/contexts/LanguageContext";
 import { Link, useParams } from "wouter";
 import { ArrowLeft, Download, ChevronDown, ChevronUp, MessageSquareQuote, AlertTriangle, LinkIcon, Check } from "lucide-react";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
-import { debates, type DebateAnalysis } from "@/lib/debates";
+import { debates, type DebateAnalysis, type DebateSection } from "@/lib/debates";
 
 function DirectLinkButton({ debateId, lang, langPrefix }: { debateId: string; lang: string; langPrefix: string }) {
   const [copied, setCopied] = useState(false);
@@ -72,6 +72,122 @@ function ScoreBar({ score, maxScore }: { score: number; maxScore: number }) {
       <span className="font-mono-display text-xs tracking-wider" style={{ color: "#9B6B1A" }}>
         {score}/{maxScore}
       </span>
+    </div>
+  );
+}
+
+function SectionAccordion({ idx, section, lang, activeSection, setActiveSection }: {
+  idx: number;
+  section: DebateSection;
+  lang: string;
+  activeSection: number | null;
+  setActiveSection: (idx: number | null) => void;
+}) {
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  const handleToggle = () => {
+    if (activeSection === idx) {
+      setActiveSection(null);
+    } else {
+      setActiveSection(idx);
+      // Scroll to this section header after the previous one collapses
+      setTimeout(() => {
+        sectionRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }, 350);
+    }
+  };
+
+  return (
+    <div
+      ref={sectionRef}
+      className="rounded-sm overflow-hidden"
+      style={{ backgroundColor: "oklch(0.99 0.005 80 / 0.8)", border: "1px solid oklch(0.18 0.02 50 / 0.05)" }}
+    >
+      <div
+        className="p-4 cursor-pointer flex items-center justify-between"
+        onClick={handleToggle}
+      >
+        <span className="font-body text-sm font-medium" style={{ color: "#2c1810" }}>
+          {lang === "sv" ? section.title : section.titleEn}
+        </span>
+        {activeSection === idx ? (
+          <ChevronUp size={16} style={{ color: "#9B6B1A" }} />
+        ) : (
+          <ChevronDown size={16} style={{ color: "#9B6B1A" }} />
+        )}
+      </div>
+
+      <AnimatePresence>
+        {activeSection === idx && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="overflow-hidden"
+          >
+            <div className="px-4 pb-4 space-y-4" style={{ borderTop: "1px solid oklch(0.18 0.02 50 / 0.04)" }}>
+              {/* Facts */}
+              <div className="pt-3">
+                <p className="font-mono-display text-xs tracking-wider mb-2" style={{ color: "#9B6B1A" }}>
+                  {lang === "sv" ? "FAKTA FR\u00c5N DEBATTEN" : "FACTS FROM THE DEBATE"}
+                </p>
+                <ul className="space-y-1">
+                  {(lang === "sv" ? section.facts : section.factsEn).map((fact: string, i: number) => (
+                    <li key={i} className="font-body text-xs leading-relaxed pl-3" style={{ color: "#5a4a3a", borderLeft: "2px solid #e8dfd4" }}>
+                      {fact}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Quotes */}
+              {section.quotes.length > 0 && (
+                <div>
+                  <p className="font-mono-display text-xs tracking-wider mb-2" style={{ color: "#9B6B1A" }}>
+                    {lang === "sv" ? "CITAT" : "QUOTES"}
+                  </p>
+                  <div className="space-y-2">
+                    {section.quotes.map((q: { text: string; speaker: string }, i: number) => (
+                      <div key={i} className="flex gap-2 items-start">
+                        <MessageSquareQuote size={12} className="flex-shrink-0 mt-1" style={{ color: "#9B6B1A" }} />
+                        <div>
+                          <p className="font-body text-xs italic leading-relaxed" style={{ color: "#5a4a3a" }}>
+                            "{q.text}"
+                          </p>
+                          <p className="font-mono-display text-[10px] tracking-wider mt-0.5" style={{ color: "#b0a090" }}>
+                            {q.speaker}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Connection to 15 points */}
+              <div>
+                <p className="font-mono-display text-xs tracking-wider mb-2" style={{ color: "#9B6B1A" }}>
+                  {lang === "sv" ? "KOPPLING TILL DE 15 PUNKTERNA" : "CONNECTION TO THE 15 POINTS"}
+                </p>
+                <p className="font-body text-xs leading-relaxed" style={{ color: "#5a4a3a" }}>
+                  {lang === "sv" ? section.connection : section.connectionEn}
+                </p>
+              </div>
+
+              {/* JJ comment */}
+              <div className="p-3 rounded-sm" style={{ backgroundColor: "oklch(0.95 0.02 80 / 0.5)", borderLeft: "3px solid #9B6B1A" }}>
+                <p className="font-mono-display text-[10px] tracking-wider mb-1" style={{ color: "#9B6B1A" }}>
+                  // JJ KOMMENTERAR:
+                </p>
+                <p className="font-body text-xs leading-relaxed italic" style={{ color: "#5a4a3a" }}>
+                  {lang === "sv" ? section.jjComment : section.jjCommentEn}
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
@@ -189,97 +305,14 @@ function DebateCard({ debate, startExpanded = false }: { debate: DebateAnalysis;
                 </h4>
                 <div className="space-y-3">
                   {debate.sections.map((section, idx) => (
-                    <div
+                    <SectionAccordion
                       key={idx}
-                      className="rounded-sm overflow-hidden"
-                      style={{ backgroundColor: "oklch(0.99 0.005 80 / 0.8)", border: "1px solid oklch(0.18 0.02 50 / 0.05)" }}
-                    >
-                      <div
-                        className="p-4 cursor-pointer flex items-center justify-between"
-                        onClick={() => setActiveSection(activeSection === idx ? null : idx)}
-                      >
-                        <span className="font-body text-sm font-medium" style={{ color: "#2c1810" }}>
-                          {lang === "sv" ? section.title : section.titleEn}
-                        </span>
-                        {activeSection === idx ? (
-                          <ChevronUp size={16} style={{ color: "#9B6B1A" }} />
-                        ) : (
-                          <ChevronDown size={16} style={{ color: "#9B6B1A" }} />
-                        )}
-                      </div>
-
-                      <AnimatePresence>
-                        {activeSection === idx && (
-                          <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: "auto", opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.3 }}
-                            className="overflow-hidden"
-                          >
-                            <div className="px-4 pb-4 space-y-4" style={{ borderTop: "1px solid oklch(0.18 0.02 50 / 0.04)" }}>
-                              {/* Facts */}
-                              <div className="pt-3">
-                                <p className="font-mono-display text-xs tracking-wider mb-2" style={{ color: "#9B6B1A" }}>
-                                  {lang === "sv" ? "FAKTA FRÅN DEBATTEN" : "FACTS FROM THE DEBATE"}
-                                </p>
-                                <ul className="space-y-1">
-                                  {(lang === "sv" ? section.facts : section.factsEn).map((fact, i) => (
-                                    <li key={i} className="font-body text-xs leading-relaxed pl-3" style={{ color: "#5a4a3a", borderLeft: "2px solid #e8dfd4" }}>
-                                      {fact}
-                                    </li>
-                                  ))}
-                                </ul>
-                              </div>
-
-                              {/* Quotes */}
-                              {section.quotes.length > 0 && (
-                                <div>
-                                  <p className="font-mono-display text-xs tracking-wider mb-2" style={{ color: "#9B6B1A" }}>
-                                    {lang === "sv" ? "CITAT" : "QUOTES"}
-                                  </p>
-                                  <div className="space-y-2">
-                                    {section.quotes.map((q, i) => (
-                                      <div key={i} className="flex gap-2 items-start">
-                                        <MessageSquareQuote size={12} className="flex-shrink-0 mt-1" style={{ color: "#9B6B1A" }} />
-                                        <div>
-                                          <p className="font-body text-xs italic leading-relaxed" style={{ color: "#5a4a3a" }}>
-                                            "{q.text}"
-                                          </p>
-                                          <p className="font-mono-display text-[10px] tracking-wider mt-0.5" style={{ color: "#b0a090" }}>
-                                            {q.speaker}
-                                          </p>
-                                        </div>
-                                      </div>
-                                    ))}
-                                  </div>
-                                </div>
-                              )}
-
-                              {/* Connection to 15 points */}
-                              <div>
-                                <p className="font-mono-display text-xs tracking-wider mb-2" style={{ color: "#9B6B1A" }}>
-                                  {lang === "sv" ? "KOPPLING TILL DE 15 PUNKTERNA" : "CONNECTION TO THE 15 POINTS"}
-                                </p>
-                                <p className="font-body text-xs leading-relaxed" style={{ color: "#5a4a3a" }}>
-                                  {lang === "sv" ? section.connection : section.connectionEn}
-                                </p>
-                              </div>
-
-                              {/* JJ comment */}
-                              <div className="p-3 rounded-sm" style={{ backgroundColor: "oklch(0.95 0.02 80 / 0.5)", borderLeft: "3px solid #9B6B1A" }}>
-                                <p className="font-mono-display text-[10px] tracking-wider mb-1" style={{ color: "#9B6B1A" }}>
-                                  // JJ KOMMENTERAR:
-                                </p>
-                                <p className="font-body text-xs leading-relaxed italic" style={{ color: "#5a4a3a" }}>
-                                  {lang === "sv" ? section.jjComment : section.jjCommentEn}
-                                </p>
-                              </div>
-                            </div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </div>
+                      idx={idx}
+                      section={section}
+                      lang={lang}
+                      activeSection={activeSection}
+                      setActiveSection={setActiveSection}
+                    />
                   ))}
                 </div>
               </div>
