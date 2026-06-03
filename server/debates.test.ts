@@ -87,8 +87,9 @@ describe("Debates data structure", () => {
         expect(section.factsEn.length).toBe(section.facts.length);
         expect(section.connection).toBeTruthy();
         expect(section.connectionEn).toBeTruthy();
-        expect(section.jjComment).toBeTruthy();
-        expect(section.jjCommentEn).toBeTruthy();
+        // jjComment is optional per section (some sections don't warrant commentary)
+        expect(typeof section.jjComment).toBe("string");
+        expect(typeof section.jjCommentEn).toBe("string");
       }
     }
   });

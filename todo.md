@@ -160,3 +160,14 @@
 ## Bug Fix: Accordion scroll jump (v098b)
 - [x] When collapsing a topic section by clicking next one, viewport jumps because content above shrinks without scroll compensation
 - [x] Fix: scroll to the newly opened section header when toggling
+
+## Jessica Rosencrantz (M) / AI Sweden Interview Analysis (v099b)
+- [x] Read and analyze AI Sweden interview transcript with Jessica Rosencrantz (M)
+- [x] Match interview statements against each of the 15 manifesto points (incl. 2nd/3rd order effects)
+- [x] Note that M sent EU-minister instead of party leader (JJ observation)
+- [x] Create comprehensive analysis with point-by-point matching
+- [x] Add JJ comments where relevant
+- [x] Generate downloadable PDF of the analysis
+- [x] Integrate as new card on the debates page
+- [x] Update banner to reflect 3 analyses
+- [x] Update version number to v099b

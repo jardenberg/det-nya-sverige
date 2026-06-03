@@ -165,6 +165,12 @@ const DEBATE_OG: Record<string, { title: string; titleEn: string; desc: string; 
     desc: "ETR n\u00e5r 4 direkta och 8 indirekta matchningar. Hennes AI-infrastrukturt\u00e4nk \u00e4r f\u00f6ruts\u00e4ttningen f\u00f6r programmet, men kopplingen till integration saknas.",
     descEn: "ETR scores 4 direct and 8 indirect matches. Her AI infrastructure thinking is the prerequisite, but the connection to integration is missing.",
   },
+  "ai-sweden-jr-2026-05": {
+    title: "Rosencrantz (M) om AI-politik vs. de 15 punkterna",
+    titleEn: "Rosencrantz (M) on AI Policy vs. the 15 Points",
+    desc: "Rosencrantz (M) n\u00e5r 1 direkt och 8 indirekta matchningar. 'Silicon Valhalla' handlar om techbolag, inte integration. Ordet integration n\u00e4mns inte en enda g\u00e5ng.",
+    descEn: "Rosencrantz (M) scores 1 direct and 8 indirect matches. 'Silicon Valhalla' is about tech companies, not integration. The word integration isn't mentioned once.",
+  },
 };
 
 function extractDebateInfo(url: string): { id: string; lang: "sv" | "en" } | null {

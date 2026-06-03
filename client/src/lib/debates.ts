@@ -478,4 +478,203 @@ Three things the interview showed:
     ogDescription: "ETR når 4 direkta och 8 indirekta matchningar mot de 15 punkterna. Hennes AI-infrastrukturtänk är förutsättningen för programmet, men kopplingen till integration saknas.",
     ogDescriptionEn: "ETR scores 4 direct and 8 indirect matches against the 15 points. Her AI infrastructure thinking is the prerequisite for the programme, but the connection to integration is missing.",
   },
+  {
+    id: "ai-sweden-jr-2026-05",
+    date: "2026-05-26",
+    title: "AI Sweden: Jessica Rosencrantz (M)",
+    titleEn: "AI Sweden: Jessica Rosencrantz (M)",
+    subtitle: "EU-ministern om Silicon Valhalla, talangvisum och AI-verkstaden. Noll om integration.",
+    subtitleEn: "The EU minister on Silicon Valhalla, talent visas and the AI workshop. Zero on integration.",
+    source: "AI Sweden Podcast",
+    duration: "44 min",
+    participants: ["Jessica Rosencrantz (M), EU-minister", "Anders Thoresson (AI Sweden)"],
+    summary: "Jessica Rosencrantz levererar en bred men grund intervju om AI som näringspolitik. Hon täcker hela tech-stacken (el, datacenter, molntjänster, applikationer), nämner personaloptionsprogram, talangvisum, AI-verkstaden, regelförenkling och EU:s AI-akt. Men till skillnad från ETR (C) som hade konkreta siffror, stannar Rosencrantz oftare vid visioner och allmänna villkor. Hennes refräng är 'starta, skala, stanna' och 'Silicon Valhalla'. Det som saknas helt: integration, nyanlända, kompetensvalidering, språkträning, diskriminering. Inte ett ord. Anmärkningsvärt: M valde att inte skicka partiledaren utan EU-ministern.",
+    summaryEn: "Jessica Rosencrantz delivers a broad but shallow interview about AI as industrial policy. She covers the full tech stack (energy, data centers, cloud, applications), mentions stock option programs, talent visas, the AI Workshop, deregulation and the EU AI Act. But unlike ETR (C) who had concrete figures, Rosencrantz more often stays at the level of visions and general conditions. Her refrain is 'start, scale, stay' and 'Silicon Valhalla'. What's completely missing: integration, newcomers, competence validation, language training, discrimination. Not a single word. Notable: M chose not to send their party leader but the EU minister.",
+    sections: [
+      {
+        title: "AI som paradigmskifte och näringslivsfråga",
+        titleEn: "AI as paradigm shift and business policy",
+        facts: [
+          "M har tagit fram 'Sveriges första AI-strategi' med mål att vara topp-10 i världen",
+          "Stockholm har flest unicorns per capita efter Silicon Valley",
+          "Regeringen har sänkt skattetrycket till lägsta på 50 år",
+          "Techsektorn bidrar med 'hundratals miljarder' till BNP"
+        ],
+        factsEn: [
+          "M has produced 'Sweden's first AI strategy' aiming for global top-10",
+          "Stockholm has the most unicorns per capita after Silicon Valley",
+          "The government has reduced the tax burden to its lowest in 50 years",
+          "The tech sector contributes 'hundreds of billions' to GDP"
+        ],
+        quotes: [
+          { text: "Vi vill att Sverige ska vara Europas Silicon Valley. Eller Silicon Valhalla.", speaker: "Jessica Rosencrantz (M)" },
+          { text: "Det spännande med AI som skiljer AI från många andra frågor, det är ju att det påverkar i princip allting.", speaker: "Jessica Rosencrantz (M)" }
+        ],
+        connection: "Indirekt koppling till punkt 11 (Europas enklaste land att starta företag) och punkt 15 (Integration som nationell elitgren) via det generella ekosystemtänket. Men kopplingen görs aldrig till integration.",
+        connectionEn: "Indirect connection to point 11 (Europe's easiest country to start a business) and point 15 (Integration as national elite discipline) via the general ecosystem thinking. But the connection to integration is never made.",
+        jjComment: "'Silicon Valhalla' låter bra som slogan, men det är symptomatiskt att hela intervjun handlar om att locka hit internationell talang till techbolag, utan att någonsin nämna att Sverige redan har tiotusentals högutbildade människor som sitter fast i ett system som inte validerar deras kompetens.",
+        jjCommentEn: "'Silicon Valhalla' sounds great as a slogan, but it's symptomatic that the entire interview is about attracting international talent to tech companies, without ever mentioning that Sweden already has tens of thousands of highly educated people stuck in a system that doesn't validate their competence."
+      },
+      {
+        title: "Talangvisum och personaloptioner",
+        titleEn: "Talent visas and stock options",
+        facts: [
+          "M föreslår ett 'talangvisum' inspirerat av Frankrike och Finland",
+          "Handläggningstid för högkvalificerad arbetskraftsinvandring: från 100 till 18 dagar",
+          "M vill utöka personaloptionsprogrammet (nuvarande tak för anställda/balansomslutning för lågt)",
+          "Bolag som växer snabbt 'slår i taket' på 2 år"
+        ],
+        factsEn: [
+          "M proposes a 'talent visa' inspired by France and Finland",
+          "Processing time for highly qualified labor immigration: from 100 to 18 days",
+          "M wants to expand the stock option program (current caps on employees/balance sheet too low)",
+          "Fast-growing companies 'hit the ceiling' within 2 years"
+        ],
+        quotes: [
+          { text: "De kanske vill ha den 16-åriga programmeraren. Inte nödvändigtvis när man ska bli chef eller har en lång masterutbildning. Här tror jag att vi behöver ett helt annat snabbspår in.", speaker: "Jessica Rosencrantz (M)" }
+        ],
+        connection: "Direkt koppling till punkt 4 (Nationell snabbfil till bristyrken) via 'snabbspår in' för techtalang. Men notera: Rosencrantz snabbspår gäller uteslutande internationell rekrytering till techbolag, inte validering av befintlig kompetens hos redan bosatta.",
+        connectionEn: "Direct connection to point 4 (National fast track to shortage occupations) via 'fast track in' for tech talent. But note: Rosencrantz's fast track applies exclusively to international recruitment to tech companies, not validation of existing competence among those already living here.",
+        jjComment: "Här finns en fascinerande blind fläck. Rosencrantz beskriver exakt det problem som punkt 4 löser: 'vi behöver ett helt annat snabbspår in'. Men hennes snabbspår gäller bara nyrekryterade utländska techtalanger. De 90 000 personer per år som redan bor i Sverige och väntar på validering av sina utbildningar nämns inte. Det är som att bygga en ny flygplats för internationella gäster medan den befintliga terminalen har 18 månaders kö.",
+        jjCommentEn: "Here's a fascinating blind spot. Rosencrantz describes exactly the problem that point 4 solves: 'we need a completely different fast track in'. But her fast track only applies to newly recruited foreign tech talents. The 90,000 people per year already living in Sweden waiting for validation of their degrees are never mentioned. It's like building a new airport for international guests while the existing terminal has an 18-month queue."
+      },
+      {
+        title: "Offentlig sektor och AI-verkstaden",
+        titleEn: "Public sector and the AI Workshop",
+        facts: [
+          "Regeringen har gett uppdrag till 100 myndigheter att arbeta mer med AI",
+          "'AI-verkstaden' ska ge offentlig sektor stöd (Skatteverket och Försäkringskassan leder)",
+          "Rosencrantz ser potential i beslutsstöd, avlastning av personal, diagnostisering",
+          "Vill se samarbete mellan privat och offentlig sektor",
+          "Lantmäteriet delar öppen data som skapar möjligheter för bolag"
+        ],
+        factsEn: [
+          "The government has tasked 100 agencies to work more with AI",
+          "The 'AI Workshop' will support the public sector (Tax Agency and Social Insurance lead)",
+          "Rosencrantz sees potential in decision support, staff relief, diagnostics",
+          "Wants collaboration between private and public sector",
+          "The Land Survey shares open data creating opportunities for companies"
+        ],
+        quotes: [
+          { text: "Det handlar inte så mycket om att ersätta personal utan om att hjälpa den som arbetar inom välfärden.", speaker: "Jessica Rosencrantz (M)" },
+          { text: "Om övriga delar av samhället kommer att använda sig av AI, då behöver också offentlig sektor för att vara en attraktiv arbetsgivare ha samma verktyg.", speaker: "Jessica Rosencrantz (M)" }
+        ],
+        connection: "Indirekt koppling till punkt 1 (Ett Sverige in, inte femton köer) via myndighetsdigitalisering och AI-verkstaden. Men Rosencrantz talar om AI i myndigheter generellt (vård, skola, omsorg), aldrig om den specifika onboarding-upplevelsen för nyanlända.",
+        connectionEn: "Indirect connection to point 1 (One Sweden in, not fifteen queues) via agency digitalization and the AI Workshop. But Rosencrantz talks about AI in agencies generally (healthcare, schools, care), never about the specific onboarding experience for newcomers.",
+        jjComment: "AI-verkstaden är ett konkret initiativ. Men det är talande att när Rosencrantz exemplifierar AI i offentlig sektor nämner hon läkare, lärare och Lantmäteriet, aldrig Migrationsverket, Arbetsförmedlingen eller kommunernas integrationsenheter. De myndigheter som hanterar integration verkar inte finnas i hennes mentala karta.",
+        jjCommentEn: "The AI Workshop is a concrete initiative. But it's telling that when Rosencrantz exemplifies AI in the public sector she mentions doctors, teachers and the Land Survey, never the Migration Agency, Employment Service or municipal integration units. The agencies handling integration don't seem to exist in her mental map."
+      },
+      {
+        title: "Reglering och EU:s AI-akt",
+        titleEn: "Regulation and the EU AI Act",
+        facts: [
+          "Regeringen har drivit på för att bromsa delar av EU:s AI-akt",
+          "Kräver standarder innan högrisk-AI-regler träder i kraft",
+          "EU:s 'omnibus' (regelförenklingspaket) har gett undantag för mindre bolag",
+          "Statsministern har personligen skrivit till von der Leyen om regelförenkling",
+          "GDPR är 'föremål för omförhandlingar'"
+        ],
+        factsEn: [
+          "The government has pushed to slow parts of the EU AI Act",
+          "Demands standards before high-risk AI rules take effect",
+          "EU's 'omnibus' (deregulation package) has given exemptions for smaller companies",
+          "The PM has personally written to von der Leyen about deregulation",
+          "GDPR is 'subject to renegotiations'"
+        ],
+        quotes: [
+          { text: "Rätt reglering skapar marknader för innovationer. Medan dålig reglering eller överreglering kommer döda innovation.", speaker: "Jessica Rosencrantz (M)" }
+        ],
+        connection: "Indirekt koppling till punkt 11 (Europas enklaste land att starta företag) via regelförenkling. Tangerar punkt 9 (Nolltolerans mot diskriminering) via ansvarsfull AI och datahantering, men kopplingen görs aldrig explicit.",
+        connectionEn: "Indirect connection to point 11 (Europe's easiest country to start a business) via deregulation. Touches on point 9 (Zero tolerance for discrimination) via responsible AI and data handling, but the connection is never made explicit.",
+        jjComment: "",
+        jjCommentEn: ""
+      },
+      {
+        title: "Arbetsmarknad och omställning",
+        titleEn: "Labor market and transition",
+        facts: [
+          "Rosencrantz jämför med Spinning Jenny och väverskorna",
+          "Ser behov av omskolning och omställningsstöd",
+          "Vill att människor ska kunna 'ha flera olika yrken under en livstid'",
+          "Nämner utbildningsväsendets roll men inga konkreta förslag"
+        ],
+        factsEn: [
+          "Rosencrantz compares to the Spinning Jenny and the weavers",
+          "Sees need for retraining and transition support",
+          "Wants people to be able to 'have several different careers in a lifetime'",
+          "Mentions the education system's role but no concrete proposals"
+        ],
+        quotes: [
+          { text: "Självklart kommer en del jobb att försvinna. Väldigt många jobb kommer dock att förändras.", speaker: "Jessica Rosencrantz (M)" }
+        ],
+        connection: "Indirekt koppling till punkt 4 (Nationell snabbfil till bristyrken) och punkt 5 (Första riktiga jobbet inom 180 dagar) via omställningsresonemanget. Men inga konkreta mekanismer föreslås.",
+        connectionEn: "Indirect connection to point 4 (National fast track to shortage occupations) and point 5 (First real job within 180 days) via the transition reasoning. But no concrete mechanisms are proposed.",
+        jjComment: "Spinning Jenny-jämförelsen är den mest utslitna analogin i AI-debatten. Den signalerar 'jag vet att frågan finns' utan att erbjuda ett svar. ETR (C) var här mer konkret med specifika omställningsmekanismer. Rosencrantz stannar vid 'vi behöver omskolning och omställning' utan att säga hur, för vem, eller inom vilken tidsram.",
+        jjCommentEn: "The Spinning Jenny comparison is the most worn-out analogy in the AI debate. It signals 'I know the issue exists' without offering an answer. ETR (C) was more concrete here with specific transition mechanisms. Rosencrantz stays at 'we need retraining and transition' without saying how, for whom, or within what timeframe."
+      },
+      {
+        title: "Digitalt utanförskap och samordning",
+        titleEn: "Digital exclusion and coordination",
+        facts: [
+          "Regeringen gör 'särskilda satsningar' mot digitalt utanförskap",
+          "Nämner äldre och utrikes födda som riskgrupper",
+          "AI-samordnare placerad på statsrådsberedningen nära statsministern",
+          "AI-sekretariat inrättat",
+          "Vill att flickor söker sig till STEM-utbildningar"
+        ],
+        factsEn: [
+          "The government makes 'special investments' against digital exclusion",
+          "Mentions elderly and foreign-born as risk groups",
+          "AI coordinator placed at the PM's office",
+          "AI secretariat established",
+          "Wants girls to pursue STEM education"
+        ],
+        quotes: [
+          { text: "Snart är det tant Jessica som kan hamna i digitalt utanförskap eller någon annan i min ålder.", speaker: "Jessica Rosencrantz (M)" }
+        ],
+        connection: "Indirekt koppling till punkt 10 (Digitalt medlemskap från dag ett) via resonemang om att utrikes födda har svårare med digital teknik i myndighetskontakter. Men hon nämner aldrig digital identitet för nyanlända specifikt.",
+        connectionEn: "Indirect connection to point 10 (Digital membership from day one) via reasoning that foreign-born have difficulty with digital technology in agency contacts. But she never mentions digital identity for newcomers specifically.",
+        jjComment: "",
+        jjCommentEn: ""
+      }
+    ],
+    pointMatches: [
+      { pointId: 1, pointTitle: "Ett Sverige in, inte femton köer", relevance: "indirect", closestParties: ["M"], comment: "AI-verkstaden och 100 myndigheters AI-uppdrag, men aldrig samlad digital onboarding" },
+      { pointId: 2, pointTitle: "100-dagarsgaranti för kompetens", relevance: "none", closestParties: [], comment: "Nämner aldrig kompetensvalidering eller utländska examina" },
+      { pointId: 3, pointTitle: "Svenska genom arbete, inte före arbete", relevance: "none", closestParties: [], comment: "Nämner aldrig språkträning, SFI eller AI-språkcoach" },
+      { pointId: 4, pointTitle: "Nationell snabbfil till bristyrken", relevance: "indirect", closestParties: ["M"], comment: "Talar om 'snabbspår in' och talangvisum, men enbart för internationell rekrytering till tech" },
+      { pointId: 5, pointTitle: "Första riktiga jobbet inom 180 dagar", relevance: "none", closestParties: [], comment: "Nämner aldrig jobbmatchning eller tidsgarantier för arbete" },
+      { pointId: 6, pointTitle: "Bosätt efter möjlighet, inte passivitet", relevance: "none", closestParties: [], comment: "Nämner aldrig bosättning eller datadriven placering" },
+      { pointId: 7, pointTitle: "Barnen först, alltid", relevance: "indirect", closestParties: ["M"], comment: "Nämner att skolan måste hänga med och att flickor behöver stöd, men aldrig flerspråkiga barn" },
+      { pointId: 8, pointTitle: "Hård mot exploatering, mjuk mot människor", relevance: "none", closestParties: [], comment: "Nämner aldrig arbetslivskriminalitet eller exploatering" },
+      { pointId: 9, pointTitle: "Nolltolerans mot diskriminering", relevance: "indirect", closestParties: ["M"], comment: "Tangerar ansvarsfull AI och datahantering, men aldrig diskriminering" },
+      { pointId: 10, pointTitle: "Digitalt medlemskap från dag ett", relevance: "indirect", closestParties: ["M"], comment: "Nämner digitalt utanförskap bland utrikes födda, men aldrig digital identitet från dag ett" },
+      { pointId: 11, pointTitle: "Europas enklaste land att starta företag i", relevance: "direct", closestParties: ["M"], comment: "Explicit: regelförenkling, personaloptioner, lägsta skattetrycket, 'starta, skala, stanna'" },
+      { pointId: 12, pointTitle: "Student till byggare av Sverige", relevance: "indirect", closestParties: ["M"], comment: "Talar om talangvisum och att locka kompetens, men aldrig övergångsspår från examen" },
+      { pointId: 13, pointTitle: "Cirkulär rörlighet som styrka", relevance: "indirect", closestParties: ["M"], comment: "Tangerar internationellt utbyte och talangrörlighet, men aldrig diaspora-logiken" },
+      { pointId: 14, pointTitle: "Snabb och förutsägbar rättsstat", relevance: "indirect", closestParties: ["M"], comment: "Myndighetseffektivisering tangerar snabbare handläggning, men aldrig rättssäkerhet i asyl" },
+      { pointId: 15, pointTitle: "Integration som nationell elitgren", relevance: "none", closestParties: [], comment: "Nämner aldrig integration som mätbar disciplin eller öppna dashboards" }
+    ],
+    partyRankings: [
+      { party: "Moderaterna", abbreviation: "M", score: 4, maxScore: 15, reasoning: "1 direkt matchning (punkt 11), 8 indirekta. Bred men grund AI-politik som aldrig kopplar till integration." }
+    ],
+    missingThemes: [
+      { theme: "Integration som begrepp", themeEn: "Integration as a concept", points: "Alla 15", comment: "Ordet 'integration' förekommer inte en enda gång i hela intervjun. Nyanlända existerar inte i M:s AI-politik.", commentEn: "The word 'integration' doesn't appear once in the entire interview. Newcomers don't exist in M's AI policy." },
+      { theme: "Den enskilda människans upplevelse", themeEn: "The individual person's experience", points: "1, 2, 3, 5, 10, 14", comment: "Rosencrantz talar om system, bolag, myndigheter och 'Sverige'. Aldrig om den enskilda människan som navigerar systemet.", commentEn: "Rosencrantz talks about systems, companies, agencies and 'Sweden'. Never about the individual navigating the system." },
+      { theme: "Kompetensvalidering", themeEn: "Competence validation", points: "2, 4", comment: "Aldrig nämnt. Rosencrantz 'snabbspår' handlar om att rekrytera nya talanger utifrån, inte validera kompetens som redan finns.", commentEn: "Never mentioned. Rosencrantz's 'fast track' is about recruiting new talents from abroad, not validating competence already here." },
+      { theme: "AI-stödd språkträning", themeEn: "AI-supported language training", points: "3", comment: "Aldrig nämnt, trots att intervjun handlar om AI:s möjligheter i samhället.", commentEn: "Never mentioned, despite the interview being about AI's potential in society." },
+      { theme: "Diskriminering och exploatering", themeEn: "Discrimination and exploitation", points: "8, 9", comment: "Aldrig nämnt. 'Risker' med AI handlar om datahantering och integritet, aldrig om diskriminering.", commentEn: "Never mentioned. 'Risks' with AI concern data handling and privacy, never discrimination." }
+    ],
+    conclusion: "Rosencrantz levererar en kompetent men förutsägbar intervju om AI som näringspolitik. Hennes 'Silicon Valhalla'-vision handlar om att göra Sverige attraktivt för internationella techbolag. Det är en legitim ambition, men den existerar i ett parallellt universum från de 15 punkternas verklighet. Där ETR (C) byggde infrastrukturen som de 15 punkterna förutsätter, bygger Rosencrantz (M) en motorväg som inte ens passerar de 15 punkternas stadsdel.",
+    conclusionEn: "Rosencrantz delivers a competent but predictable interview about AI as industrial policy. Her 'Silicon Valhalla' vision is about making Sweden attractive to international tech companies. That's a legitimate ambition, but it exists in a parallel universe from the 15 points' reality. Where ETR (C) built the infrastructure the 15 points presuppose, Rosencrantz (M) builds a highway that doesn't even pass through the 15 points' neighborhood.",
+    jjFinalComment: "Det mest slående med den här intervjun är inte vad Rosencrantz säger, utan vad hon inte säger. Hon pratar i 44 minuter om AI:s potential för Sverige utan att en enda gång nämna integration, nyanlända, kompetensvalidering eller språkträning. Det är inte en oenighet med de 15 punkterna. Det är en blind fläck.\n\nJämförelsen med ETR (C) är instruktiv. ETR hade konkreta siffror, specifika mekanismer och ett infrastrukturtänk som i princip möjliggör de 15 punkterna. Rosencrantz har visioner och allmänna villkor. ETR bygger motorvägen. Rosencrantz målar skylten 'Silicon Valhalla' vid infarten.\n\nOm jag fick 15 minuter med Rosencrantz skulle jag ställa en enda fråga: 'Du vill ha snabbspår för den 16-åriga programmeraren från utlandet. Varför inte för den 35-åriga civilingenjören som redan bor i Tensta och väntat 18 månader på att få sin examen validerad?' Svaret på den frågan skulle avslöja om det här är en blind fläck eller en medveten prioritering.\n\nOch en sista sak: att M inte skickade Kristersson utan EU-ministern är i sig en signal. C skickade sin partiledare. Det säger något om var AI-frågan faktiskt ligger i den interna hierarkin, trots all retorik.",
+    jjFinalCommentEn: "The most striking thing about this interview is not what Rosencrantz says, but what she doesn't say. She talks for 44 minutes about AI's potential for Sweden without once mentioning integration, newcomers, competence validation or language training. It's not a disagreement with the 15 points. It's a blind spot.\n\nThe comparison with ETR (C) is instructive. ETR had concrete figures, specific mechanisms and an infrastructure thinking that essentially enables the 15 points. Rosencrantz has visions and general conditions. ETR builds the highway. Rosencrantz paints the 'Silicon Valhalla' sign at the entrance.\n\nIf I had 15 minutes with Rosencrantz I'd ask one question: 'You want a fast track for the 16-year-old programmer from abroad. Why not for the 35-year-old civil engineer already living in Tensta who's waited 18 months to get their degree validated?' The answer to that question would reveal whether this is a blind spot or a conscious priority.\n\nAnd one last thing: that M didn't send Kristersson but the EU minister is itself a signal. C sent their party leader. That says something about where the AI question actually sits in the internal hierarchy, despite all the rhetoric.",
+    pdfUrl: "/manus-storage/jr-moderaterna-analys_8ea20d83.pdf",
+    mdUrl: "/manus-storage/jr-moderaterna-analys_08899200.md",
+    transcriptUrl: "/manus-storage/ai-sweden-2.mp3_77e81abc.txt",
+    transcriptLabel: "Ladda ner transkript (TXT)",
+    transcriptLabelEn: "Download transcript (TXT)",
+    ogDescription: "Rosencrantz (M) når 1 direkt och 8 indirekta matchningar. 'Silicon Valhalla' handlar om techbolag, inte integration. Ordet integration nämns inte en enda gång.",
+    ogDescriptionEn: "Rosencrantz (M) scores 1 direct and 8 indirect matches. 'Silicon Valhalla' is about tech companies, not integration. The word integration isn't mentioned once.",
+  },
 ];
