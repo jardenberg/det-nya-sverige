@@ -484,6 +484,10 @@ function DebateCard({ debate, startExpanded = false }: { debate: DebateAnalysis;
                   {lang === "sv" ? debate.transcriptLabel : debate.transcriptLabelEn}
                 </a>
               </div>
+              <p className="font-body text-[10px] mt-2" style={{ color: "#8a7a6a" }}>
+                {lang === "sv" ? "Transkriberat med " : "Transcribed with "}
+                <a href="https://klang.ai" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:no-underline" style={{ color: "#9B6B1A" }}>Klang.ai</a>
+              </p>
 
               {/* Direct link */}
               <DirectLinkButton debateId={debate.id} lang={lang} langPrefix={langPrefix} />
@@ -565,8 +569,25 @@ export default function Debates() {
           </h3>
           <p className="font-body text-xs leading-relaxed" style={{ color: "#8a7a6a" }}>
             {lang === "sv"
-              ? "Analyserna baseras p\u00e5 fullst\u00e4ndiga transkript av debatter och intervjuer (transkriberade via klang.ai). Varje uttalande matchas mot de 15 punkternas inneh\u00e5ll. 'Direkt' betyder att en partiledare f\u00f6reslog n\u00e5got som i substans \u00f6verensst\u00e4mmer med en punkt. 'Indirekt' betyder att \u00e4mnet ber\u00f6rdes men utan den specifika l\u00f6sning som punkten f\u00f6resl\u00e5r. 'Ej ber\u00f6rt' betyder att varken problemet eller l\u00f6sningen n\u00e4mndes. Po\u00e4ngen m\u00e4ter bara vad som sades i den specifika debatten eller intervjun, inte partiernas fullst\u00e4ndiga partiprogram. F\u00f6r intervjuer inkluderar vi \u00e4ven andra och tredje ordningens konsekvenser d\u00e4r en partiledares politik indirekt m\u00f6jligg\u00f6r de 15 punkternas f\u00f6rslag. JJ:s kommentarer \u00e4r personliga reflektioner och markeras tydligt som s\u00e5dana. Transkript finns tillg\u00e4ngliga f\u00f6r nedladdning under varje analys."
-              : "The analyses are based on complete transcripts of debates and interviews (transcribed via klang.ai). Each statement is matched against the content of the 15 points. 'Direct' means a party leader proposed something that substantively aligns with a point. 'Indirect' means the topic was touched but without the specific solution the point proposes. 'Not covered' means neither the problem nor the solution was mentioned. Scores only measure what was said in the specific debate or interview, not the parties' full programmes. For interviews, we also include second and third-order consequences where a leader's policy indirectly enables the 15 points' proposals. JJ's comments are personal reflections and are clearly marked as such. Transcripts are available for download under each analysis."}
+              ? "Analyserna baseras på fullständiga transkript av debatter och intervjuer. Varje uttalande matchas mot de 15 punkternas innehåll. 'Direkt' betyder att en partiledare föreslog något som i substans överensstämmer med en punkt. 'Indirekt' betyder att ämnet berördes men utan den specifika lösning som punkten föreslår. 'Ej berört' betyder att varken problemet eller lösningen nämndes. Poängen mäter bara vad som sades i den specifika debatten eller intervjun, inte partiernas fullständiga partiprogram. För intervjuer inkluderar vi även andra och tredje ordningens konsekvenser där en partiledares politik indirekt möjliggör de 15 punkternas förslag. JJ:s kommentarer är personliga reflektioner och markeras tydligt som sådana. Transkript finns tillgängliga för nedladdning under varje analys."
+              : "The analyses are based on complete transcripts of debates and interviews. Each statement is matched against the content of the 15 points. 'Direct' means a party leader proposed something that substantively aligns with a point. 'Indirect' means the topic was touched but without the specific solution the point proposes. 'Not covered' means neither the problem nor the solution was mentioned. Scores only measure what was said in the specific debate or interview, not the parties' full programmes. For interviews, we also include second and third-order consequences where a leader's policy indirectly enables the 15 points' proposals. JJ's comments are personal reflections and are clearly marked as such. Transcripts are available for download under each analysis."}
+          </p>
+          <p className="font-body text-xs leading-relaxed mt-3" style={{ color: "#8a7a6a" }}>
+            {lang === "sv"
+              ? "Transkriptionerna möjliggörs av "
+              : "Transcriptions made possible by "}
+            <a
+              href="https://klang.ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-2 hover:no-underline transition-all"
+              style={{ color: "#9B6B1A" }}
+            >
+              Klang.ai
+            </a>
+            {lang === "sv"
+              ? " — utan deras utmärkta transkriptioner hade den här analysen inte varit möjlig."
+              : " — without their excellent transcriptions, this analysis would not be possible."}
           </p>
         </motion.div>
       </div>

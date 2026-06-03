@@ -39,6 +39,8 @@ Varje analys innehåller:
 
 Hittills har vi analyserat SVT:s partiledardebatt (Agenda, 3 maj 2026) och AI Swedens intervjuserie med partiföreträdare. Fler analyser tillkommer löpande under valrörelsen.
 
+Transkriptionerna möjliggörs av Klang.ai — utan deras utmärkta transkriptioner hade den här analysen inte varit möjlig.
+
 Varför gör vi det här? Därför att det finns ett glapp mellan vad politiker säger och vad som faktiskt behövs. De 15 punkterna handlar om att använda AI och digitalisering för att göra integration snabbare, billigare och mer human. Men i debatterna pratar man om AI som näringspolitik eller hot — aldrig som integrationsverktyg. Det glappet vill vi synliggöra.`,
     debateLink: "Gå till debattanalysen",
     debateLinkUrl: "/debatter",
@@ -121,6 +123,8 @@ Each analysis contains:
 • All material downloadable — analysis as PDF and Markdown, plus the full transcript
 
 So far we have analysed SVT's party leader debate (Agenda, 3 May 2026) and AI Sweden's interview series with party representatives. More analyses will be added continuously during the election campaign.
+
+Transcriptions are made possible by Klang.ai — without their excellent transcriptions, this analysis would not be possible.
 
 Why do we do this? Because there is a gap between what politicians say and what is actually needed. The 15 points are about using AI and digitalisation to make integration faster, cheaper and more humane. But in the debates, AI is discussed as industrial policy or threat — never as an integration tool. We want to make that gap visible.`,
     debateLink: "Go to the debate analysis",

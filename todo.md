@@ -177,3 +177,8 @@
 - [x] Keep all existing content, only add new section
 - [x] Bilingual (sv/en)
 - [x] Update version number to v099b
+
+## Credit Klang.ai for transcriptions
+- [x] Add Klang.ai credit in methodology section on /debatter page
+- [x] Add Klang.ai mention in debate analysis section on /om page
+- [x] Add Klang.ai credit near transcript download links on each debate card
