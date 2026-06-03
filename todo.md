@@ -171,3 +171,9 @@
 - [x] Integrate as new card on the debates page
 - [x] Update banner to reflect 3 analyses
 - [x] Update version number to v099b
+
+## Update /om page with Debate Analysis section
+- [x] Add comprehensive section about the debate analysis feature (what it is, how it works, why it matters)
+- [x] Keep all existing content, only add new section
+- [x] Bilingual (sv/en)
+- [x] Update version number to v099b

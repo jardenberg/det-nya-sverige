@@ -23,6 +23,26 @@ const content = {
 Sagt och gjort. Jag workshoppade med mitt team och kom fram till 15 punkter som är, så klart, väldigt mycket mina. Lutar mig tungt på internet, digitalisering generellt och AI i synnerhet. Och som lika självklart är work in progress. Better together, som vanligt.`,
     troedLink: "Troeds originalinlägg på Facebook",
 
+    // Debate Analysis
+    debateTitle: "Debattanalys",
+    debateText: `Inför valet 2026 gör vi något som ingen annan gör: vi analyserar systematiskt vad politiker faktiskt säger — och jämför det med vad de 15 punkterna föreslår.
+
+Idén är enkel. Varje gång en partiledare debatterar, intervjuas eller uttalar sig om AI, integration, arbetsmarknad eller digitalisering tar vi det fullständiga transkriptet och matchar det mot de 15 punkterna. Punkt för punkt. Uttalande för uttalande. Resultatet presenteras som en strukturerad analys med tydlig separation mellan fakta (vad som faktiskt sades) och spekulation (vad det kan innebära).
+
+Varje analys innehåller:
+
+• Tematiska genomgångar — vad som diskuterades, med direktcitat
+• Punkt-för-punkt-matchning — varje punkt får status: Direkt (substansiell överensstämmelse), Indirekt (ämnet berörs men inte lösningen), eller Ej berört
+• Andra och tredje ordningens konsekvenser — om en politiker föreslår AI-infrastruktur som i sig möjliggör de 15 punkternas lösningar, noterar vi det
+• JJ-kommentarer — personliga reflektioner, tydligt markerade som sådana
+• Allt material nedladdningsbart — analys som PDF och Markdown, plus det fullständiga transkriptet
+
+Hittills har vi analyserat SVT:s partiledardebatt (Agenda, 3 maj 2026) och AI Swedens intervjuserie med partiföreträdare. Fler analyser tillkommer löpande under valrörelsen.
+
+Varför gör vi det här? Därför att det finns ett glapp mellan vad politiker säger och vad som faktiskt behövs. De 15 punkterna handlar om att använda AI och digitalisering för att göra integration snabbare, billigare och mer human. Men i debatterna pratar man om AI som näringspolitik eller hot — aldrig som integrationsverktyg. Det glappet vill vi synliggöra.`,
+    debateLink: "Gå till debattanalysen",
+    debateLinkUrl: "/debatter",
+
     // How it was built
     processTitle: "Så byggde vi sajten",
     processText: `Från walk-and-talk till färdig sajt — det här projektet är ett samarbete mellan människa och AI.
@@ -86,6 +106,25 @@ Men jag ser så klart gärna att man håller mig i loopen. Jag är genuint nyfik
 
 Said and done. I workshopped with my team and came up with 15 points that are, of course, very much my own. Leaning heavily on the internet, digitalisation in general and AI in particular. And which are, equally obviously, a work in progress. Better together, as always.`,
     troedLink: "Troed's original Facebook post",
+
+    debateTitle: "Debate Analysis",
+    debateText: `Ahead of the 2026 election, we do something no one else does: we systematically analyse what politicians actually say — and compare it to what the 15 points propose.
+
+The idea is simple. Every time a party leader debates, is interviewed, or makes statements about AI, integration, the labour market or digitalisation, we take the full transcript and match it against the 15 points. Point by point. Statement by statement. The result is presented as a structured analysis with clear separation between fact (what was actually said) and speculation (what it might mean).
+
+Each analysis contains:
+
+• Thematic reviews — what was discussed, with direct quotes
+• Point-by-point matching — each point gets a status: Direct (substantive alignment), Indirect (topic touched but not the solution), or Not addressed
+• Second and third order consequences — if a politician proposes AI infrastructure that in itself enables the 15 points' solutions, we note it
+• JJ comments — personal reflections, clearly marked as such
+• All material downloadable — analysis as PDF and Markdown, plus the full transcript
+
+So far we have analysed SVT's party leader debate (Agenda, 3 May 2026) and AI Sweden's interview series with party representatives. More analyses will be added continuously during the election campaign.
+
+Why do we do this? Because there is a gap between what politicians say and what is actually needed. The 15 points are about using AI and digitalisation to make integration faster, cheaper and more humane. But in the debates, AI is discussed as industrial policy or threat — never as an integration tool. We want to make that gap visible.`,
+    debateLink: "Go to the debate analysis",
+    debateLinkUrl: "/en/debates",
 
     processTitle: "How we built the site",
     processText: `From walk-and-talk to finished site — this project is a collaboration between human and AI.
@@ -201,6 +240,35 @@ export default function About() {
           >
             {c.troedLink} →
           </a>
+        </motion.section>
+
+        {/* Divider */}
+        <div className="my-14 h-[1px]" style={{ backgroundColor: 'oklch(0.18 0.02 50 / 0.08)' }} />
+
+        {/* Debate Analysis */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.25 }}
+        >
+          <h2 className="font-display text-xl md:text-2xl font-semibold mb-6" style={{ color: '#2c1810' }}>
+            {c.debateTitle}
+          </h2>
+          <div className="space-y-4">
+            {c.debateText.split("\n\n").map((p, i) => (
+              <p key={i} className="font-body text-base md:text-lg leading-relaxed font-light" style={{ color: '#5a4a3a' }}>
+                {p}
+              </p>
+            ))}
+          </div>
+          <Link href={c.debateLinkUrl}>
+            <span
+              className="inline-flex items-center gap-2 mt-6 px-5 py-3 rounded-sm font-body text-sm font-medium transition-all hover:translate-x-1 cursor-pointer"
+              style={{ backgroundColor: 'oklch(0.95 0.01 80 / 0.5)', borderLeft: '3px solid #9B6B1A', color: '#9B6B1A' }}
+            >
+              {c.debateLink} →
+            </span>
+          </Link>
         </motion.section>
 
         {/* Divider */}
@@ -398,7 +466,7 @@ export default function About() {
         {/* Version */}
         <div className="mt-20 pt-8" style={{ borderTop: '1px solid oklch(0.18 0.02 50 / 0.07)' }}>
           <p className="font-mono-display text-xs tracking-wider" style={{ color: 'oklch(0.58 0.16 55 / 0.4)' }}>
-            {c.versionLabel}: v094b
+            {c.versionLabel}: v099b
           </p>
         </div>
       </div>
