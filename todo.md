@@ -193,3 +193,17 @@
 - [x] Add OG metadata for the new debate URL
 - [x] Upload transcript for download
 - [x] Update version number to v100b
+
+## Three New AI Sweden Interviews (S, L, MP) + Structural Updates
+- [ ] Analyze Mikael Damberg (S) AI Sweden interview
+- [ ] Analyze Helena Gellerman (L) AI Sweden interview
+- [ ] Analyze Daniel Helldén (MP) AI Sweden interview
+- [ ] Fix ETR title to "AI Sweden: Elisabeth Thand Ringqvist (C)"
+- [ ] Fix JR title to "AI Sweden: Jessica Rosencrantz (M)"
+- [ ] Add type field (debate/interview) to DebateAnalysis interface
+- [ ] Split debates page into "Debatter" and "Intervjuer" sections
+- [ ] Generate PDFs for all three new analyses
+- [ ] Upload transcripts for download
+- [ ] Add OG metadata for new debate URLs
+- [ ] Update banner
+- [ ] Update version number

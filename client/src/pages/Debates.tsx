@@ -549,11 +549,35 @@ export default function Debates() {
           </p>
         </motion.div>
 
-        {/* Debate cards */}
-        <div className="mt-12 space-y-6">
-          {debates.map((debate) => (
-            <DebateCard key={debate.id} debate={debate} startExpanded={debate.id === focusedId} />
-          ))}
+        {/* Debate cards – grouped by type */}
+        <div className="mt-12 space-y-12">
+          {/* Debatter */}
+          {debates.filter(d => d.type === "debate").length > 0 && (
+            <div>
+              <h2 className="font-display text-xl md:text-2xl font-normal mb-6" style={{ color: "#2c1810" }}>
+                {lang === "sv" ? "Debatter" : "Debates"}
+              </h2>
+              <div className="space-y-6">
+                {debates.filter(d => d.type === "debate").map((debate) => (
+                  <DebateCard key={debate.id} debate={debate} startExpanded={debate.id === focusedId} />
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Intervjuer */}
+          {debates.filter(d => d.type === "interview").length > 0 && (
+            <div>
+              <h2 className="font-display text-xl md:text-2xl font-normal mb-6" style={{ color: "#2c1810" }}>
+                {lang === "sv" ? "Intervjuer" : "Interviews"}
+              </h2>
+              <div className="space-y-6">
+                {debates.filter(d => d.type === "interview").map((debate) => (
+                  <DebateCard key={debate.id} debate={debate} startExpanded={debate.id === focusedId} />
+                ))}
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Methodology note */}

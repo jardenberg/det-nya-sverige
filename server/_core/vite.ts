@@ -160,14 +160,14 @@ const DEBATE_OG: Record<string, { title: string; titleEn: string; desc: string; 
     descEn: "0 of 15 points addressed directly. 9 indirectly. No party leader mentioned AI, digitalisation or competence validation as integration tools.",
   },
   "ai-sweden-etr-2026-05": {
-    title: "ETR (C) om AI-politik vs. de 15 punkterna",
-    titleEn: "ETR (C) on AI Policy vs. the 15 Points",
+    title: "AI Sweden: Elisabeth Thand Ringqvist (C) vs. de 15 punkterna",
+    titleEn: "AI Sweden: Elisabeth Thand Ringqvist (C) vs. the 15 Points",
     desc: "ETR n\u00e5r 4 direkta och 8 indirekta matchningar. Hennes AI-infrastrukturt\u00e4nk \u00e4r f\u00f6ruts\u00e4ttningen f\u00f6r programmet, men kopplingen till integration saknas.",
     descEn: "ETR scores 4 direct and 8 indirect matches. Her AI infrastructure thinking is the prerequisite, but the connection to integration is missing.",
   },
   "ai-sweden-jr-2026-05": {
-    title: "Rosencrantz (M) om AI-politik vs. de 15 punkterna",
-    titleEn: "Rosencrantz (M) on AI Policy vs. the 15 Points",
+    title: "AI Sweden: Jessica Rosencrantz (M) vs. de 15 punkterna",
+    titleEn: "AI Sweden: Jessica Rosencrantz (M) vs. the 15 Points",
     desc: "Rosencrantz (M) n\u00e5r 1 direkt och 8 indirekta matchningar. 'Silicon Valhalla' handlar om techbolag, inte integration. Ordet integration n\u00e4mns inte en enda g\u00e5ng.",
     descEn: "Rosencrantz (M) scores 1 direct and 8 indirect matches. 'Silicon Valhalla' is about tech companies, not integration. The word integration isn't mentioned once.",
   },
@@ -176,6 +176,24 @@ const DEBATE_OG: Record<string, { title: string; titleEn: string; desc: string; 
     titleEn: "Parliament Debate June 10 vs. the 15 Points",
     desc: "0 direkta matchningar, 7 indirekta. Ordet 'integration' i substantiell mening: noll g\u00e5nger p\u00e5 2h51m. Debattformatet d\u00f6dar innovation.",
     descEn: "0 direct matches, 7 indirect. The word 'integration' in substantive sense: zero times in 2h51m. The debate format kills innovation.",
+  },
+  "ai-sweden-damberg-2026-05": {
+    title: "AI Sweden: Mikael Damberg (S) vs. de 15 punkterna",
+    titleEn: "AI Sweden: Mikael Damberg (S) vs. the 15 Points",
+    desc: "Damberg (S) når 2 direkta och 7 indirekta matchningar. Starkast på arbetsmarknad och offentlig sektor, men integrationen förblir en parentes.",
+    descEn: "Damberg (S) scores 2 direct and 7 indirect matches. Strongest on labour market and public sector, but integration remains a footnote.",
+  },
+  "ai-sweden-gellerman-2026-05": {
+    title: "AI Sweden: Helena Gellerman (L) vs. de 15 punkterna",
+    titleEn: "AI Sweden: Helena Gellerman (L) vs. the 15 Points",
+    desc: "Gellerman (L) når 2 direkta och 8 indirekta matchningar. Utbildningsfokus och forskningspolitik, men integrationen nämns bara i förbifarten.",
+    descEn: "Gellerman (L) scores 2 direct and 8 indirect matches. Education focus and research policy, but integration mentioned only in passing.",
+  },
+  "ai-sweden-hellden-2026-05": {
+    title: "AI Sweden: Daniel Helldén (MP) vs. de 15 punkterna",
+    titleEn: "AI Sweden: Daniel Helldén (MP) vs. the 15 Points",
+    desc: "Helldén (MP) når 0 direkta och 6 indirekta matchningar. Den enda som nämner arbetskraftsinvandring, men aldrig dem som redan är här.",
+    descEn: "Helldén (MP) scores 0 direct and 6 indirect matches. The only one mentioning labour immigration, but never those already here.",
   },
 };
 
