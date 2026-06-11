@@ -14,8 +14,16 @@ import { debates } from "@/lib/debates";
 export default function DebateBanner() {
   const { lang, langPrefix } = useLang();
 
-  // Show the latest debate/interview analysis
-  const latest = debates[debates.length - 1];
+  // Show the most recent analysis by date (prioritize debates over interviews if same date)
+  const sorted = [...debates].sort((a, b) => {
+    const dateCompare = b.date.localeCompare(a.date);
+    if (dateCompare !== 0) return dateCompare;
+    // Same date: prioritize debates
+    if (a.type === "debate" && b.type !== "debate") return -1;
+    if (b.type === "debate" && a.type !== "debate") return 1;
+    return 0;
+  });
+  const latest = sorted[0];
   const totalCount = debates.length;
 
   const title = lang === "sv" ? latest.title : latest.titleEn;

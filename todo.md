@@ -209,9 +209,9 @@
 - [x] Update version number to v101b
 
 ## Aggregated Comparison View (v102b)
-- [ ] Build component showing all parties' accumulated scores across all analyses
-- [ ] Place at top of /debatter page (before individual cards)
-- [ ] Visual bar chart / ranking with party colors
-- [ ] Auto-calculates from debates array data
-- [ ] Bilingual (sv/en)
-- [ ] Update version number
+- [x] Build component showing all parties' accumulated scores across all analyses
+- [x] Place at top of /debatter page (before individual cards)
+- [x] Visual bar chart / ranking with party colors
+- [x] Auto-calculates from debates array data
+- [x] Bilingual (sv/en)
+- [x] Update version number to v102b
