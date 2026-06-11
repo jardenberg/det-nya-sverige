@@ -195,15 +195,23 @@
 - [x] Update version number to v100b
 
 ## Three New AI Sweden Interviews (S, L, MP) + Structural Updates
-- [ ] Analyze Mikael Damberg (S) AI Sweden interview
-- [ ] Analyze Helena Gellerman (L) AI Sweden interview
-- [ ] Analyze Daniel Helldén (MP) AI Sweden interview
-- [ ] Fix ETR title to "AI Sweden: Elisabeth Thand Ringqvist (C)"
-- [ ] Fix JR title to "AI Sweden: Jessica Rosencrantz (M)"
-- [ ] Add type field (debate/interview) to DebateAnalysis interface
-- [ ] Split debates page into "Debatter" and "Intervjuer" sections
-- [ ] Generate PDFs for all three new analyses
-- [ ] Upload transcripts for download
-- [ ] Add OG metadata for new debate URLs
-- [ ] Update banner
+- [x] Analyze Mikael Damberg (S) AI Sweden interview
+- [x] Analyze Helena Gellerman (L) AI Sweden interview
+- [x] Analyze Daniel Helldén (MP) AI Sweden interview
+- [x] Fix ETR title to "AI Sweden: Elisabeth Thand Ringqvist (C)"
+- [x] Fix JR title to "AI Sweden: Jessica Rosencrantz (M)"
+- [x] Add type field (debate/interview) to DebateAnalysis interface
+- [x] Split debates page into "Debatter" and "Intervjuer" sections
+- [x] Generate PDFs for all three new analyses
+- [x] Upload transcripts for download
+- [x] Add OG metadata for new debate URLs
+- [x] Update banner (auto-counts from debates array)
+- [x] Update version number to v101b
+
+## Aggregated Comparison View (v102b)
+- [ ] Build component showing all parties' accumulated scores across all analyses
+- [ ] Place at top of /debatter page (before individual cards)
+- [ ] Visual bar chart / ranking with party colors
+- [ ] Auto-calculates from debates array data
+- [ ] Bilingual (sv/en)
 - [ ] Update version number

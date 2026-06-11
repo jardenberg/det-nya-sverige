@@ -12,6 +12,7 @@ import { Link, useParams } from "wouter";
 import { ArrowLeft, Download, ChevronDown, ChevronUp, MessageSquareQuote, AlertTriangle, LinkIcon, Check } from "lucide-react";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { debates, type DebateAnalysis, type DebateSection } from "@/lib/debates";
+import AggregatedScoreboard from "@/components/AggregatedScoreboard";
 
 function DirectLinkButton({ debateId, lang, langPrefix }: { debateId: string; lang: string; langPrefix: string }) {
   const [copied, setCopied] = useState(false);
@@ -548,6 +549,9 @@ export default function Debates() {
               : "Ahead of the 2026 election, we analyse debates, interviews and statements against the 15 points of The New Sweden. The purpose is not to rank parties, but to make visible what is discussed, what is missing, and where the 15 points offer a different perspective. Facts are clearly separated from speculation."}
           </p>
         </motion.div>
+
+        {/* Aggregated scoreboard */}
+        <AggregatedScoreboard />
 
         {/* Debate cards – grouped by type */}
         <div className="mt-12 space-y-12">
