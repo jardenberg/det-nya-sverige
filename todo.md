@@ -90,7 +90,7 @@
 - [x] Update ShareButton, ManifestoIntro, About back-link to use langPrefix
 
 ## Standing Rules
-- [ ] ALWAYS update the version number in Footer.tsx on every checkpoint/deploy (increment from current version)
+- [x] ALWAYS update the version number in Footer.tsx on every checkpoint/deploy (increment from current version)
 
 ## Pending for Next Update
 - [x] Update version number in footer (v093b → v093c)
@@ -182,3 +182,14 @@
 - [x] Add Klang.ai credit in methodology section on /debatter page
 - [x] Add Klang.ai mention in debate analysis section on /om page
 - [x] Add Klang.ai credit near transcript download links on each debate card
+
+## Riksdagsdebatt 10 juni 2026 (v100b)
+- [x] Read and analyze riksdag party leader debate transcript (47 pages, 2h51m)
+- [x] Match debate statements against each of the 15 manifesto points
+- [x] Create comprehensive analysis with tables (party-by-party matching)
+- [x] Add JJ comments where relevant
+- [x] Generate downloadable PDF of the analysis
+- [x] Integrate as fourth card on debates page
+- [x] Add OG metadata for the new debate URL
+- [x] Upload transcript for download
+- [x] Update version number to v100b

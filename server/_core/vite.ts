@@ -171,6 +171,12 @@ const DEBATE_OG: Record<string, { title: string; titleEn: string; desc: string; 
     desc: "Rosencrantz (M) n\u00e5r 1 direkt och 8 indirekta matchningar. 'Silicon Valhalla' handlar om techbolag, inte integration. Ordet integration n\u00e4mns inte en enda g\u00e5ng.",
     descEn: "Rosencrantz (M) scores 1 direct and 8 indirect matches. 'Silicon Valhalla' is about tech companies, not integration. The word integration isn't mentioned once.",
   },
+  "riksdagsdebatt-2026-06": {
+    title: "Riksdagsdebatt 10 juni vs. de 15 punkterna",
+    titleEn: "Parliament Debate June 10 vs. the 15 Points",
+    desc: "0 direkta matchningar, 7 indirekta. Ordet 'integration' i substantiell mening: noll g\u00e5nger p\u00e5 2h51m. Debattformatet d\u00f6dar innovation.",
+    descEn: "0 direct matches, 7 indirect. The word 'integration' in substantive sense: zero times in 2h51m. The debate format kills innovation.",
+  },
 };
 
 function extractDebateInfo(url: string): { id: string; lang: "sv" | "en" } | null {
