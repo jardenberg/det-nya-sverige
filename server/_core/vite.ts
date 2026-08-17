@@ -195,6 +195,18 @@ const DEBATE_OG: Record<string, { title: string; titleEn: string; desc: string; 
     desc: "Helldén (MP) når 0 direkta och 6 indirekta matchningar. Den enda som nämner arbetskraftsinvandring, men aldrig dem som redan är här.",
     descEn: "Helldén (MP) scores 0 direct and 6 indirect matches. The only one mentioning labour immigration, but never those already here.",
   },
+  "ai-sweden-slottner-2026-08": {
+    title: "AI Sweden: Erik Slottner (KD) vs. de 15 punkterna",
+    titleEn: "AI Sweden: Erik Slottner (KD) vs. the 15 Points",
+    desc: "Slottner (KD) når 1 direkt och 7 indirekta matchningar. Infrastrukturbyggaren som aldrig ser tillämpningen: 290 kommuner i stuprör, men aldrig kopplat till integration.",
+    descEn: "Slottner (KD) scores 1 direct and 7 indirect matches. The infrastructure builder who never sees the application.",
+  },
+  "ai-sweden-wetterling-2026-08": {
+    title: "AI Sweden: Jessica Wetterling (V) vs. de 15 punkterna",
+    titleEn: "AI Sweden: Jessica Wetterling (V) vs. the 15 Points",
+    desc: "Wetterling (V) når 0 direkta och 7 indirekta matchningar. Ärlig om att partiet ligger efter. Samiska språkmodeller förstås, men aldrig svenska som andraspråk.",
+    descEn: "Wetterling (V) scores 0 direct and 7 indirect matches. Honest about the party lagging behind. Sami language models understood, but never Swedish as second language.",
+  },
 };
 
 function extractDebateInfo(url: string): { id: string; lang: "sv" | "en" } | null {
