@@ -215,3 +215,10 @@
 - [x] Auto-calculates from debates array data
 - [x] Bilingual (sv/en)
 - [x] Update version number to v102b
+
+## State of the Race summary page (v104b)
+- [x] Write shareable summary article distilling the pattern from all 9 analyses
+- [x] Create /laget (sv) and /en/state (en) page component
+- [x] Add OG metadata for social sharing
+- [x] Add navigation links (footer)
+- [x] Update version number to v104b
