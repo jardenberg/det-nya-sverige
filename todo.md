@@ -233,3 +233,18 @@
 - [x] Preserve the newer `/laget` work while recording the domain incident
 - [x] Re-run all automated tests after reconciliation
 - [x] Update version number to v105b
+
+## August election debates and Agenda statistics
+- [x] Collect complete Klang data for Expressen/Di partiledardebatt, Agenda economy debate, and Agenda climate debate
+- [x] Analyze all three debates against each of the 15 manifesto points with traceable utterance citations
+- [x] Write downloadable Markdown and PDF analyses for all three debates
+- [x] Add transcript/source download access for each new debate
+- [x] Compile speaking-time comparison for both Agenda election debates
+- [x] Compile party-by-party topic distributions for both Agenda election debates
+- [x] Add a clear comparative Agenda statistics section to the website
+- [x] Add the three debates as directly linkable cards with unique OG metadata
+- [x] Update aggregate scoreboard, State of the Race narrative, homepage banner, and analysis counts
+- [x] Review earlier conclusions and JJ commentary against the expanded evidence base
+- [x] Add or update Vitest coverage for the new data and routes
+- [x] Verify desktop/mobile UI, downloads, citations, and deep links
+- [x] Update version number to v106b

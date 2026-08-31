@@ -207,11 +207,29 @@ const DEBATE_OG: Record<string, { title: string; titleEn: string; desc: string; 
     desc: "Wetterling (V) når 0 direkta och 7 indirekta matchningar. Ärlig om att partiet ligger efter. Samiska språkmodeller förstås, men aldrig svenska som andraspråk.",
     descEn: "Wetterling (V) scores 0 direct and 7 indirect matches. Honest about the party lagging behind. Sami language models understood, but never Swedish as second language.",
   },
+  "expressen-di-partiledardebatt-2026-08-17": {
+    title: "Expressen/Di: Partiledardebatt vs. de 15 punkterna",
+    titleEn: "Expressen/Di: Party Leader Debate vs. the 15 Points",
+    desc: "Integration diskuteras uttryckligen, men AI, kompetens och integration hålls isär. 0 direkta och 10 indirekta matchningar.",
+    descEn: "Integration is discussed explicitly, but AI, skills and integration remain separate. 0 direct and 10 indirect matches.",
+  },
+  "agenda-ekonomi-2026-08-23": {
+    title: "Agenda: Ekonomidebatten vs. de 15 punkterna",
+    titleEn: "Agenda: Economy Debate vs. the 15 Points",
+    desc: "Jobb, kompetens och företag diskuteras – men integration, AI och digitalisering nämns noll gånger. 0 direkta, 6 indirekta.",
+    descEn: "Jobs, skills and business are discussed – but integration, AI and digitalisation are mentioned zero times. 0 direct, 6 indirect.",
+  },
+  "agenda-klimat-2026-08-30": {
+    title: "Agenda: Klimatdebatten vs. de 15 punkterna",
+    titleEn: "Agenda: Climate Debate vs. the 15 Points",
+    desc: "Omställningen skapar jobb och kompetensbehov, men integration nämns noll gånger. 0 direkta och 3 indirekta matchningar.",
+    descEn: "The transition creates jobs and skills needs, but integration is mentioned zero times. 0 direct and 3 indirect matches.",
+  },
   "__state_of_the_race__": {
-    title: "Ingen ser det nya Sverige – Sammanfattning av 9 analyser",
-    titleEn: "No one sees the new Sweden – Summary of 9 analyses",
-    desc: "9 analyser, 8 partier, noll partiledare som kopplar ihop AI med integration. Infrastrukturen finns. Kompetensen finns. Visionen saknas.",
-    descEn: "9 analyses, 8 parties, zero party leaders connecting AI to integration. The infrastructure exists. The competence exists. The vision is missing.",
+    title: "Ingen ser det nya Sverige – Sammanfattning av 12 analyser",
+    titleEn: "No one sees the new Sweden – Summary of 12 analyses",
+    desc: "12 analyser, 8 partier, noll partiledare som kopplar ihop AI med integration. Infrastrukturen finns. Kompetensen finns. Visionen saknas.",
+    descEn: "12 analyses, 8 parties, zero party leaders connecting AI to integration. The infrastructure exists. The competence exists. The vision is missing.",
   },
 };
 

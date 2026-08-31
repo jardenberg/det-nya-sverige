@@ -13,6 +13,7 @@ import { ArrowLeft, Download, ChevronDown, ChevronUp, MessageSquareQuote, AlertT
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { debates, type DebateAnalysis, type DebateSection } from "@/lib/debates";
 import AggregatedScoreboard from "@/components/AggregatedScoreboard";
+import AgendaDebateStats from "@/components/AgendaDebateStats";
 
 function DirectLinkButton({ debateId, lang, langPrefix }: { debateId: string; lang: string; langPrefix: string }) {
   const [copied, setCopied] = useState(false);
@@ -504,6 +505,12 @@ export default function Debates() {
   const { lang, langPrefix } = useLang();
   const params = useParams<{ id?: string }>();
   const focusedId = params.id || null;
+  const debateEntries = debates
+    .filter((entry) => entry.type === "debate")
+    .sort((a, b) => b.date.localeCompare(a.date));
+  const interviewEntries = debates
+    .filter((entry) => entry.type === "interview")
+    .sort((a, b) => b.date.localeCompare(a.date));
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -553,16 +560,22 @@ export default function Debates() {
         {/* Aggregated scoreboard */}
         <AggregatedScoreboard />
 
+        {/* Agenda speaking-time and topic comparison */}
+        <AgendaDebateStats />
+
         {/* Debate cards – grouped by type */}
         <div className="mt-12 space-y-12">
           {/* Debatter */}
-          {debates.filter(d => d.type === "debate").length > 0 && (
+          {debateEntries.length > 0 && (
             <div>
-              <h2 className="font-display text-xl md:text-2xl font-normal mb-6" style={{ color: "#2c1810" }}>
-                {lang === "sv" ? "Debatter" : "Debates"}
-              </h2>
+              <div className="flex items-baseline gap-3 mb-6">
+                <h2 className="font-display text-xl md:text-2xl font-normal" style={{ color: "#2c1810" }}>
+                  {lang === "sv" ? "Debatter" : "Debates"}
+                </h2>
+                <span className="font-body text-xs tabular-nums" style={{ color: "#9B6B1A" }}>{debateEntries.length}</span>
+              </div>
               <div className="space-y-6">
-                {debates.filter(d => d.type === "debate").map((debate) => (
+                {debateEntries.map((debate) => (
                   <DebateCard key={debate.id} debate={debate} startExpanded={debate.id === focusedId} />
                 ))}
               </div>
@@ -570,13 +583,16 @@ export default function Debates() {
           )}
 
           {/* Intervjuer */}
-          {debates.filter(d => d.type === "interview").length > 0 && (
+          {interviewEntries.length > 0 && (
             <div>
-              <h2 className="font-display text-xl md:text-2xl font-normal mb-6" style={{ color: "#2c1810" }}>
-                {lang === "sv" ? "Intervjuer" : "Interviews"}
-              </h2>
+              <div className="flex items-baseline gap-3 mb-6">
+                <h2 className="font-display text-xl md:text-2xl font-normal" style={{ color: "#2c1810" }}>
+                  {lang === "sv" ? "Intervjuer" : "Interviews"}
+                </h2>
+                <span className="font-body text-xs tabular-nums" style={{ color: "#9B6B1A" }}>{interviewEntries.length}</span>
+              </div>
               <div className="space-y-6">
-                {debates.filter(d => d.type === "interview").map((debate) => (
+                {interviewEntries.map((debate) => (
                   <DebateCard key={debate.id} debate={debate} startExpanded={debate.id === focusedId} />
                 ))}
               </div>
@@ -597,8 +613,8 @@ export default function Debates() {
           </h3>
           <p className="font-body text-xs leading-relaxed" style={{ color: "#8a7a6a" }}>
             {lang === "sv"
-              ? "Analyserna baseras på fullständiga transkript av debatter och intervjuer. Varje uttalande matchas mot de 15 punkternas innehåll. 'Direkt' betyder att en partiledare föreslog något som i substans överensstämmer med en punkt. 'Indirekt' betyder att ämnet berördes men utan den specifika lösning som punkten föreslår. 'Ej berört' betyder att varken problemet eller lösningen nämndes. Poängen mäter bara vad som sades i den specifika debatten eller intervjun, inte partiernas fullständiga partiprogram. För intervjuer inkluderar vi även andra och tredje ordningens konsekvenser där en partiledares politik indirekt möjliggör de 15 punkternas förslag. JJ:s kommentarer är personliga reflektioner och markeras tydligt som sådana. Transkript finns tillgängliga för nedladdning under varje analys."
-              : "The analyses are based on complete transcripts of debates and interviews. Each statement is matched against the content of the 15 points. 'Direct' means a party leader proposed something that substantively aligns with a point. 'Indirect' means the topic was touched but without the specific solution the point proposes. 'Not covered' means neither the problem nor the solution was mentioned. Scores only measure what was said in the specific debate or interview, not the parties' full programmes. For interviews, we also include second and third-order consequences where a leader's policy indirectly enables the 15 points' proposals. JJ's comments are personal reflections and are clearly marked as such. Transcripts are available for download under each analysis."}
+              ? "Analyserna baseras på fullständiga transkript av debatter och intervjuer. Varje uttalande matchas mot de 15 punkternas innehåll. 'Direkt' betyder att en företrädare föreslog något som i substans överensstämmer med en punkt. 'Indirekt' betyder att problemet, en central mekanism eller en tydlig konsekvens berördes utan den specifika lösning som punkten föreslår. 'Ej berört' betyder att kopplingen saknas. Poängen mäter bara vad som sades vid det specifika tillfället, inte partiernas fullständiga program. I samtliga format redovisar vi även andra och tredje ordningens konsekvenser, men skiljer dem tydligt från vad som faktiskt sades. JJ:s kommentarer är personliga reflektioner och markeras som sådana. Transkript finns för nedladdning under varje analys."
+              : "The analyses are based on complete transcripts of debates and interviews. Each statement is matched against the content of the 15 points. 'Direct' means a representative proposed something that substantively aligns with a point. 'Indirect' means the problem, a central mechanism or a clear consequence was addressed without the point's specific solution. 'Not covered' means the connection is absent. Scores measure only what was said on the specific occasion, not the parties' full programmes. Across all formats we also report second and third-order consequences, while clearly separating them from what was actually said. JJ's comments are personal reflections and are marked as such. Transcripts are available under each analysis."}
           </p>
           <p className="font-body text-xs leading-relaxed mt-3" style={{ color: "#8a7a6a" }}>
             {lang === "sv"

@@ -229,10 +229,28 @@ const DEBATE_OG: Record<string, { title: string; titleEn: string; desc: string; 
     descEn: "0 of 15 points addressed directly. 9 indirectly. No party leader mentioned AI, digitalisation or competence validation as integration tools.",
   },
   "ai-sweden-etr-2026-05": {
-    title: "ETR (C) om AI-politik vs. de 15 punkterna",
-    titleEn: "ETR (C) on AI Policy vs. the 15 Points",
+    title: "AI Sweden: Elisabeth Thand Ringqvist (C) vs. de 15 punkterna",
+    titleEn: "AI Sweden: Elisabeth Thand Ringqvist (C) vs. the 15 Points",
     desc: "ETR når 4 direkta och 8 indirekta matchningar. Hennes AI-infrastrukturtänk är förutsättningen för programmet, men kopplingen till integration saknas.",
     descEn: "ETR scores 4 direct and 8 indirect matches. Her AI infrastructure thinking is the prerequisite, but the connection to integration is missing.",
+  },
+  "expressen-di-partiledardebatt-2026-08-17": {
+    title: "Expressen/Di: Partiledardebatt vs. de 15 punkterna",
+    titleEn: "Expressen/Di: Party Leader Debate vs. the 15 Points",
+    desc: "Integration diskuteras uttryckligen, men AI, kompetens och integration hålls isär. 0 direkta och 10 indirekta matchningar.",
+    descEn: "Integration is discussed explicitly, but AI, skills and integration remain separate. 0 direct and 10 indirect matches.",
+  },
+  "agenda-ekonomi-2026-08-23": {
+    title: "Agenda: Ekonomidebatten vs. de 15 punkterna",
+    titleEn: "Agenda: Economy Debate vs. the 15 Points",
+    desc: "Jobb, kompetens och företag diskuteras – men integration, AI och digitalisering nämns noll gånger. 0 direkta, 6 indirekta.",
+    descEn: "Jobs, skills and business are discussed – but integration, AI and digitalisation are mentioned zero times. 0 direct, 6 indirect.",
+  },
+  "agenda-klimat-2026-08-30": {
+    title: "Agenda: Klimatdebatten vs. de 15 punkterna",
+    titleEn: "Agenda: Climate Debate vs. the 15 Points",
+    desc: "Omställningen skapar jobb och kompetensbehov, men integration nämns noll gånger. 0 direkta och 3 indirekta matchningar.",
+    descEn: "The transition creates jobs and skills needs, but integration is mentioned zero times. 0 direct and 3 indirect matches.",
   },
 };
 
@@ -290,16 +308,16 @@ describe("OG tag injection – Debate/Interview pages", () => {
   it("should inject Swedish OG tags for /debatter/ai-sweden-etr-2026-05", () => {
     const result = injectDebateOgTags(BASE_HTML, "/debatter/ai-sweden-etr-2026-05");
 
-    expect(result).toContain('<meta property="og:title" content="ETR (C) om AI-politik vs. de 15 punkterna \u2013 Det Nya Sverige"');
+    expect(result).toContain('<meta property="og:title" content="AI Sweden: Elisabeth Thand Ringqvist (C) vs. de 15 punkterna \u2013 Det Nya Sverige"');
     expect(result).toContain("ETR når 4 direkta och 8 indirekta matchningar");
   });
 
   it("should inject English OG tags for /en/debates/ai-sweden-etr-2026-05", () => {
     const result = injectDebateOgTags(BASE_HTML, "/en/debates/ai-sweden-etr-2026-05");
 
-    expect(result).toContain('<meta property="og:title" content="ETR (C) on AI Policy vs. the 15 Points \u2013 The New Sweden"');
+    expect(result).toContain('<meta property="og:title" content="AI Sweden: Elisabeth Thand Ringqvist (C) vs. the 15 Points \u2013 The New Sweden"');
     expect(result).toContain("ETR scores 4 direct and 8 indirect matches");
-    expect(result).toContain("<title>ETR (C) on AI Policy vs. the 15 Points \u2013 The New Sweden</title>");
+    expect(result).toContain("<title>AI Sweden: Elisabeth Thand Ringqvist (C) vs. the 15 Points \u2013 The New Sweden</title>");
   });
 
   it("should inject English OG tags for /en/debates/svt-partiledardebatt-2026-05", () => {
@@ -324,6 +342,20 @@ describe("OG tag injection – Debate/Interview pages", () => {
     const result = injectDebateOgTags(BASE_HTML, "/en/debatter/ai-sweden-etr-2026-05");
 
     expect(result).toContain("The New Sweden");
-    expect(result).toContain("ETR (C) on AI Policy vs. the 15 Points");
+    expect(result).toContain("AI Sweden: Elisabeth Thand Ringqvist (C) vs. the 15 Points");
+  });
+
+  it("should inject Swedish OG tags for the Agenda economy debate", () => {
+    const result = injectDebateOgTags(BASE_HTML, "/debatter/agenda-ekonomi-2026-08-23");
+
+    expect(result).toContain("Agenda: Ekonomidebatten vs. de 15 punkterna");
+    expect(result).toContain("integration, AI och digitalisering nämns noll gånger");
+  });
+
+  it("should inject English OG tags for the Agenda climate debate", () => {
+    const result = injectDebateOgTags(BASE_HTML, "/en/debates/agenda-klimat-2026-08-30");
+
+    expect(result).toContain("Agenda: Climate Debate vs. the 15 Points");
+    expect(result).toContain("integration is mentioned zero times");
   });
 });

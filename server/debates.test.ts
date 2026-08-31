@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { debates } from "../client/src/lib/debates";
+import { agendaCombinedSpeakingTime, agendaDebateStats } from "../client/src/lib/agenda-stats";
 
 describe("Debates data structure", () => {
   it("should have at least one debate entry", () => {
@@ -121,6 +122,44 @@ describe("Debates data structure", () => {
           debate.partyRankings[i].score
         );
       }
+    }
+  });
+
+  it("should include all three August election debates", () => {
+    const expectedIds = [
+      "expressen-di-partiledardebatt-2026-08-17",
+      "agenda-ekonomi-2026-08-23",
+      "agenda-klimat-2026-08-30",
+    ];
+
+    expect(debates.length).toBe(12);
+    for (const id of expectedIds) {
+      const debate = debates.find((entry) => entry.id === id);
+      expect(debate).toBeDefined();
+      expect(debate?.type).toBe("debate");
+      expect(debate?.partyRankings.length).toBe(8);
+      expect(debate?.pdfUrl).toMatch(/\.pdf$/);
+      expect(debate?.mdUrl).toMatch(/\.md$/);
+      expect(debate?.transcriptUrl).toMatch(/\.md$/);
+    }
+  });
+
+  it("should expose consistent Agenda speaking-time and topic data", () => {
+    expect(agendaDebateStats).toHaveLength(2);
+    expect(agendaCombinedSpeakingTime).toHaveLength(8);
+
+    for (const debate of agendaDebateStats) {
+      expect(debate.rows).toHaveLength(8);
+      expect(debate.overallTopics.reduce((sum, item) => sum + item.pct, 0)).toBeCloseTo(100, 1);
+      expect(debate.rows.reduce((sum, row) => sum + row.seconds, 0)).toBeCloseTo(debate.representativeTotal, 1);
+      const representativeShare = debate.rows.reduce((sum, row) => sum + row.shareAmongRepresentatives, 0);
+      expect(Math.abs(representativeShare - 100)).toBeLessThanOrEqual(0.2);
+    }
+
+    for (let index = 1; index < agendaCombinedSpeakingTime.length; index += 1) {
+      expect(agendaCombinedSpeakingTime[index - 1].seconds).toBeGreaterThanOrEqual(
+        agendaCombinedSpeakingTime[index].seconds,
+      );
     }
   });
 });

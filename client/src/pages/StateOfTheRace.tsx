@@ -153,8 +153,8 @@ export default function StateOfTheRace() {
           <div className="space-y-6 text-lg leading-relaxed">
             <p>
               {t(
-                "Centerpartiet (C) leder med 13.5 poäng, nästan dubbelt så mycket som tvåan. Elisabeth Thand Ringqvist bygger exakt den AI-infrastruktur som de 15 punkterna förutsätter: beräkningskraft, forskningskluster, regulatoriska sandlådor, hemchattreform. Men hon gör aldrig kopplingen till integration. AI-kommittén hon föreslår ska analysera \"arbetsmarknaden och utbildningssystemet\" utan att nämna vad AI kan göra för de 200 000 som väntar på att komma in i dem.",
-                "The Centre Party (C) leads with 13.5 points, nearly double the runner-up. Elisabeth Thand Ringqvist builds exactly the AI infrastructure the 15 points presuppose: compute power, research clusters, regulatory sandboxes, home-chat reform. But she never makes the connection to integration. The AI committee she proposes will analyse \"the labour market and education system\" without mentioning what AI can do for the 200,000 waiting to enter them."
+                "Centerpartiet (C) ligger fortfarande närmast programmets infrastruktur. Elisabeth Thand Ringqvist talar om beräkningskraft, forskningskluster och regulatoriska sandlådor. I Expressen/Di-debatten säger hon dessutom att utbildningar måste matcha företagens behov och att AI kräver samarbete mellan stat och företag. Men inte ens när samma debatt senare handlar uttryckligen om integration använder hon infrastrukturen till språk, validering eller matchning.",
+                "The Centre Party (C) remains closest to the programme's infrastructure. Elisabeth Thand Ringqvist discusses compute power, research clusters and regulatory sandboxes. In the Expressen/Di debate she also says education must match companies' needs and that AI requires state-business cooperation. Yet even when the same debate later addresses integration explicitly, she does not apply that infrastructure to language, validation or matching."
               )}
             </p>
 
@@ -167,8 +167,8 @@ export default function StateOfTheRace() {
 
             <p>
               {t(
-                "Moderaterna (M) talar om \"Silicon Valhalla\" och internationell talangrekrytering. Men de skickade inte ens partiledaren till AI Sweden. Jessica Rosencrantz ser AI som näringslivsfråga och geopolitisk kapplöpning, aldrig som integrationsverktyg. \"Snabbspår\" gäller uteslutande importerad kompetens, aldrig validering av befintlig.",
-                "The Moderates (M) talk about \"Silicon Valhalla\" and international talent recruitment. But they didn't even send the party leader to AI Sweden. Jessica Rosencrantz sees AI as a business issue and geopolitical race, never as an integration tool. \"Fast-tracks\" apply exclusively to imported competence, never validation of existing."
+                "Moderaterna (M) talar om \"Silicon Valhalla\" och internationell talangrekrytering. Jessica Rosencrantz ser AI som näringslivsfråga och geopolitisk kapplöpning, aldrig som integrationsverktyg. I Agendas ekonomidebatt säger Elisabeth Svantesson att Sverige ska \"dra till sig mer kompetens\". Attraktionen är legitim, men den kompetens som redan bor här förblir osynlig och ovaliderad.",
+                "The Moderates (M) talk about \"Silicon Valhalla\" and international talent recruitment. Jessica Rosencrantz sees AI as a business issue and geopolitical race, never as an integration tool. In Agenda's economy debate Elisabeth Svantesson says Sweden should \"attract more skills\". Attraction is legitimate, but the skills already living here remain invisible and unvalidated."
               )}
             </p>
 
@@ -181,15 +181,15 @@ export default function StateOfTheRace() {
 
             <p>
               {t(
-                "Socialdemokraterna (S) ser AI som förvaltarens verktyg. Mikael Damberg talar om effektivisering av offentlig sektor och trygghetssystem. Aldrig om omvandling. Aldrig om de som står utanför systemen han vill effektivisera.",
-                "The Social Democrats (S) see AI as the administrator's tool. Mikael Damberg talks about making public sector and welfare systems more efficient. Never about transformation. Never about those standing outside the systems he wants to optimise."
+                "Socialdemokraterna (S) ser AI som förvaltarens verktyg. Mikael Damberg talar om effektivisering av offentlig sektor, forskning, innovation och kompetensförsörjning. I Expressen/Di-debatten försvarar Magdalena Andersson statens löfte till människor med permanenta uppehållstillstånd. Delarna finns, men omvandlingen för dem som står utanför systemen formuleras aldrig.",
+                "The Social Democrats (S) see AI as the administrator's tool. Mikael Damberg discusses public-sector efficiency, research, innovation and skills supply. In the Expressen/Di debate Magdalena Andersson defends the state's promise to people with permanent residence permits. The pieces exist, but transformation for those outside the systems is never formulated."
               )}
             </p>
 
             <p>
               {t(
-                "Miljöpartiet (MP) är det enda parti som nämner arbetskraftsinvandring i AI-kontexten. Daniel Helldén kritiserar lönegolvet. Det är modigt. Men hans perspektiv är \"importera kompetens utifrån\", aldrig \"utveckla kompetens som redan finns här\". Fyradagarsveckan förutsätter att du har ett jobb att korta ner.",
-                "The Green Party (MP) is the only party mentioning labour immigration in the AI context. Daniel Helldén criticises the salary floor. That's bold. But his perspective is \"import competence from outside\", never \"develop competence already here\". The four-day work week presupposes you have a job to shorten."
+                "Miljöpartiet (MP) nämner arbetskraftsinvandring i AI-intervjun och försvarar investeringar i integration i Expressen/Di-debatten. I klimatdebatten kopplar Amanda Lind omställningen till jobb, utveckling och innovation. Men steget till att validera och matcha kompetensen hos människor som redan finns här tas aldrig.",
+                "The Green Party (MP) mentions labour immigration in its AI interview and defends investment in integration in the Expressen/Di debate. In the climate debate Amanda Lind connects the transition to jobs, development and innovation. But the step toward validating and matching the skills of people already here is never taken."
               )}
             </p>
 
@@ -202,11 +202,36 @@ export default function StateOfTheRace() {
 
             <p>
               {t(
-                "Sverigedemokraterna (SD) har den lägsta poängen: 1.0 av möjliga 30 (2 analyser). I partiledardebatten var deras enda koppling till de 15 punkterna en indirekt: hårdare tag mot exploatering. AI och digitalisering existerar inte i deras politiska vokabulär.",
-                "The Sweden Democrats (SD) have the lowest score: 1.0 out of a possible 30 (2 analyses). In the party leader debate their only connection to the 15 points was indirect: tougher measures against exploitation. AI and digitalisation do not exist in their political vocabulary."
+                "Sverigedemokraterna (SD) ligger längst från programmets kapacitetsbyggande logik. I Expressen/Di-debatten säger Jimmie Åkesson att han inte vill lägga pengar på integration och formulerar språk och arbete främst som krav. Problemformuleringen finns, men investeringarna i bättre verktyg, validering och leverans avvisas eller förblir osynliga.",
+                "The Sweden Democrats (SD) remain furthest from the programme's capacity-building logic. In the Expressen/Di debate Jimmie Åkesson says he does not want to spend money on integration and frames language and work mainly as requirements. The problem statement exists, but investment in better tools, validation and delivery is rejected or remains invisible."
               )}
             </p>
           </div>
+        </section>
+
+        {/* The August debates */}
+        <section className="mb-12">
+          <h2 className="font-display text-2xl font-bold mb-4">
+            {t("Augustidebatterna skärper bilden", "The August debates sharpen the picture")}
+          </h2>
+          <p className="text-lg leading-relaxed mb-4">
+            {t(
+              "Expressen/Di-debatten visar att partiledarna har nästan alla pusselbitar. AI diskuteras som nationell infrastruktur. Kompetens, språk, jobb, tillhörighet och rättslig förutsägbarhet får egna ordväxlingar. Ändå sätts delarna aldrig ihop. Samma debatt rymmer både AI och integration, men i separata stuprör.",
+              "The Expressen/Di debate shows that party leaders have almost all the puzzle pieces. AI is discussed as national infrastructure. Skills, language, jobs, belonging and legal predictability each receive their own exchanges. Yet the pieces are never assembled. The same debate contains both AI and integration, but in separate silos."
+            )}
+          </p>
+          <p className="text-lg leading-relaxed mb-4">
+            {t(
+              "Agendas ekonomidebatt gör glappet ännu tydligare. Åtta partier diskuterar hög arbetslöshet, kompetensförsörjning, utbildning, innovation och företag som vill växa – utan att nämna integration en enda gång. Kompetens beskrivs som något Sverige ska locka utifrån eller utbilda fram, inte som något som redan finns här och kan valideras snabbare.",
+              "Agenda's economy debate makes the gap even clearer. Eight parties discuss high unemployment, skills supply, education, innovation and companies that want to grow – without mentioning integration once. Skills are described as something Sweden should attract from abroad or train into existence, not something already here that can be validated faster."
+            )}
+          </p>
+          <p className="text-lg leading-relaxed">
+            {t(
+              "Klimatdebatten tillför en tredje ordningens konsekvens. Omställningen ska skapa jobb, industri och innovation, men ingen frågar vilka människor som ska göra jobbet eller hur deras kompetens ska bli synlig. Sverige riskerar därmed kompetensbrist och utanförskap samtidigt. Det är ett designfel, inte en naturlag.",
+              "The climate debate adds a third-order consequence. The transition is meant to create jobs, industry and innovation, but no one asks who will do the work or how their skills will become visible. Sweden therefore risks skills shortages and exclusion at the same time. That is a design failure, not a law of nature."
+            )}
+          </p>
         </section>
 
         {/* The gap */}
