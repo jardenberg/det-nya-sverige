@@ -215,3 +215,9 @@
 - [x] Auto-calculates from debates array data
 - [x] Bilingual (sv/en)
 - [x] Update version number to v102b
+
+## Production custom-domain outage
+- [x] Verify the published app works on the Manus-hosted domain (HTTP 200)
+- [x] Confirm why 15p.jardenberg.se is no longer attached to the project (domain assignment removed; DNS still reaches Cloudflare but hosting returns HTTP 404)
+- [x] Restore or guide reconnection of 15p.jardenberg.se
+- [x] Verify the custom-domain root URL and deep links after reconnection (HTTP 200 on `/` and `/debatter/riksdagsdebatt-2026-06`)
