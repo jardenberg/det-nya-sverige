@@ -195,9 +195,34 @@ const DEBATE_OG: Record<string, { title: string; titleEn: string; desc: string; 
     desc: "Helldén (MP) når 0 direkta och 6 indirekta matchningar. Den enda som nämner arbetskraftsinvandring, men aldrig dem som redan är här.",
     descEn: "Helldén (MP) scores 0 direct and 6 indirect matches. The only one mentioning labour immigration, but never those already here.",
   },
+  "ai-sweden-slottner-2026-08": {
+    title: "AI Sweden: Erik Slottner (KD) vs. de 15 punkterna",
+    titleEn: "AI Sweden: Erik Slottner (KD) vs. the 15 Points",
+    desc: "Slottner (KD) når 1 direkt och 7 indirekta matchningar. Infrastrukturbyggaren som aldrig ser tillämpningen: 290 kommuner i stuprör, men aldrig kopplat till integration.",
+    descEn: "Slottner (KD) scores 1 direct and 7 indirect matches. The infrastructure builder who never sees the application.",
+  },
+  "ai-sweden-wetterling-2026-08": {
+    title: "AI Sweden: Jessica Wetterling (V) vs. de 15 punkterna",
+    titleEn: "AI Sweden: Jessica Wetterling (V) vs. the 15 Points",
+    desc: "Wetterling (V) når 0 direkta och 7 indirekta matchningar. Ärlig om att partiet ligger efter. Samiska språkmodeller förstås, men aldrig svenska som andraspråk.",
+    descEn: "Wetterling (V) scores 0 direct and 7 indirect matches. Honest about the party lagging behind. Sami language models understood, but never Swedish as second language.",
+  },
+  "__state_of_the_race__": {
+    title: "Ingen ser det nya Sverige – Sammanfattning av 9 analyser",
+    titleEn: "No one sees the new Sweden – Summary of 9 analyses",
+    desc: "9 analyser, 8 partier, noll partiledare som kopplar ihop AI med integration. Infrastrukturen finns. Kompetensen finns. Visionen saknas.",
+    descEn: "9 analyses, 8 parties, zero party leaders connecting AI to integration. The infrastructure exists. The competence exists. The vision is missing.",
+  },
 };
 
 function extractDebateInfo(url: string): { id: string; lang: "sv" | "en" } | null {
+  // Match /laget, /state, /en/laget, /en/state for the summary page
+  const stateMatch = url.match(/^(?:\/en)?\/(?:laget|state)$/);
+  if (stateMatch) {
+    const isEnglish = url.startsWith("/en/");
+    return { id: "__state_of_the_race__", lang: isEnglish ? "en" : "sv" };
+  }
+  // Match /debatter/:id, /en/debates/:id for individual analyses
   const match = url.match(/^(?:\/en)?\/(?:debatter|debates)\/([\w-]+)/);
   if (!match) return null;
   const id = match[1];

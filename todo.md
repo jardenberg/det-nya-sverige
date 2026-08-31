@@ -221,3 +221,15 @@
 - [x] Confirm why 15p.jardenberg.se is no longer attached to the project (domain assignment removed; DNS still reaches Cloudflare but hosting returns HTTP 404)
 - [x] Restore or guide reconnection of 15p.jardenberg.se
 - [x] Verify the custom-domain root URL and deep links after reconnection (HTTP 200 on `/` and `/debatter/riksdagsdebatt-2026-06`)
+
+## State of the Race summary page (v104b)
+- [x] Write shareable summary article distilling the pattern from all 9 analyses
+- [x] Create /laget (sv) and /en/state (en) page component
+- [x] Add OG metadata for social sharing
+- [x] Add navigation links (footer)
+- [x] Update version number to v104b
+
+## Post-restoration verification (v105b)
+- [x] Preserve the newer `/laget` work while recording the domain incident
+- [x] Re-run all automated tests after reconciliation
+- [x] Update version number to v105b

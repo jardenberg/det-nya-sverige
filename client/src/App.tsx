@@ -8,6 +8,7 @@ import { LanguageProvider } from "./contexts/LanguageContext";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Debates from "./pages/Debates";
+import StateOfTheRace from "./pages/StateOfTheRace";
 function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
@@ -21,6 +22,8 @@ function Router() {
       <Route path="/debatter/:id" component={Debates} />
       <Route path="/debates" component={Debates} />
       <Route path="/debates/:id" component={Debates} />
+      <Route path="/laget" component={StateOfTheRace} />
+      <Route path="/state" component={StateOfTheRace} />
 
       {/* English routes with /en prefix */}
       <Route path="/en" component={Home} />
@@ -31,6 +34,8 @@ function Router() {
       <Route path="/en/debatter/:id" component={Debates} />
       <Route path="/en/debates" component={Debates} />
       <Route path="/en/debates/:id" component={Debates} />
+      <Route path="/en/laget" component={StateOfTheRace} />
+      <Route path="/en/state" component={StateOfTheRace} />
 
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />

@@ -41,7 +41,14 @@ export default function Footer() {
                 className="font-body text-xs underline underline-offset-2 hover:no-underline transition-all"
                 style={{ color: '#8a7a6a' }}
               >
-                {lang === "sv" ? "Debattanalys" : "Debate Analysis"}
+              {lang === "sv" ? "Debattanalys" : "Debate Analysis"}
+              </Link>
+              <span style={{ color: '#d4c9b8' }}>|</span>
+              <Link href={lang === "en" ? "/en/state" : "/laget"}
+                className="font-body text-xs underline underline-offset-2 hover:no-underline transition-all"
+                style={{ color: '#8a7a6a' }}
+              >
+                {lang === "sv" ? "Läget" : "State of the Race"}
               </Link>
             </div>
           </div>
@@ -113,7 +120,7 @@ export default function Footer() {
               </a>
             </div>
             <p className="font-mono-display text-xs tracking-wider" style={{ color: 'oklch(0.58 0.16 55 / 0.4)' }}>
-              v103b
+              v105b
             </p>
           </div>
         </div>
