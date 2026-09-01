@@ -248,3 +248,16 @@
 - [x] Add or update Vitest coverage for the new data and routes
 - [x] Verify desktop/mobile UI, downloads, citations, and deep links
 - [x] Update version number to v106b
+
+## Rhetoric timeline: integration and AI
+- [x] Define a transparent rhetoric model for integration, AI, and the explicit bridge between them
+- [x] Derive party-by-party time-series observations from all 12 existing analyses without inventing missing statements
+- [x] Build an interactive, bilingual timeline with party filters and metric switching
+- [x] Show source occasion, representative, format, score, concise interpretation, and traceable evidence for every observation
+- [x] Distinguish direct rhetoric, enabling infrastructure, absence, and opposition visually
+- [x] Add a shareable Swedish route and matching English route
+- [x] Add navigation links and unique OG metadata for the timeline
+- [x] Ensure new analyses automatically become visible in the timeline data model, with uncoded additions explicitly flagged for editorial review
+- [x] Add Vitest coverage for chronology, parties, routes, and rhetoric metrics
+- [x] Verify desktop and mobile layouts, keyboard interaction, and readable chart labels
+- [x] Update version number to v107b

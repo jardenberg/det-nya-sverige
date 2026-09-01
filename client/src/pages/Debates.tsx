@@ -9,7 +9,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLang } from "@/contexts/LanguageContext";
 import { Link, useParams } from "wouter";
-import { ArrowLeft, Download, ChevronDown, ChevronUp, MessageSquareQuote, AlertTriangle, LinkIcon, Check } from "lucide-react";
+import { ArrowLeft, Download, ChevronDown, ChevronUp, MessageSquareQuote, AlertTriangle, LinkIcon, Check, TrendingUp } from "lucide-react";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { debates, type DebateAnalysis, type DebateSection } from "@/lib/debates";
 import AggregatedScoreboard from "@/components/AggregatedScoreboard";
@@ -559,6 +559,29 @@ export default function Debates() {
 
         {/* Aggregated scoreboard */}
         <AggregatedScoreboard />
+
+        <Link
+          href={`${langPrefix}/${lang === "sv" ? "retorik" : "rhetoric"}`}
+          className="group grid md:grid-cols-[auto_1fr_auto] items-start md:items-center gap-4 p-5 md:p-6 mb-12 border border-foreground/10 bg-[#fffaf0]/70 hover:border-[#B64A3A]/40 transition-colors"
+        >
+          <span className="w-10 h-10 grid place-items-center border border-[#B64A3A]/25 text-[#B64A3A]">
+            <TrendingUp size={19} />
+          </span>
+          <span>
+            <span className="block font-mono-display text-[9px] uppercase tracking-[0.16em] text-[#B64A3A] mb-1">
+              {lang === "sv" ? "Ny funktion · Retoriken över tid" : "New feature · Rhetoric over time"}
+            </span>
+            <span className="block font-display text-xl text-[#2c1810] mb-1">
+              {lang === "sv" ? "Följ de två samtal som aldrig möts" : "Follow the two conversations that never meet"}
+            </span>
+            <span className="block font-body text-sm leading-relaxed text-foreground/60">
+              {lang === "sv" ? "Se hur varje partis språk om integration, AI och kopplingen mellan dem förändras analys för analys." : "See how each party's language on integration, AI and the link between them changes analysis by analysis."}
+            </span>
+          </span>
+          <span className="font-body text-sm text-[#B64A3A] group-hover:translate-x-1 transition-transform">
+            {lang === "sv" ? "Öppna →" : "Open →"}
+          </span>
+        </Link>
 
         {/* Agenda speaking-time and topic comparison */}
         <AgendaDebateStats />

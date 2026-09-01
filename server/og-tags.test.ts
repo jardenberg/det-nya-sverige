@@ -252,14 +252,24 @@ const DEBATE_OG: Record<string, { title: string; titleEn: string; desc: string; 
     desc: "Omställningen skapar jobb och kompetensbehov, men integration nämns noll gånger. 0 direkta och 3 indirekta matchningar.",
     descEn: "The transition creates jobs and skills needs, but integration is mentioned zero times. 0 direct and 3 indirect matches.",
   },
+  "__rhetoric__": {
+    title: "Två samtal som aldrig möts – Retoriken över tid",
+    titleEn: "Two Conversations That Never Meet – Rhetoric Over Time",
+    desc: "En interaktiv tidslinje över hur åtta partier talar om integration, AI och den saknade kopplingen mellan dem i 12 analyser.",
+    descEn: "An interactive timeline of how eight parties speak about integration, AI and the missing connection between them across 12 analyses.",
+  },
 };
 
 function extractDebateInfo(url: string): { id: string; lang: "sv" | "en" } | null {
-  const match = url.match(/^(?:\/en)?\/(?:debatter|debates)\/([\w-]+)/);
+  const pathname = url.split(/[?#]/, 1)[0];
+  if (/^(?:\/en)?\/(?:retorik|rhetoric)$/.test(pathname)) {
+    return { id: "__rhetoric__", lang: pathname.startsWith("/en/") ? "en" : "sv" };
+  }
+  const match = pathname.match(/^(?:\/en)?\/(?:debatter|debates)\/([\w-]+)/);
   if (!match) return null;
   const id = match[1];
   if (!DEBATE_OG[id]) return null;
-  const isEnglish = url.startsWith("/en/");
+  const isEnglish = pathname.startsWith("/en/");
   return { id, lang: isEnglish ? "en" : "sv" };
 }
 
@@ -357,5 +367,25 @@ describe("OG tag injection – Debate/Interview pages", () => {
 
     expect(result).toContain("Agenda: Climate Debate vs. the 15 Points");
     expect(result).toContain("integration is mentioned zero times");
+  });
+
+  it("should inject Swedish OG tags for /retorik", () => {
+    const result = injectDebateOgTags(BASE_HTML, "/retorik");
+
+    expect(result).toContain("Två samtal som aldrig möts – Retoriken över tid");
+    expect(result).toContain("åtta partier talar om integration, AI");
+  });
+
+  it("should inject English OG tags for /en/rhetoric", () => {
+    const result = injectDebateOgTags(BASE_HTML, "/en/rhetoric");
+
+    expect(result).toContain("Two Conversations That Never Meet – Rhetoric Over Time");
+    expect(result).toContain("eight parties speak about integration, AI");
+  });
+
+  it("should preserve rhetoric OG tags when a party query filter is present", () => {
+    const result = injectDebateOgTags(BASE_HTML, "/retorik?parti=SD");
+
+    expect(result).toContain("Två samtal som aldrig möts – Retoriken över tid");
   });
 });

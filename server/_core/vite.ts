@@ -225,6 +225,12 @@ const DEBATE_OG: Record<string, { title: string; titleEn: string; desc: string; 
     desc: "Omställningen skapar jobb och kompetensbehov, men integration nämns noll gånger. 0 direkta och 3 indirekta matchningar.",
     descEn: "The transition creates jobs and skills needs, but integration is mentioned zero times. 0 direct and 3 indirect matches.",
   },
+  "__rhetoric__": {
+    title: "Två samtal som aldrig möts – Retoriken över tid",
+    titleEn: "Two Conversations That Never Meet – Rhetoric Over Time",
+    desc: "En interaktiv tidslinje över hur åtta partier talar om integration, AI och den saknade kopplingen mellan dem i 12 analyser.",
+    descEn: "An interactive timeline of how eight parties speak about integration, AI and the missing connection between them across 12 analyses.",
+  },
   "__state_of_the_race__": {
     title: "Ingen ser det nya Sverige – Sammanfattning av 12 analyser",
     titleEn: "No one sees the new Sweden – Summary of 12 analyses",
@@ -234,18 +240,25 @@ const DEBATE_OG: Record<string, { title: string; titleEn: string; desc: string; 
 };
 
 function extractDebateInfo(url: string): { id: string; lang: "sv" | "en" } | null {
+  const pathname = url.split(/[?#]/, 1)[0];
+  // Match /retorik, /rhetoric and their English-prefixed variants
+  const rhetoricMatch = pathname.match(/^(?:\/en)?\/(?:retorik|rhetoric)$/);
+  if (rhetoricMatch) {
+    const isEnglish = pathname.startsWith("/en/");
+    return { id: "__rhetoric__", lang: isEnglish ? "en" : "sv" };
+  }
   // Match /laget, /state, /en/laget, /en/state for the summary page
-  const stateMatch = url.match(/^(?:\/en)?\/(?:laget|state)$/);
+  const stateMatch = pathname.match(/^(?:\/en)?\/(?:laget|state)$/);
   if (stateMatch) {
-    const isEnglish = url.startsWith("/en/");
+    const isEnglish = pathname.startsWith("/en/");
     return { id: "__state_of_the_race__", lang: isEnglish ? "en" : "sv" };
   }
   // Match /debatter/:id, /en/debates/:id for individual analyses
-  const match = url.match(/^(?:\/en)?\/(?:debatter|debates)\/([\w-]+)/);
+  const match = pathname.match(/^(?:\/en)?\/(?:debatter|debates)\/([\w-]+)/);
   if (!match) return null;
   const id = match[1];
   if (!DEBATE_OG[id]) return null;
-  const isEnglish = url.startsWith("/en/");
+  const isEnglish = pathname.startsWith("/en/");
   return { id, lang: isEnglish ? "en" : "sv" };
 }
 
