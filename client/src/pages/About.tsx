@@ -37,11 +37,11 @@ Varje analys innehåller:
 • JJ-kommentarer — personliga reflektioner, tydligt markerade som sådana
 • Allt material nedladdningsbart — analys som PDF och Markdown, plus det fullständiga transkriptet
 
-Hittills har vi analyserat SVT:s partiledardebatt (Agenda, 3 maj 2026) och AI Swedens intervjuserie med partiföreträdare. Fler analyser tillkommer löpande under valrörelsen.
+Materialet omfattar nu partiledardebatter, tematiska valdebatter och AI-intervjuer med företrädare för samtliga riksdagspartier. Fler analyser tillkommer löpande under valrörelsen.
 
 Transkriptionerna möjliggörs av Klang.ai — utan deras utmärkta transkriptioner hade den här analysen inte varit möjlig.
 
-Varför gör vi det här? Därför att det finns ett glapp mellan vad politiker säger och vad som faktiskt behövs. De 15 punkterna handlar om att använda AI och digitalisering för att göra integration snabbare, billigare och mer human. Men i debatterna pratar man om AI som näringspolitik eller hot — aldrig som integrationsverktyg. Det glappet vill vi synliggöra.`,
+Varför gör vi det här? Därför att det finns ett glapp mellan vad politiker säger och vad som faktiskt behövs. De 15 punkterna handlar om att använda AI och digitalisering för att göra integration snabbare, billigare och mer human. I debatterna behandlas AI nästan alltid som näringspolitik, förvaltningsverktyg eller hot. Sveriges Radios AI-debatt skapade den första delvis uttalade bron när C kopplade svensk AI-kapacitet till att behålla forskare med utländsk bakgrund. Men en bred, operativ integrationspolitik för språk, validering, första jobb och myndighetskontakter saknas fortfarande. Det glappet vill vi synliggöra.`,
     debateLink: "Gå till debattanalysen",
     debateLinkUrl: "/debatter",
 
@@ -122,11 +122,11 @@ Each analysis contains:
 • JJ comments — personal reflections, clearly marked as such
 • All material downloadable — analysis as PDF and Markdown, plus the full transcript
 
-So far we have analysed SVT's party leader debate (Agenda, 3 May 2026) and AI Sweden's interview series with party representatives. More analyses will be added continuously during the election campaign.
+The material now includes party leader debates, thematic election debates and AI interviews with representatives of all parliamentary parties. More analyses will be added continuously during the election campaign.
 
 Transcriptions are made possible by Klang.ai — without their excellent transcriptions, this analysis would not be possible.
 
-Why do we do this? Because there is a gap between what politicians say and what is actually needed. The 15 points are about using AI and digitalisation to make integration faster, cheaper and more humane. But in the debates, AI is discussed as industrial policy or threat — never as an integration tool. We want to make that gap visible.`,
+Why do we do this? Because there is a gap between what politicians say and what is actually needed. The 15 points are about using AI and digitalisation to make integration faster, cheaper and more humane. In the debates, AI is almost always treated as industrial policy, an administrative tool or a threat. Sveriges Radio's AI debate created the first partly explicit bridge when C linked Swedish AI capacity to retaining researchers with foreign backgrounds. But broad, operational integration policy for language, validation, first jobs and public-service contacts is still missing. We want to make that gap visible.`,
     debateLink: "Go to the debate analysis",
     debateLinkUrl: "/en/debates",
 
@@ -470,7 +470,7 @@ export default function About() {
         {/* Version */}
         <div className="mt-20 pt-8" style={{ borderTop: '1px solid oklch(0.18 0.02 50 / 0.07)' }}>
           <p className="font-mono-display text-xs tracking-wider" style={{ color: 'oklch(0.58 0.16 55 / 0.4)' }}>
-            {c.versionLabel}: v099b
+            {c.versionLabel}: v108b
           </p>
         </div>
       </div>

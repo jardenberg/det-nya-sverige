@@ -173,12 +173,12 @@ export default function RhetoricTimeline() {
               {lang === "sv" ? `Retoriken över tid · ${analysisCount} analyser` : `Rhetoric over time · ${analysisCount} analyses`}
             </p>
             <h1 className="font-display text-4xl md:text-6xl leading-[0.98] text-[#2c1810] mb-6">
-              {lang === "sv" ? "Två samtal som aldrig möts" : "Two conversations that never meet"}
+              {lang === "sv" ? "En första bro – men bara för topptalang" : "A first bridge – but only for top talent"}
             </h1>
             <p className="font-body text-lg md:text-xl leading-relaxed text-foreground/70 max-w-3xl">
               {lang === "sv"
-                ? "Här följer vi hur partierna talar om integration, AI och länken mellan dem. Visualiseringen bygger på samma källgranskade analyser som resten av sajten. Den mäter retoriska signaler, inte partiprogram eller avsikter."
-                : "This tracks how the parties speak about integration, AI and the link between them. The visualisation uses the same source-reviewed analyses as the rest of the site. It measures rhetorical signals, not party programmes or intentions."}
+                ? "Här följer vi hur partierna talar om integration, AI och länken mellan dem. Sveriges Radios AI-debatt skapar seriens första delvis uttalade koppling: C placerar forskare med utländsk bakgrund i berättelsen om svensk AI-kapacitet. Visualiseringen mäter retoriska signaler, inte partiprogram eller avsikter."
+                : "This tracks how the parties speak about integration, AI and the link between them. Sveriges Radio's AI debate creates the series' first partly explicit connection: C places researchers with foreign backgrounds inside the story of Swedish AI capacity. The visualisation measures rhetorical signals, not party programmes or intentions."}
             </p>
           </div>
         </div>
@@ -311,7 +311,7 @@ export default function RhetoricTimeline() {
                         strokeWidth={metric === "bridge" ? 3 : 2}
                         dot={{ r: metric === "bridge" ? 4 : 3, fill: metricColors[metric], strokeWidth: 0 }}
                         activeDot={{ r: 6, fill: metricColors[metric], stroke: "#fffaf0", strokeWidth: 2 }}
-                        animationDuration={500}
+                        isAnimationActive={false}
                       />
                     ) : null,
                   )}
@@ -414,8 +414,8 @@ export default function RhetoricTimeline() {
             </p>
             <p className="font-display text-2xl md:text-3xl italic leading-tight text-[#2c1810]">
               {lang === "sv"
-                ? "Det mest stabila över tid är inte en position. Det är ett mellanrum."
-                : "The most stable pattern over time is not a position. It is a gap."}
+                ? "Väggen har fått sin första spricka. Nu måste bron byggas för fler."
+                : "The wall has its first crack. Now the bridge must be built for more people."}
             </p>
           </div>
           <div className="space-y-5 font-body text-base leading-relaxed text-foreground/70">

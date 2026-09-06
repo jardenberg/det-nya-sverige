@@ -107,6 +107,16 @@ export const rhetoricCodes: Record<string, EventCodes> = {
     KD: { integration: 0, ai: 0, bridge: 0 },
     SD: { integration: 0, ai: 0, bridge: 0 },
   },
+  "sveriges-radio-ai-debatt-2026-09-05": {
+    C: { integration: 2, ai: 3, bridge: 2 },
+    M: { integration: 0, ai: 3, bridge: 1 },
+    S: { integration: 0, ai: 3, bridge: 1 },
+    KD: { integration: 0, ai: 3, bridge: 1 },
+    MP: { integration: 0, ai: 3, bridge: 1 },
+    V: { integration: 0, ai: 2, bridge: 1 },
+    SD: { integration: 0, ai: 2, bridge: 1 },
+    L: { integration: 0, ai: 2, bridge: 1 },
+  },
 };
 
 const rhetoricEvidenceEn: Record<string, Partial<Record<PartyAbbreviation, string>>> = {
@@ -181,6 +191,16 @@ const rhetoricEvidenceEn: Record<string, Partial<Record<PartyAbbreviation, strin
     KD: "No clear mechanism close to the 15 points appears.",
     SD: "No clear mechanism close to the 15 points appears.",
   },
+  "sveriges-radio-ai-debatt-2026-09-05": {
+    C: "Paarup-Petersen links Swedish AI capacity to retaining researchers with foreign backgrounds. It is the series' first partly explicit AI–migration bridge, but remains limited to top talent.",
+    M: "Rosencrantz presents concrete AI policy for companies, talent visas, education and government cloud policy, without applying it to integration systems.",
+    S: "Shekarabi proposes a broad jobs transition plan and says the whole population must be included, but does not identify newcomers, language or validation needs.",
+    KD: "Slottner offers concrete welfare applications, AI courses and public-sector guidance that could reduce establishment friction, without naming that use case.",
+    MP: "Bylin addresses entry-level jobs, AI literacy, democratic risk and human capital, but never connects those concerns to people entering Swedish society.",
+    V: "Östh makes non-discrimination and democratic control explicit AI-policy goals, but offers no applied integration or recruitment-bias mechanism.",
+    SD: "Bäckström Johansson discusses public productivity, education matching and compute capacity while leaving the party's integration agenda entirely separate.",
+    L: "Britz emphasises knowledge, schools, energy and business growth, with no application to multilingual learning or integration infrastructure.",
+  },
 };
 
 function representativeFor(debate: DebateAnalysis, party: PartyAbbreviation) {
@@ -247,16 +267,16 @@ export function getRhetoricEditorialNotes() {
 
   return [
     {
-      sv: "AI-intervjuerna gör tekniken synlig men integrationen osynlig. I de breda debatterna händer ofta det omvända.",
-      en: "The AI interviews make technology visible but integration invisible. In broad debates, the reverse often happens.",
+      sv: "AI-formaten gör tekniken synlig men integrationen nästan osynlig. Sveriges Radios gemensamma AI-debatt skapar seriens första spricka: C kopplar AI-kapacitet till att behålla forskare med utländsk bakgrund.",
+      en: "AI formats make technology visible but integration almost invisible. Sveriges Radio's shared AI debate creates the series' first crack: C links AI capacity to retaining researchers with foreign backgrounds.",
     },
     {
       sv: `${explicitBridgeCount === 0 ? "Ingen" : explicitBridgeCount} av ${coded.length} kodade partiframträdanden når nivå 2 eller 3 för kopplingen mellan AI och integration.`,
       en: `${explicitBridgeCount === 0 ? "None" : explicitBridgeCount} of ${coded.length} coded party appearances reaches level 2 or 3 for the connection between AI and integration.`,
     },
     {
-      sv: "Agendas ämnesdebatter pressar retoriken mot noll: ekonomi och klimat diskuteras utan att integrationskapaciteten blir synlig.",
-      en: "Agenda's topic debates push the rhetoric toward zero: the economy and climate are discussed without making integration capacity visible.",
+      sv: "Bron når ännu bara topptalang. Ingen gör AI till operativ infrastruktur för språk, validering, första jobb eller myndighetskontakter.",
+      en: "The bridge still reaches only top talent. No one turns AI into operational infrastructure for language, validation, first jobs or public-service contacts.",
     },
   ];
 }

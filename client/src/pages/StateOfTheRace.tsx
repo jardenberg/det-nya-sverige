@@ -48,15 +48,15 @@ export default function StateOfTheRace() {
 
         <h1 className="font-display text-4xl md:text-5xl font-bold leading-tight mb-4">
           {t(
-            "Ingen ser det nya Sverige",
-            "No one sees the new Sweden"
+            "En första bro – men ännu inget nytt Sverige",
+            "A first bridge – but not yet a new Sweden"
           )}
         </h1>
 
         <p className="text-xl text-foreground/70 leading-relaxed">
           {t(
-            `${totalAnalyses} analyser. ${Object.keys(partyScores).length} partier. Noll partiledare som kopplar ihop AI med integration.`,
-            `${totalAnalyses} analyses. ${Object.keys(partyScores).length} parties. Zero party leaders connecting AI to integration.`
+            `${totalAnalyses} analyser. ${Object.keys(partyScores).length} partier. En delvis uttalad koppling mellan AI och integration – ännu ingen operativ.`,
+            `${totalAnalyses} analyses. ${Object.keys(partyScores).length} parties. One partly explicit connection between AI and integration – still no operational one.`
           )}
         </p>
 
@@ -89,16 +89,16 @@ export default function StateOfTheRace() {
           <blockquote className="border-l-4 border-ochre pl-6 py-4 my-8 bg-ochre/5 rounded-r-lg">
             <p className="text-xl font-display font-semibold italic">
               {t(
-                "Ingen partiledare kopplar ihop teknikskiftet med integrationens infrastruktur. AI diskuteras som effektiviseringsverktyg för det befintliga Sverige, aldrig som omvandlare av det nya.",
-                "No party leader connects the technology shift with integration infrastructure. AI is discussed as an efficiency tool for the existing Sweden, never as a transformer of the new."
+                "Sveriges Radios AI-debatt skapar den första sprickan i väggen: C kopplar svensk AI-kapacitet till att behålla forskare med utländsk bakgrund. Men ingen gör AI till operativ integrationsinfrastruktur.",
+                "Sveriges Radio's AI debate creates the first crack in the wall: C links Swedish AI capacity to retaining researchers with foreign backgrounds. But no one turns AI into operational integration infrastructure."
               )}
             </p>
           </blockquote>
 
           <p className="text-lg leading-relaxed">
             {t(
-              "Ordet \"integration\" i substantiell mening förekommer i princip noll gånger i samtliga AI-politiska sammanhang vi analyserat. Inte för att politikerna saknar AI-kompetens. Flera av dem, särskilt ETR (C) och Slottner (KD), har djup förståelse för tekniken. Men de ser aldrig tillämpningen på den fråga som definierar Sveriges nästa decennium.",
-              "The word \"integration\" in any substantive sense occurs essentially zero times across all AI-policy contexts we have analysed. Not because politicians lack AI competence. Several of them, particularly ETR (C) and Slottner (KD), have deep understanding of the technology. But they never see the application to the question that defines Sweden's next decade."
+              "Orden integration, SFI, nyanländ och validering förekommer inte i Sveriges Radios 51 minuter långa AI-debatt. Däremot placerar Niels Paarup-Petersen människor med utländsk bakgrund inne i berättelsen om svensk AI-kapacitet när han vill behålla forskare efter utbildningen. Det förändrar bilden, men bara delvis: bron når topptalang, inte ännu språk, bred kompetensvalidering, första jobb eller myndighetskontakter.",
+              "The words integration, SFI, newcomer and validation do not occur in Sveriges Radio's 51-minute AI debate. Yet Niels Paarup-Petersen places people with foreign backgrounds inside the story of Swedish AI capacity when arguing that researchers should be retained after graduation. That changes the picture, but only partly: the bridge reaches top talent, not yet language, broad skills validation, first jobs or public-service contacts."
             )}
           </p>
         </section>
@@ -153,8 +153,8 @@ export default function StateOfTheRace() {
           <div className="space-y-6 text-lg leading-relaxed">
             <p>
               {t(
-                "Centerpartiet (C) ligger fortfarande närmast programmets infrastruktur. Elisabeth Thand Ringqvist talar om beräkningskraft, forskningskluster och regulatoriska sandlådor. I Expressen/Di-debatten säger hon dessutom att utbildningar måste matcha företagens behov och att AI kräver samarbete mellan stat och företag. Men inte ens när samma debatt senare handlar uttryckligen om integration använder hon infrastrukturen till språk, validering eller matchning.",
-                "The Centre Party (C) remains closest to the programme's infrastructure. Elisabeth Thand Ringqvist discusses compute power, research clusters and regulatory sandboxes. In the Expressen/Di debate she also says education must match companies' needs and that AI requires state-business cooperation. Yet even when the same debate later addresses integration explicitly, she does not apply that infrastructure to language, validation or matching."
+                "Centerpartiet (C) ligger fortfarande närmast programmets infrastruktur. Elisabeth Thand Ringqvist talar om beräkningskraft, forskningskluster och regulatoriska sandlådor. I Sveriges Radios AI-debatt tar Niels Paarup-Petersen nästa steg: forskare med utländsk bakgrund måste få stanna och bli en del av svensk AI-kapacitet. Det är seriens första delvis uttalade bro. Men den slutar vid topptalang; språk, bred validering och matchning saknas fortfarande.",
+                "The Centre Party (C) remains closest to the programme's infrastructure. Elisabeth Thand Ringqvist discusses compute power, research clusters and regulatory sandboxes. In Sveriges Radio's AI debate, Niels Paarup-Petersen takes the next step: researchers with foreign backgrounds must be allowed to stay and become part of Swedish AI capacity. It is the series' first partly explicit bridge. But it ends at top talent; language, broad validation and matching remain absent."
               )}
             </p>
 
@@ -234,6 +234,31 @@ export default function StateOfTheRace() {
           </p>
         </section>
 
+        {/* The September AI debate */}
+        <section className="mb-12">
+          <h2 className="font-display text-2xl font-bold mb-4">
+            {t("AI-debatten flyttar gränsen", "The AI debate moves the boundary")}
+          </h2>
+          <p className="text-lg leading-relaxed mb-4">
+            {t(
+              "Sveriges Radios valspecial är seriens mest rättvisa AI-jämförelse. Alla åtta partier möts i samma studio, svarar på samma frågor och presenterar konkret politik om reglering, företag, arbetsmarknad, utbildning, offentlig sektor och energi. Två av de 15 punkterna matchas direkt och sex indirekt.",
+              "Sveriges Radio's election special is the series' fairest AI comparison. All eight parties meet in the same studio, answer the same questions and present concrete policy on regulation, business, labour, education, the public sector and energy. Two of the 15 points are matched directly and six indirectly."
+            )}
+          </p>
+          <p className="text-lg leading-relaxed mb-4">
+            {t(
+              "Det positiva är att AI-politiken nu är verklig och bred. M konkretiserar företagsbyggande. S beskriver arbetsmarknadsomställningen. KD visar välfärdstillämpningar. V gör icke-diskriminering till regleringsmål. MP ser de försvinnande instegsjobben. C kopplar för första gången AI-kapacitet till att behålla människor med utländsk bakgrund.",
+              "The positive finding is that AI policy is now real and broad. M specifies business-building reforms. S describes labour-market transition. KD shows welfare applications. V makes non-discrimination a regulatory goal. MP sees the disappearing entry-level jobs. C links AI capacity to retaining people with foreign backgrounds for the first time."
+            )}
+          </p>
+          <p className="text-lg leading-relaxed">
+            {t(
+              "Det negativa är att den breda integrationsadressen fortfarande saknas. Ingen frågar hur AI kan ge svenska i arbetet, läsa utländska examina, korta vägen till första jobbet eller göra myndighetskontakten begriplig från dag ett. Verktygslådan finns. Den används fortfarande främst för att göra det gamla Sverige effektivare.",
+              "The negative finding is that the broad integration address remains absent. No one asks how AI can support Swedish at work, read foreign degrees, shorten the path to a first job or make government contact understandable from day one. The toolkit exists. It is still used mainly to make the old Sweden more efficient."
+            )}
+          </p>
+        </section>
+
         {/* The gap */}
         <section className="mb-12">
           <h2 className="font-display text-2xl font-bold mb-4">
@@ -249,16 +274,16 @@ export default function StateOfTheRace() {
 
           <p className="text-lg leading-relaxed mb-4">
             {t(
-              "Glappet är inte kunskapsmässigt. Det är imaginärt. Ingen av dem kan föreställa sig att AI:s primära samhällsnytta i Sverige de närmaste tio åren kanske inte handlar om att effektivisera det befintliga, utan om att möjliggöra det nya. Att 15% av befolkningen inte fullt deltar i ekonomin är inte ett problem som löses med bättre schemaläggning i äldreomsorgen.",
-              "The gap is not one of knowledge. It is one of imagination. None of them can envision that AI's primary societal benefit in Sweden over the next ten years might not be about making the existing more efficient, but about enabling the new. That 15% of the population not fully participating in the economy is not a problem solved by better scheduling in elderly care."
+              "Glappet är inte främst kunskapsmässigt. Det är ett glapp i föreställningsförmåga och målgrupp. C visar nu att bron går att se när den gäller internationella forskare. Nästa steg är att föreställa sig att AI:s stora samhällsnytta också kan vara att göra kompetens, språk och handlingskraft synlig hos människor som inte redan passar i systemen.",
+              "The gap is not primarily one of knowledge. It is a gap in imagination and intended users. C now shows that the bridge can be seen when it concerns international researchers. The next step is to imagine that AI's major societal benefit can also be making skills, language and agency visible among people who do not already fit the systems."
             )}
           </p>
 
           <blockquote className="border-l-4 border-ochre pl-6 py-4 my-8 bg-ochre/5 rounded-r-lg">
             <p className="text-xl font-display font-semibold italic">
               {t(
-                "Infrastrukturen finns. Kompetensen finns. Visionen saknas.",
-                "The infrastructure exists. The competence exists. The vision is missing."
+                "Infrastrukturen finns. Kompetensen finns. En första bro syns. Nu måste den byggas för fler.",
+                "The infrastructure exists. The competence exists. A first bridge is visible. Now it must be built for more people."
               )}
             </p>
           </blockquote>
@@ -330,8 +355,8 @@ export default function StateOfTheRace() {
           </p>
           <p className="text-foreground/40 text-sm mt-2">
             {t(
-              `Senast uppdaterad: augusti 2026. Baserat på ${totalAnalyses} analyser (${debateCount} debatter, ${interviews} intervjuer).`,
-              `Last updated: August 2026. Based on ${totalAnalyses} analyses (${debateCount} debates, ${interviews} interviews).`
+              `Senast uppdaterad: september 2026. Baserat på ${totalAnalyses} analyser (${debateCount} debatter, ${interviews} intervjuer).`,
+              `Last updated: September 2026. Based on ${totalAnalyses} analyses (${debateCount} debates, ${interviews} interviews).`
             )}
           </p>
         </section>

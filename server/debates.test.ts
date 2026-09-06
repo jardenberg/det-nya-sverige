@@ -132,7 +132,7 @@ describe("Debates data structure", () => {
       "agenda-klimat-2026-08-30",
     ];
 
-    expect(debates.length).toBe(12);
+    expect(debates.length).toBe(13);
     for (const id of expectedIds) {
       const debate = debates.find((entry) => entry.id === id);
       expect(debate).toBeDefined();
@@ -161,5 +161,22 @@ describe("Debates data structure", () => {
         agendaCombinedSpeakingTime[index].seconds,
       );
     }
+  });
+
+  it("should include the Sveriges Radio AI debate with all eight parties and complete sources", () => {
+    const debate = debates.find((entry) => entry.id === "sveriges-radio-ai-debatt-2026-09-05");
+
+    expect(debate).toBeDefined();
+    expect(debate?.type).toBe("debate");
+    expect(debate?.date).toBe("2026-09-05");
+    expect(debate?.partyRankings).toHaveLength(8);
+    expect(debate?.participants).toHaveLength(8);
+    expect(debate?.pointMatches.filter((match) => match.relevance === "direct")).toHaveLength(2);
+    expect(debate?.pointMatches.filter((match) => match.relevance === "indirect")).toHaveLength(6);
+    expect(debate?.pdfUrl).toMatch(/\.pdf$/);
+    expect(debate?.mdUrl).toMatch(/\.md$/);
+    expect(debate?.transcriptUrl).toMatch(/\.txt$/);
+    expect(debate?.partyRankings[0]).toMatchObject({ abbreviation: "C", score: 3.5 });
+    expect(debate?.partyRankings[1]).toMatchObject({ abbreviation: "M", score: 3.5 });
   });
 });

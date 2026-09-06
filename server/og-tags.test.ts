@@ -252,11 +252,23 @@ const DEBATE_OG: Record<string, { title: string; titleEn: string; desc: string; 
     desc: "Omställningen skapar jobb och kompetensbehov, men integration nämns noll gånger. 0 direkta och 3 indirekta matchningar.",
     descEn: "The transition creates jobs and skills needs, but integration is mentioned zero times. 0 direct and 3 indirect matches.",
   },
+  "sveriges-radio-ai-debatt-2026-09-05": {
+    title: "Sveriges Radio: AI-debatten vs. de 15 punkterna",
+    titleEn: "Sveriges Radio: AI Debate vs. the 15 Points",
+    desc: "Alla åtta partier har konkret AI-politik, men integration nämns inte. C skapar seriens första delvis uttalade bro genom forskare med utländsk bakgrund.",
+    descEn: "All eight parties have concrete AI policy, but integration is never mentioned. C creates the series' first partly explicit bridge through researchers with foreign backgrounds.",
+  },
   "__rhetoric__": {
-    title: "Två samtal som aldrig möts – Retoriken över tid",
-    titleEn: "Two Conversations That Never Meet – Rhetoric Over Time",
-    desc: "En interaktiv tidslinje över hur åtta partier talar om integration, AI och den saknade kopplingen mellan dem i 12 analyser.",
-    descEn: "An interactive timeline of how eight parties speak about integration, AI and the missing connection between them across 12 analyses.",
+    title: "En första bro – Retoriken om AI och integration över tid",
+    titleEn: "A First Bridge – AI and Integration Rhetoric Over Time",
+    desc: "En interaktiv tidslinje över hur åtta partier talar om integration, AI och kopplingen mellan dem i 13 analyser. För första gången når ett framträdande nivå 2 för bron.",
+    descEn: "An interactive timeline of how eight parties discuss integration, AI and the connection between them across 13 analyses. For the first time, one appearance reaches level 2 for the bridge.",
+  },
+  "__state_of_the_race__": {
+    title: "En första bro – Sammanfattning av 13 analyser",
+    titleEn: "A First Bridge – Summary of 13 Analyses",
+    desc: "13 analyser, 8 partier och en första delvis uttalad koppling mellan AI och integration. Bron når ännu bara topptalang.",
+    descEn: "13 analyses, 8 parties and a first partly explicit connection between AI and integration. The bridge still reaches only top talent.",
   },
 };
 
@@ -264,6 +276,9 @@ function extractDebateInfo(url: string): { id: string; lang: "sv" | "en" } | nul
   const pathname = url.split(/[?#]/, 1)[0];
   if (/^(?:\/en)?\/(?:retorik|rhetoric)$/.test(pathname)) {
     return { id: "__rhetoric__", lang: pathname.startsWith("/en/") ? "en" : "sv" };
+  }
+  if (/^(?:\/en)?\/(?:laget|state)$/.test(pathname)) {
+    return { id: "__state_of_the_race__", lang: pathname.startsWith("/en/") ? "en" : "sv" };
   }
   const match = pathname.match(/^(?:\/en)?\/(?:debatter|debates)\/([\w-]+)/);
   if (!match) return null;
@@ -372,20 +387,37 @@ describe("OG tag injection – Debate/Interview pages", () => {
   it("should inject Swedish OG tags for /retorik", () => {
     const result = injectDebateOgTags(BASE_HTML, "/retorik");
 
-    expect(result).toContain("Två samtal som aldrig möts – Retoriken över tid");
+    expect(result).toContain("En första bro – Retoriken om AI och integration över tid");
     expect(result).toContain("åtta partier talar om integration, AI");
   });
 
   it("should inject English OG tags for /en/rhetoric", () => {
     const result = injectDebateOgTags(BASE_HTML, "/en/rhetoric");
 
-    expect(result).toContain("Two Conversations That Never Meet – Rhetoric Over Time");
-    expect(result).toContain("eight parties speak about integration, AI");
+    expect(result).toContain("A First Bridge – AI and Integration Rhetoric Over Time");
+    expect(result).toContain("eight parties discuss integration, AI");
   });
 
   it("should preserve rhetoric OG tags when a party query filter is present", () => {
     const result = injectDebateOgTags(BASE_HTML, "/retorik?parti=SD");
 
-    expect(result).toContain("Två samtal som aldrig möts – Retoriken över tid");
+    expect(result).toContain("En första bro – Retoriken om AI och integration över tid");
+  });
+
+  it("should inject Swedish and English OG tags for the Sveriges Radio AI debate", () => {
+    const sv = injectDebateOgTags(BASE_HTML, "/debatter/sveriges-radio-ai-debatt-2026-09-05");
+    const en = injectDebateOgTags(BASE_HTML, "/en/debates/sveriges-radio-ai-debatt-2026-09-05");
+
+    expect(sv).toContain("Sveriges Radio: AI-debatten vs. de 15 punkterna");
+    expect(sv).toContain("första delvis uttalade bro");
+    expect(en).toContain("Sveriges Radio: AI Debate vs. the 15 Points");
+    expect(en).toContain("first partly explicit bridge");
+  });
+
+  it("should inject the revised State of the Race metadata", () => {
+    const result = injectDebateOgTags(BASE_HTML, "/laget?utm_source=share");
+
+    expect(result).toContain("En första bro – Sammanfattning av 13 analyser");
+    expect(result).toContain("Bron når ännu bara topptalang");
   });
 });

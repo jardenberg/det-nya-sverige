@@ -261,3 +261,20 @@
 - [x] Add Vitest coverage for chronology, parties, routes, and rhetoric metrics
 - [x] Verify desktop and mobile layouts, keyboard interaction, and readable chart labels
 - [x] Update version number to v107b
+
+## Sveriges Radio AI debate, 4 September 2026
+- [x] Verify the complete transcript and Sveriges Radio programme metadata
+- [x] Analyze every party’s AI position against all 15 manifesto points
+- [x] Compare all eight parties in the same AI-focused format
+- [x] Identify whether any party explicitly connects AI to integration, language, validation, or faster establishment
+- [x] Distinguish direct matches, enabling infrastructure, second/third-order effects, absence, and opposition
+- [x] Write a comprehensive Swedish analysis with traceable quotes and JJ commentary
+- [x] Generate downloadable PDF and Markdown analysis files
+- [x] Upload and link the complete source transcript
+- [x] Add a directly linkable debate card with unique Swedish and English OG metadata
+- [x] Update the aggregate scoreboard and State of the Race conclusions
+- [x] Add the debate’s eight party observations to the rhetoric timeline
+- [x] Reassess earlier timeline coding and timeless JJ conclusions against the new evidence
+- [x] Add or update Vitest coverage for the new debate, downloads, routes, and rhetoric data
+- [x] Verify desktop/mobile UI, deep links, OG tags, source links, and downloads
+- [x] Update version number to v108b

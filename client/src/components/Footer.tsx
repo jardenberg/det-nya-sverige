@@ -127,7 +127,7 @@ export default function Footer() {
               </a>
             </div>
             <p className="font-mono-display text-xs tracking-wider" style={{ color: 'oklch(0.58 0.16 55 / 0.4)' }}>
-              v107b
+              v108b
             </p>
           </div>
         </div>
