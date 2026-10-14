@@ -20,6 +20,7 @@ import ClosingSection from "@/components/ClosingSection";
 import Footer from "@/components/Footer";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import DebateBanner from "@/components/DebateBanner";
+import ExploreEntry from "@/components/ExploreEntry";
 
 export default function Home() {
   const points = usePoints();
@@ -166,6 +167,7 @@ export default function Home() {
       <LanguageSwitcher />
       <HeroSection />
       <DebateBanner />
+      <ExploreEntry />
       <ManifestoIntro />
 
       {/* Desktop Progress Navigation */}

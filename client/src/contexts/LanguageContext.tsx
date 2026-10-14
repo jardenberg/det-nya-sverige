@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useCallback, useEffect, type ReactNode } from "react";
 import { useLocation } from "wouter";
+import { switchLanguagePath } from "@shared/explore-routes";
 
 export type Lang = "sv" | "en";
 
@@ -39,17 +40,8 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   const toggleLang = useCallback(() => {
     const currentPath = window.location.pathname;
-
-    if (lang === "sv") {
-      // Switch to English: add /en prefix
-      const newPath = "/en" + (currentPath === "/" ? "" : currentPath);
-      setLocation(newPath);
-    } else {
-      // Switch to Swedish: remove /en prefix
-      const newPath = currentPath.replace(/^\/en/, "") || "/";
-      setLocation(newPath);
-    }
-  }, [lang, setLocation]);
+    setLocation(switchLanguagePath(currentPath, window.location.search, window.location.hash));
+  }, [setLocation]);
 
   const t = useCallback(
     (sv: string, en: string) => (lang === "sv" ? sv : en),

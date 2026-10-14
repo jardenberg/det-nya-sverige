@@ -5,15 +5,30 @@
  * Warm light theme consistent with the rest of the site.
  */
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLang } from "@/contexts/LanguageContext";
 import { Link, useParams } from "wouter";
-import { ArrowLeft, Download, ChevronDown, ChevronUp, MessageSquareQuote, AlertTriangle, LinkIcon, Check, TrendingUp } from "lucide-react";
+import { ArrowLeft, Download, ChevronDown, ChevronUp, MessageSquareQuote, AlertTriangle, LinkIcon, Check, TrendingUp, Compass } from "lucide-react";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { debates, type DebateAnalysis, type DebateSection } from "@/lib/debates";
 import AggregatedScoreboard from "@/components/AggregatedScoreboard";
 import AgendaDebateStats from "@/components/AgendaDebateStats";
+
+type DebateDeepLink = {
+  sectionIndex?: number;
+  target?: string;
+};
+
+function readDebateDeepLink(): DebateDeepLink | undefined {
+  const sectionParam = new URLSearchParams(window.location.search).get("section");
+  const sectionIndex = sectionParam === null ? Number.NaN : Number(sectionParam);
+  if (Number.isInteger(sectionIndex) && sectionIndex >= 0) {
+    return { sectionIndex, target: `section-${sectionIndex}` };
+  }
+  const target = window.location.hash.replace(/^#/, "");
+  return target ? { target } : undefined;
+}
 
 function DirectLinkButton({ debateId, lang, langPrefix }: { debateId: string; lang: string; langPrefix: string }) {
   const [copied, setCopied] = useState(false);
@@ -78,7 +93,8 @@ function ScoreBar({ score, maxScore }: { score: number; maxScore: number }) {
   );
 }
 
-function SectionAccordion({ idx, section, lang, activeSection, setActiveSection }: {
+function SectionAccordion({ idx, section, lang, activeSection, setActiveSection, debateId }: {
+  debateId: string;
   idx: number;
   section: DebateSection;
   lang: string;
@@ -102,11 +118,15 @@ function SectionAccordion({ idx, section, lang, activeSection, setActiveSection 
   return (
     <div
       ref={sectionRef}
+      id={`${debateId}-section-${idx}`}
       className="rounded-sm overflow-hidden"
       style={{ backgroundColor: "oklch(0.99 0.005 80 / 0.8)", border: "1px solid oklch(0.18 0.02 50 / 0.05)" }}
     >
-      <div
-        className="p-4 cursor-pointer flex items-center justify-between"
+      <button
+        type="button"
+        aria-expanded={activeSection === idx}
+        aria-controls={`${debateId}-section-${idx}-content`}
+        className="w-full p-4 flex items-center justify-between text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#2d6a4f]"
         onClick={handleToggle}
       >
         <span className="font-body text-sm font-medium" style={{ color: "#2c1810" }}>
@@ -117,11 +137,12 @@ function SectionAccordion({ idx, section, lang, activeSection, setActiveSection 
         ) : (
           <ChevronDown size={16} style={{ color: "#9B6B1A" }} />
         )}
-      </div>
+      </button>
 
       <AnimatePresence>
         {activeSection === idx && (
           <motion.div
+            id={`${debateId}-section-${idx}-content`}
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -194,10 +215,18 @@ function SectionAccordion({ idx, section, lang, activeSection, setActiveSection 
   );
 }
 
-function DebateCard({ debate, startExpanded = false }: { debate: DebateAnalysis; startExpanded?: boolean }) {
+function DebateCard({
+  debate,
+  startExpanded = false,
+  deepLink,
+}: {
+  debate: DebateAnalysis;
+  startExpanded?: boolean;
+  deepLink?: DebateDeepLink;
+}) {
   const { lang, langPrefix } = useLang();
-  const [expanded, setExpanded] = useState(startExpanded);
-  const [activeSection, setActiveSection] = useState<number | null>(null);
+  const [expanded, setExpanded] = useState(startExpanded || Boolean(deepLink));
+  const [activeSection, setActiveSection] = useState<number | null>(deepLink?.sectionIndex ?? null);
   const cardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -206,7 +235,13 @@ function DebateCard({ debate, startExpanded = false }: { debate: DebateAnalysis;
         cardRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
       }, 300);
     }
-  }, [startExpanded]);
+    if (deepLink?.target) {
+      const target = deepLink.target;
+      setTimeout(() => {
+        document.getElementById(target.startsWith(`${debate.id}-`) ? target : `${debate.id}-${target}`)?.scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 560);
+    }
+  }, [deepLink?.target, startExpanded]);
 
   const directCount = debate.pointMatches.filter((p) => p.relevance === "direct").length;
   const indirectCount = debate.pointMatches.filter((p) => p.relevance === "indirect").length;
@@ -291,7 +326,7 @@ function DebateCard({ debate, startExpanded = false }: { debate: DebateAnalysis;
           >
             <div className="px-6 md:px-8 pb-8 space-y-8" style={{ borderTop: "1px solid oklch(0.18 0.02 50 / 0.06)" }}>
               {/* Summary */}
-              <div className="pt-6">
+              <div id={`${debate.id}-summary`} className="pt-6">
                 <h4 className="font-display text-lg font-semibold mb-3" style={{ color: "#2c1810" }}>
                   {lang === "sv" ? "Sammanfattning" : "Summary"}
                 </h4>
@@ -314,6 +349,7 @@ function DebateCard({ debate, startExpanded = false }: { debate: DebateAnalysis;
                       lang={lang}
                       activeSection={activeSection}
                       setActiveSection={setActiveSection}
+                      debateId={debate.id}
                     />
                   ))}
                 </div>
@@ -345,7 +381,7 @@ function DebateCard({ debate, startExpanded = false }: { debate: DebateAnalysis;
                     </thead>
                     <tbody>
                       {debate.pointMatches.map((pm) => (
-                        <tr key={pm.pointId} style={{ borderBottom: "1px solid oklch(0.18 0.02 50 / 0.04)" }}>
+                        <tr id={`${debate.id}-match-${pm.pointId}`} key={pm.pointId} style={{ borderBottom: "1px solid oklch(0.18 0.02 50 / 0.04)" }}>
                           <td className="font-mono-display text-xs py-2 pr-3" style={{ color: "#8a7a6a" }}>
                             {pm.pointId}
                           </td>
@@ -369,7 +405,7 @@ function DebateCard({ debate, startExpanded = false }: { debate: DebateAnalysis;
               </div>
 
               {/* Party rankings */}
-              <div>
+              <div id={`${debate.id}-parties`}>
                 <h4 className="font-display text-lg font-semibold mb-4" style={{ color: "#2c1810" }}>
                   {lang === "sv" ? "Partiernas närhet till de 15 punkterna" : "Party proximity to the 15 points"}
                 </h4>
@@ -401,7 +437,7 @@ function DebateCard({ debate, startExpanded = false }: { debate: DebateAnalysis;
               </div>
 
               {/* Missing themes */}
-              <div>
+              <div id={`${debate.id}-missing`}>
                 <h4 className="font-display text-lg font-semibold mb-4" style={{ color: "#2c1810" }}>
                   {lang === "sv" ? "Vad som saknades helt" : "What was completely missing"}
                 </h4>
@@ -430,7 +466,7 @@ function DebateCard({ debate, startExpanded = false }: { debate: DebateAnalysis;
               </div>
 
               {/* Conclusion */}
-              <div>
+              <div id={`${debate.id}-conclusion`}>
                 <h4 className="font-display text-lg font-semibold mb-3" style={{ color: "#2c1810" }}>
                   {lang === "sv" ? "Slutsats" : "Conclusion"}
                 </h4>
@@ -444,7 +480,7 @@ function DebateCard({ debate, startExpanded = false }: { debate: DebateAnalysis;
               </div>
 
               {/* JJ final comment */}
-              <div className="p-4 md:p-6 rounded-sm" style={{ backgroundColor: "oklch(0.95 0.02 80 / 0.5)", borderLeft: "3px solid #9B6B1A" }}>
+              <div id={`${debate.id}-jj`} className="p-4 md:p-6 rounded-sm" style={{ backgroundColor: "oklch(0.95 0.02 80 / 0.5)", borderLeft: "3px solid #9B6B1A" }}>
                 <p className="font-mono-display text-xs tracking-wider mb-2" style={{ color: "#9B6B1A" }}>
                   // JJ KOMMENTERAR:
                 </p>
@@ -505,6 +541,7 @@ export default function Debates() {
   const { lang, langPrefix } = useLang();
   const params = useParams<{ id?: string }>();
   const focusedId = params.id || null;
+  const deepLink = useMemo(readDebateDeepLink, []);
   const debateEntries = debates
     .filter((entry) => entry.type === "debate")
     .sort((a, b) => b.date.localeCompare(a.date));
@@ -555,6 +592,13 @@ export default function Debates() {
               ? "Inför valet 2026 analyserar vi debatter, intervjuer och uttalanden mot de 15 punkterna i Det Nya Sverige. Syftet är inte att rangordna partier, utan att synliggöra vad som diskuteras, vad som saknas, och var de 15 punkterna erbjuder ett annat perspektiv. Fakta skiljs tydligt från spekulation."
               : "Ahead of the 2026 election, we analyse debates, interviews and statements against the 15 points of The New Sweden. The purpose is not to rank parties, but to make visible what is discussed, what is missing, and where the 15 points offer a different perspective. Facts are clearly separated from speculation."}
           </p>
+          <Link
+            href={`${langPrefix}/utforska` || "/utforska"}
+            className="inline-flex items-center gap-2 mt-5 font-body text-sm text-[#2d6a4f] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2d6a4f]"
+          >
+            <Compass size={15} />
+            {lang === "sv" ? "Utforska källor och tematiska samband" : "Explore sources and thematic connections"}
+          </Link>
         </motion.div>
 
         {/* Aggregated scoreboard */}
@@ -599,7 +643,7 @@ export default function Debates() {
               </div>
               <div className="space-y-6">
                 {debateEntries.map((debate) => (
-                  <DebateCard key={debate.id} debate={debate} startExpanded={debate.id === focusedId} />
+                  <DebateCard key={debate.id} debate={debate} startExpanded={debate.id === focusedId} deepLink={debate.id === focusedId ? deepLink : undefined} />
                 ))}
               </div>
             </div>
@@ -616,7 +660,7 @@ export default function Debates() {
               </div>
               <div className="space-y-6">
                 {interviewEntries.map((debate) => (
-                  <DebateCard key={debate.id} debate={debate} startExpanded={debate.id === focusedId} />
+                  <DebateCard key={debate.id} debate={debate} startExpanded={debate.id === focusedId} deepLink={debate.id === focusedId ? deepLink : undefined} />
                 ))}
               </div>
             </div>

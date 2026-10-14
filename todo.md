@@ -278,3 +278,20 @@
 - [x] Add or update Vitest coverage for the new debate, downloads, routes, and rhetoric data
 - [x] Verify desktop/mobile UI, deep links, OG tags, source links, and downloads
 - [x] Update version number to v108b
+
+## Search and thematic exploration (v109b)
+Plan: inventory bilingual content → curate evidence-based thematic connections → implement lexical and genuine model-based semantic retrieval → build discoverable bilingual exploration UI → verify and checkpoint.
+- [x] Inventory manifesto and analysis corpus and define searchable units
+- [x] Curate bilingual themes with explained point-to-point connections, especially language
+- [x] Implement lexical exact-word/phrase search with contextual snippets
+- [x] Implement genuine semantic search with safe limits, caching, and explicit failure handling
+- [x] Build /utforska and /en/explore with shareable search/theme state and accessible filters
+- [x] Add entry points from homepage, navigation, and individual manifesto points
+- [x] Add bilingual OG metadata and methodology explanation
+- [x] Add retrieval, theme integrity, and route tests
+- [x] Verify semantic API, lexical queries, desktop/mobile, keyboard, and domain health
+- [x] Run TypeScript, Vitest, production build; update version to v109b and save checkpoint
+
+## Separate legacy download recovery finding (2026-10-14)
+Search changes preserve all existing analysis content/URLs. Restoration health check: 33/39 analysis assets return 200. Six unchanged Slottner (KD) and Wetterling (V) PDF/Markdown/transcript assets return 403; GET confirmed for both Markdown assets. No recovered originals for these two interviews were present in the restored upload inventory.
+- [ ] Recover and re-upload the original Slottner/Wetterling files, without inventing replacement transcripts

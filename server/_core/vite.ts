@@ -5,6 +5,7 @@ import { nanoid } from "nanoid";
 import path from "path";
 import { createServer as createViteServer } from "vite";
 import viteConfig from "../../vite.config";
+import { injectExploreOgTags } from "../explore-og";
 
 // OG image URLs for each of the 15 policy points
 const OG_IMAGES: Record<number, string> = {
@@ -269,6 +270,7 @@ function extractDebateInfo(url: string): { id: string; lang: "sv" | "en" } | nul
 }
 
 function injectDebateOgTags(html: string, url: string): string {
+  html = injectExploreOgTags(html, url);
   const info = extractDebateInfo(url);
   if (!info) return html;
 

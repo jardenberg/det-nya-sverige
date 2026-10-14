@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowLeft, Check, Link2, MoveRight } from "lucide-react";
+import { ArrowLeft, Check, Compass, Link2, MoveRight } from "lucide-react";
 import { Link } from "wouter";
 import {
   CartesianGrid,
@@ -166,6 +166,13 @@ export default function RhetoricTimeline() {
           >
             <ArrowLeft size={14} />
             {lang === "sv" ? "Tillbaka till analyserna" : "Back to the analyses"}
+          </Link>
+          <Link
+            href={`${langPrefix}/utforska` || "/utforska"}
+            className="ml-5 inline-flex items-center gap-2 font-mono-display text-xs tracking-wider text-[#2d6a4f] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2d6a4f]"
+          >
+            <Compass size={14} />
+            {lang === "sv" ? "Utforska" : "Explore"}
           </Link>
 
           <div className="max-w-4xl">

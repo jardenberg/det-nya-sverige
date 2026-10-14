@@ -279,6 +279,26 @@ export default function About() {
         <div className="my-14 h-[1px]" style={{ backgroundColor: 'oklch(0.18 0.02 50 / 0.08)' }} />
 
         {/* Process / Field Report */}
+        <section className="mb-14" aria-labelledby="explore-about-title">
+          <h2 id="explore-about-title" className="font-display text-xl md:text-2xl font-semibold mb-6" style={{ color: '#2c1810' }}>
+            {lang === "sv" ? "Sök och se sammanhangen" : "Search and see the connections"}
+          </h2>
+          <div className="space-y-4 font-body text-base md:text-lg leading-relaxed font-light" style={{ color: '#5a4a3a' }}>
+            <p>{lang === "sv"
+              ? "Manifestet kan läsas i ordning, men idéerna följer inte punktgränserna. Språk handlar till exempel om jobb, skola, myndighetskontakter, rättigheter och företagande. Utforska samlar åtta redaktionellt valda teman med motiverade kopplingar och konkreta belägg ur punkterna. Kartan är en läshjälp, inte en ny poängsättning av partierna."
+              : "The manifesto can be read in order, but the ideas do not stop at point boundaries. Language, for example, connects work, school, public services, rights and entrepreneurship. Explore brings together eight editorial themes with explained connections and concrete evidence from the points. The map is a reading aid, not a new party scoring system."}</p>
+            <p>{lang === "sv"
+              ? "Ord-sökningen hittar exakta ord och fraser i både svenska och engelska versioner. Sökningen på betydelse använder en språkmodell för att välja relevanta textavsnitt, även när frågan använder andra ord eller ett annat språk. Resultaten är utdrag ur befintligt innehåll, inte nyskrivna svar. Varje modellvalt utdrag kontrolleras mot sin källtext. Modellens korta relevansförklaring är däremot en AI-tolkning och kan vara fel. Fakta, redaktionell analys och JJ-kommentarer märks separat."
+              : "Exact-word search finds words and phrases in both Swedish and English versions. Meaning search uses a language model to select relevant passages, even when a query uses different wording or another language. Results are excerpts from existing content, not newly written answers. Each model-selected excerpt is checked against its source text. The model's brief relevance explanation, however, is an AI interpretation and can be wrong. Reported statements, editorial analysis and JJ commentary are labelled separately."}</p>
+            <p>{lang === "sv"
+              ? "Sökningen omfattar manifestets 15 punkter och innehållet i analyskorten, inklusive citat, matchningar och noterade luckor. De fullständiga externa transkripten och besökarkommentarerna ingår inte. Ett temafilter följer analysavsnittens redaktionella punktkopplingar, inte ett påstående om att ett parti har ställt sig bakom förslagen. Vid sökning på betydelse skickas sökfrågan och offentliga textavsnitt till en AI-modell. Skriv därför inte personuppgifter eller konfidentiell information. Ord-sökning och temakartan fungerar även när modellen inte är tillgänglig."
+              : "Search covers the manifesto's 15 points and the analysis cards, including quotations, point matching and recorded omissions. Full external transcripts and visitor comments are not indexed. A theme filter follows the analysis passages' editorial point connections, not a claim that a party endorsed those proposals. Meaning search sends the query and public text passages to an AI model. Do not enter personal or confidential information. Exact-word search and the thematic map remain usable when the model is unavailable."}</p>
+          </div>
+          <Link href={`${langPrefix}/${lang === "sv" ? "utforska" : "explore"}`} className="inline-block mt-5 font-body text-sm underline underline-offset-4 text-[#285448]">
+            {lang === "sv" ? "Utforska manifestet och analyserna →" : "Explore the manifesto and analyses →"}
+          </Link>
+        </section>
+        <div className="my-14 h-[1px]" style={{ backgroundColor: 'oklch(0.18 0.02 50 / 0.08)' }} />
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -470,7 +490,7 @@ export default function About() {
         {/* Version */}
         <div className="mt-20 pt-8" style={{ borderTop: '1px solid oklch(0.18 0.02 50 / 0.07)' }}>
           <p className="font-mono-display text-xs tracking-wider" style={{ color: 'oklch(0.58 0.16 55 / 0.4)' }}>
-            {c.versionLabel}: v108b
+            {c.versionLabel}: v109b
           </p>
         </div>
       </div>

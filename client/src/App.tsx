@@ -10,6 +10,7 @@ import About from "./pages/About";
 import Debates from "./pages/Debates";
 import StateOfTheRace from "./pages/StateOfTheRace";
 import RhetoricTimeline from "./pages/RhetoricTimeline";
+import Explore from "./pages/Explore";
 function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
@@ -27,6 +28,8 @@ function Router() {
       <Route path="/state" component={StateOfTheRace} />
       <Route path="/retorik" component={RhetoricTimeline} />
       <Route path="/rhetoric" component={RhetoricTimeline} />
+      <Route path="/utforska" component={Explore} />
+      <Route path="/explore" component={Explore} />
 
       {/* English routes with /en prefix */}
       <Route path="/en" component={Home} />
@@ -41,6 +44,8 @@ function Router() {
       <Route path="/en/state" component={StateOfTheRace} />
       <Route path="/en/retorik" component={RhetoricTimeline} />
       <Route path="/en/rhetoric" component={RhetoricTimeline} />
+      <Route path="/en/utforska" component={Explore} />
+      <Route path="/en/explore" component={Explore} />
 
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />

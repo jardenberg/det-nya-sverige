@@ -9,6 +9,8 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { type PolicyPoint } from "@/lib/points";
 import { useLang } from "@/contexts/LanguageContext";
+import { Link } from "wouter";
+import { themesForPoint } from "@shared/themes";
 import ShareButton from "./ShareButton";
 import VoteButton from "./VoteButton";
 import CommentSection from "./CommentSection";
@@ -49,7 +51,8 @@ export default function PolicyCard({ point, index, isActive }: PolicyCardProps) 
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-60px" });
   const layout = getLayoutStyle(index);
-  const { lang } = useLang();
+  const { lang, langPrefix } = useLang();
+  const pointThemes = themesForPoint(point.id);
 
   const numberStr = point.id.toString().padStart(2, "0");
   const Icon = ICONS[index] || BookOpen;
@@ -198,6 +201,26 @@ export default function PolicyCard({ point, index, isActive }: PolicyCardProps) 
               {point.body}
             </p>
           </motion.div>
+
+          {pointThemes.length > 0 && (
+            <div className={`mb-6 flex flex-wrap items-center gap-2 ${
+              layout === "right" ? "justify-end" : layout === "center" ? "justify-center" : ""
+            }`}>
+              <span className="font-mono-display text-[10px] tracking-[0.14em] uppercase" style={{ color: "#8a7a6a" }}>
+                {lang === "sv" ? "Följ trådarna" : "Follow the threads"}
+              </span>
+              {pointThemes.map((theme) => (
+                <Link
+                  key={theme.id}
+                  href={`${langPrefix}/utforska?theme=${theme.id}` || `/utforska?theme=${theme.id}`}
+                  className="px-2.5 py-1.5 border font-body text-xs hover:bg-[#e9f0e9] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2d6a4f]"
+                  style={{ color: "#2d6a4f", borderColor: "rgba(45,106,79,0.3)" }}
+                >
+                  {theme.short[lang]}
+                </Link>
+              ))}
+            </div>
+          )}
 
           {/* Action row: Share + Vote + Discussion – all on one line, comment panel expands below */}
           <motion.div

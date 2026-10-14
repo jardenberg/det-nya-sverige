@@ -57,6 +57,10 @@ export type ToolChoice =
 
 export type InvokeParams = {
   messages: Message[];
+  model?: string;
+  reasoning?: { effort: "minimal" | "low" | "medium" | "high" };
+  max_completion_tokens?: number;
+  signal?: AbortSignal;
   tools?: Tool[];
   toolChoice?: ToolChoice;
   tool_choice?: ToolChoice;
@@ -280,7 +284,7 @@ export async function invokeLLM(params: InvokeParams): Promise<InvokeResult> {
   } = params;
 
   const payload: Record<string, unknown> = {
-    model: "gemini-2.5-flash",
+    model: params.model ?? "gemini-3-flash-preview",
     messages: messages.map(normalizeMessage),
   };
 
@@ -296,10 +300,12 @@ export async function invokeLLM(params: InvokeParams): Promise<InvokeResult> {
     payload.tool_choice = normalizedToolChoice;
   }
 
-  payload.max_tokens = 32768
-  payload.thinking = {
-    "budget_tokens": 128
+  if (params.max_completion_tokens !== undefined) {
+    payload.max_completion_tokens = params.max_completion_tokens;
+  } else {
+    payload.max_tokens = params.maxTokens ?? params.max_tokens ?? 32768;
   }
+  if (params.reasoning) payload.reasoning = params.reasoning;
 
   const normalizedResponseFormat = normalizeResponseFormat({
     responseFormat,
@@ -319,6 +325,7 @@ export async function invokeLLM(params: InvokeParams): Promise<InvokeResult> {
       authorization: `Bearer ${ENV.forgeApiKey}`,
     },
     body: JSON.stringify(payload),
+    signal: params.signal,
   });
 
   if (!response.ok) {
@@ -329,4 +336,15 @@ export async function invokeLLM(params: InvokeParams): Promise<InvokeResult> {
   }
 
   return (await response.json()) as InvokeResult;
+}
+
+export async function listLLMModels(): Promise<{ data: { id: string }[] }> {
+  assertApiKey();
+  const url = resolveApiUrl().replace(/\/chat\/completions$/, "/models");
+  const response = await fetch(url, {
+    headers: { authorization: `Bearer ${ENV.forgeApiKey}` },
+    signal: AbortSignal.timeout(10000),
+  });
+  if (!response.ok) throw new Error(`Model catalog unavailable: ${response.status}`);
+  return response.json();
 }
